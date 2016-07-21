@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Chrysan" />
+        <meta name="copyright" content="Chrysan" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="开发环境, virtualenv, tools, tools, " />
+
+<meta property="og:title" content="virtualenv "/>
+<meta property="og:url" content="/virtualenv.html" />
+<meta property="og:description" content="1. 安装virtualenv $ pip install virtualenv 2. 创建虚python虚拟环境 创建python虚拟环境，可以指定不同的版本，安装不同的第三方库. 下面安装django1.7版本为例 $ virtualenv [虚拟环境名称] #格式 $ virtualenv django16env #实例 $ cd django16env/bin $ ./pip install jdango==1.7 3. 启动/退出虚拟环境 $ cd django16env/bin/activate $ source activate #启动环境 ＃ 命令前会多个括号，里面会显示虚拟环境名称 $ deactivate #退出环境 4 ..." />
+<meta property="og:site_name" content="LearnDevOps" />
+<meta property="og:article:author" content="Chrysan" />
+<meta property="og:article:published_time" content="2015-12-17T16:44:00+08:00" />
+<meta name="twitter:title" content="virtualenv ">
+<meta name="twitter:description" content="1. 安装virtualenv $ pip install virtualenv 2. 创建虚python虚拟环境 创建python虚拟环境，可以指定不同的版本，安装不同的第三方库. 下面安装django1.7版本为例 $ virtualenv [虚拟环境名称] #格式 $ virtualenv django16env #实例 $ cd django16env/bin $ ./pip install jdango==1.7 3. 启动/退出虚拟环境 $ cd django16env/bin/activate $ source activate #启动环境 ＃ 命令前会多个括号，里面会显示虚拟环境名称 $ deactivate #退出环境 4 ...">
+
+        <title>virtualenv  · LearnDevOps
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/virtualenv.html"> virtualenv  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <!--
+Modified: 2015-12-18 09:30 
+Summary: python虚拟沙盒 virtual
+Slug: python虚拟沙盒virtual
+-->
+
+<!-- draft: draft -->
+
+<h2 id="1-virtualenv">1. 安装virtualenv</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ pip install virtualenv
+</pre></div>
+
+
+<h2 id="2-python">2. 创建虚python虚拟环境</h2>
+<p>创建python虚拟环境，可以指定不同的版本，安装不同的第三方库.<!-- #还没尝试-->
+下面安装django1.7版本为例</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">   $ virtualenv <span style="color: #666666">[</span>虚拟环境名称<span style="color: #666666">]</span>  <span style="color: #008800; font-style: italic">#格式</span>
+   $ virtualenv django16env     <span style="color: #008800; font-style: italic">#实例</span>
+   $ <span style="color: #AA22FF">cd</span> django16env/bin
+   $ ./pip install <span style="color: #B8860B">jdango</span><span style="color: #666666">==</span>1.7
+</pre></div>
+
+
+<h2 id="3">3. 启动/退出虚拟环境</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ <span style="color: #AA22FF">cd</span> django16env/bin/activate
+    $ <span style="color: #AA22FF">source</span> activate   <span style="color: #008800; font-style: italic">#启动环境  ＃ 命令前会多个括号，里面会显示虚拟环境名称</span>
+    $ deactivate        <span style="color: #008800; font-style: italic">#退出环境</span>
+</pre></div>
+
+
+<h2 id="4-virtualenvwrapper">4. 使用virtualenvwrapper 管理虚拟环境</h2>
+<p>virtualenvwrapper 提供了对虚拟环境的方便快捷的管理方式：创建，删除，切换，查看等操作。并且将虚拟环境集中到一个地方使得对多版本多项目的虚拟环境的管理变得方便。</p>
+<h3 id="41-virtualenvwrapper">4.1 安装virtualenvwrapper</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ sudo  pip install virtualenvwrapper  <span style="color: #008800; font-style: italic">#这是装在主系统中的</span>
+$ mkdir ~/virenv                       <span style="color: #008800; font-style: italic">#创建管理目录</span>
+$ cat /etc/profile.d/virtualenv.sh     <span style="color: #008800; font-style: italic">#配置环境变量</span>
+$    <span style="color: #AA22FF">export</span> <span style="color: #B8860B">WORKON_HOME</span><span style="color: #666666">=</span><span style="color: #BB4444">&#39;~/virenv&#39;</span>
+     <span style="color: #AA22FF">source</span> /usr/bin/virtualenvwrapper.sh  <span style="color: #008800; font-style: italic">#注意不同平台和不同版本的路径不一致,可以使用：type virtualenvwrapper.sh 来确定准确的位置</span>
+</pre></div>
+
+
+<h3 id="42">4.2 常用命令</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ mkvirtualenv   <span style="color: #666666">[</span>虚拟环境名<span style="color: #666666">]</span> <span style="color: #008800; font-style: italic">#创建虚拟环境,创建完后会自动切换环境</span>
+
+    $ lsvirtualenv -b             <span style="color: #008800; font-style: italic">#查看已经创建的虚拟环境 </span>
+
+    $ workon <span style="color: #666666">[</span>环境名称<span style="color: #666666">]</span>           <span style="color: #008800; font-style: italic">#切换虚拟环境 </span>
+
+    $ <span style="color: #AA22FF">echo</span> $VIRTUAL_ENV           <span style="color: #008800; font-style: italic">#查看虚拟环境路径</span>
+
+    $ lssitepackages              <span style="color: #008800; font-style: italic">#查看安装了哪些包</span>
+
+    $ cdvirtualenv                <span style="color: #008800; font-style: italic">#进入当前环境目录</span>
+
+    $ cdvirtualenv <span style="color: #666666">[</span>子目录<span style="color: #666666">]</span>       <span style="color: #008800; font-style: italic">#进入当前环境子目录</span>
+
+    $ cdsitepackages <span style="color: #666666">[</span>子目录<span style="color: #666666">]</span>     <span style="color: #008800; font-style: italic">#进入cdsitepackages 及子目录</span>
+
+    $ toggleglobalsitepackages    <span style="color: #008800; font-style: italic">#控制环境是否使用global site-packages：toggleglobalsitepackages</span>
+
+    $ cpvirtualenv <span style="color: #666666">[</span>source<span style="color: #666666">]</span> <span style="color: #666666">[</span>dest<span style="color: #666666">]</span> <span style="color: #008800; font-style: italic">#复制虚拟环境</span>
+
+    $ deactivatea                 <span style="color: #008800; font-style: italic">#退出虚拟环境</span>
+
+    $ rmvirtualevn <span style="color: #666666">[</span>虚拟环境名<span style="color: #666666">]</span>   <span style="color: #008800; font-style: italic">#删除虚拟环境</span>
+</pre></div>
+
+
+<h2 id="5">5 错误归总</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">chrysan@chrsyan:~$ mkvirtualenv pelican
+ERROR: virtualenvwrapper could not find virtualenv in your path   <span style="color: #008800; font-style: italic">#是因为系统中的virtualenv 不能正常运行，重新安装即可</span>
+chrysan@chrsyan:~$ virtualenv pelican
+The program <span style="color: #BB4444">&#39;virtualenv&#39;</span> is currently not installed. You can install it by typing:
+sudo apt-get install virtualenv
+chrysan@chrsyan:~$ sudo apt-get install virtualenv
+</pre></div>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-12-17T16:44:00+08:00">12 17, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#tools-ref">tools</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#kai-fa-huan-jing-ref">开发环境
+                    <span>2</span>
+</a></li>
+                <li><a href="/tags.html#tools-ref">tools
+                    <span>2</span>
+</a></li>
+                <li><a href="/tags.html#virtualenv-ref">virtualenv
+                    <span>1</span>
+</a></li>
+            </ul>
+        </div>
+        </section>
+</div>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="virtualenv" data-title="virtualenv" data-url="http://blog.pyshell.cn/virtualenv.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"devops"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- baidu tongji   -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b6fb6111b823b418109202b642b4a62b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- baidu tongji  end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

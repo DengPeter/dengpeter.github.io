@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Chrysan" />
+        <meta name="copyright" content="Chrysan" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="js, jquery, 前端, " />
+
+<meta property="og:title" content="js基础 "/>
+<meta property="og:url" content="/jsji-chu.html" />
+<meta property="og:description" content="1. js简介 javascript是一门编程语言，解释器是浏览器。 2. js 的存在形式 html页面中 html &lt;script&gt; js内容 &lt;/script&gt; xxx.js独立页面中 &lt;script src=&#39;xxx.js&#39;&gt;&lt;/script&gt; 3. js在页面中的位置 推荐将js代码块放在body标签底部 4. js变量 全局变量 a = 0 局部变量 var a = 0 5. 注释 // 单行注释 /* 多行注释 */ 6. 数据类型 1. 数字 Number a = 1 1 typeof(a) &#34;number&#34; var b = &#39;1&#39; undefined ..." />
+<meta property="og:site_name" content="LearnDevOps" />
+<meta property="og:article:author" content="Chrysan" />
+<meta property="og:article:published_time" content="2016-04-22T00:00:00+08:00" />
+<meta name="twitter:title" content="js基础 ">
+<meta name="twitter:description" content="1. js简介 javascript是一门编程语言，解释器是浏览器。 2. js 的存在形式 html页面中 html &lt;script&gt; js内容 &lt;/script&gt; xxx.js独立页面中 &lt;script src=&#39;xxx.js&#39;&gt;&lt;/script&gt; 3. js在页面中的位置 推荐将js代码块放在body标签底部 4. js变量 全局变量 a = 0 局部变量 var a = 0 5. 注释 // 单行注释 /* 多行注释 */ 6. 数据类型 1. 数字 Number a = 1 1 typeof(a) &#34;number&#34; var b = &#39;1&#39; undefined ...">
+
+        <title>js基础  · LearnDevOps
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/jsji-chu.html"> js基础  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h3>Contents</h3>
+        <div class="toc">
+<ul>
+<li><a href="#1-js">1. js简介</a></li>
+<li><a href="#2-js">2. js 的存在形式</a></li>
+<li><a href="#3-js">3. js在页面中的位置</a></li>
+<li><a href="#4-js">4. js变量</a></li>
+<li><a href="#5">5.  注释</a></li>
+<li><a href="#6">6. 数据类型</a><ul>
+<li><a href="#1-number">1. 数字 Number</a></li>
+<li><a href="#2">2. 字符串</a></li>
+<li><a href="#3">3. 布尔类型</a></li>
+<li><a href="#4">4. 数组</a></li>
+</ul>
+</li>
+<li><a href="#undefined">undefined</a></li>
+<li><a href="#null">null</a></li>
+<li><a href="#7-for-while">7. 循环语句 for while</a></li>
+<li><a href="#8-if-else">8. 判断条件if else</a></li>
+<li><a href="#9-try-catch-finally">9. 异常处理 try catch finally</a></li>
+<li><a href="#10">10. 函数</a></li>
+<li><a href="#11">11. 面向对象</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+
+<!-- toc end -->
+    <div class="span8 article-content">
+
+            
+            
+<h1 id="1-js">1. js简介</h1>
+<p>javascript是一门编程语言，解释器是浏览器。</p>
+<h1 id="2-js">2. js 的存在形式</h1>
+<ol>
+<li>html页面中
+    <code>html
+    &lt;script&gt;
+        js内容
+    &lt;/script&gt;</code></li>
+<li>xxx.js独立页面中
+    <code>&lt;script src='xxx.js'&gt;&lt;/script&gt;</code></li>
+</ol>
+<h1 id="3-js">3. js在页面中的位置</h1>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">推荐将js代码块放在body标签底部
+</pre></div>
+<h1 id="4-js">4. js变量</h1>
+<p>全局变量   a = 0
+   局部变量   var a = 0</p>
+<h1 id="5">5.  注释</h1>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">// 单行注释
+/* 
+    多行注释
+*/
+</pre></div>
+<h1 id="6">6. 数据类型</h1>
+<h2 id="1-number">1. 数字 Number</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1
+1
+typeof(a)
+"number"
+var b = '1'
+undefined
+typeof(b)
+"string"
+Number(b)
+1
+typeof(b)
+"string"
+c = '3'
+"3"
+parseInt(c)
+3
+typeof(c)
+"string"
+Number(c)
+3
+typeof(c)
+"string"
+d = Number(c)
+3
+typeof(d)
+"number"
+</pre></div>
+<h2 id="2">2. 字符串</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">var a = 'hello world'
+undefined
+a
+"hello world"
+var b = String(19)
+undefined
+typeof(b)
+"string"
+</pre></div>
+<p>常用方法：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">w = ' hello world  '
+" hello world  "
+w
+" hello world  "
+w.trim() #除去两边空格
+"hello world"
+w
+" hello world  "
+w.charAt(1) ＃下标取值
+"h"
+w.charAt(0)
+" "
+w.charAt(-1)
+""
+w.charAt(-0)
+" "
+w.charAt(11)
+"d"
+w.charAt(10)
+"l"
+w.substring(0,3)    # 起始下标取值
+" he"
+w.indexOf('l')  # 第一个字符串的下标位置
+3
+w.length    # 字符串长度
+14
+</pre></div>
+<h2 id="3">3. 布尔类型</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">var status = true;
+undefined
+status
+"true"
+status = false;
+false
+status
+var sattus = Boolean( 0 == 1)
+undefined
+status
+"false"
+var sattus = Boolean( 0 == 0)
+undefined
+status
+"false"
+</pre></div>
+<h2 id="4">4. 数组</h2>
+<p>定义数组：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">names = ['peter','mark','moses']
+["peter", "mark", "moses"]
+names1 = Array('Sophia','Joseph','Hannah')
+["Sophia", "Joseph", "Hannah"]
+</pre></div>
+<p>常用操作：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"># 合并数组
+newNames = names.concat(names1) # 合并数组
+
+["peter", "mark", "moses", "Sophia", "Joseph", "Hannah"]
+</pre></div>
+<p>添加：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"> newNames.push('afei') ＃追加
+7
+newNames
+["peter", "mark", "moses", "Sophia", "Joseph", "Hannah", "afei"]
+
+newNames.unshift('Juzi') ＃ 从前面加入
+8
+newNames
+["Juzi", "peter", "mark", "moses", "Sophia", "Joseph", "Hannah", "afei"]
+
+newNames.splice(2,0,'Mountain') ＃指定索引加入
+[]
+newNames
+["Juzi", "peter", "Mountain", "mark", "moses", "Sophia", "Joseph", "Hannah", "afei"]
+</pre></div>
+<p>移除：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">a = newNames.pop() #移除最后一个,并获取移除的值
+"afei"
+a
+"afei"
+
+b = newNames.shift()  #移除第一个,并获取移除的值
+"Juzi"
+b
+"Juzi"
+
+newNames.splice(2,3) #移除指定的值index，count
+["mark", "moses", "Sophia"]
+
+c =newNames.splice(2,3)
+["Joseph", "Hannah"]
+
+newNames
+["peter", "Mountain"]
+</pre></div>
+<p>切片：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">names
+["peter", "mark", "moses"] # 结果为下标开始的后一个开始
+names.slice(1,3)
+["mark", "moses"]
+names.slice(0,1)
+["peter"]
+</pre></div>
+<p>反转:</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">names.reverse()
+["moses", "mark", "peter"]
+</pre></div>
+<p>字符串格式化：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">names.join('')
+"mosesmarkpeter"
+names.join(',')
+"moses,mark,peter"
+</pre></div>
+<p>长度：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">names.length
+3
+</pre></div>
+<p>字典：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">var items = {'k1':'v1','k2':'v2'}
+undefined
+items.k1
+"v1"
+</pre></div>
+<h1 id="undefined">undefined</h1>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">var d = undefined
+undefined
+d
+</pre></div>
+<h1 id="null">null</h1>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">undefined
+</pre></div>
+<h1 id="7-for-while">7. 循环语句 for while</h1>
+<p>格式：
+    for(条件){
+        代码主体
+    }</p>
+<h1 id="8-if-else">8. 判断条件if else</h1>
+<h1 id="9-try-catch-finally">9. 异常处理 try catch finally</h1>
+<h1 id="10">10. 函数</h1>
+<h1 id="11">11. 面向对象</h1>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-04-22T00:00:00+08:00"> 4 22, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#qian-duan-ref">前端</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#jquery-ref">jquery
+                    <span>2</span>
+</a></li>
+                <li><a href="/tags.html#js-ref">js
+                    <span>3</span>
+</a></li>
+            </ul>
+        </div>
+        </section>
+</div>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="js基础" data-title="js基础" data-url="http://blog.pyshell.cn/jsji-chu.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"devops"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- baidu tongji   -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b6fb6111b823b418109202b642b4a62b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- baidu tongji  end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

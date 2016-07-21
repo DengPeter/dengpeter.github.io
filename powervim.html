@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Rongfei" />
+        <meta name="copyright" content="Rongfei" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content=", tools, " />
+
+<meta property="og:title" content="PowerVim "/>
+<meta property="og:url" content="/powervim.html" />
+<meta property="og:description" content="vim基本功 移动之单词动作 w/W #正向移动到第[count]个词首／字串的首部, e/E #正向移动到第[count]个单词/字串的尾部,不停留在空行上。 b/B #反向移动到第[count]个单词/字串的首部 ge/gE #反向到第 [count] 个单词/字串的尾部 单词： 一个单词由字符、数字和下划线序列或者其他的非空白字符的序列组成。单词间可以空白 字符 (空格、制表、换行) 分隔。这一规则可以用 ‘iskeyword’ 选项改变。空行也被认 作单词。 字串: 一个字串由非空白字符序列组成。字串以空白分隔。空行也被认作字串。 已折叠的行序列被认作由单个字符组成的单词。”w” 和 “W”、”e ..." />
+<meta property="og:site_name" content="LearnDevOps" />
+<meta property="og:article:author" content="Rongfei" />
+<meta property="og:article:published_time" content="2016-01-11T09:32:00+08:00" />
+<meta name="twitter:title" content="PowerVim ">
+<meta name="twitter:description" content="vim基本功 移动之单词动作 w/W #正向移动到第[count]个词首／字串的首部, e/E #正向移动到第[count]个单词/字串的尾部,不停留在空行上。 b/B #反向移动到第[count]个单词/字串的首部 ge/gE #反向到第 [count] 个单词/字串的尾部 单词： 一个单词由字符、数字和下划线序列或者其他的非空白字符的序列组成。单词间可以空白 字符 (空格、制表、换行) 分隔。这一规则可以用 ‘iskeyword’ 选项改变。空行也被认 作单词。 字串: 一个字串由非空白字符序列组成。字串以空白分隔。空行也被认作字串。 已折叠的行序列被认作由单个字符组成的单词。”w” 和 “W”、”e ...">
+
+        <title>PowerVim  · LearnDevOps
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/powervim.html"> PowerVim  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h3>Contents</h3>
+        <div class="toc">
+<ul>
+<li><a href="#vim">vim基本功</a><ul>
+<li><a href="#_1">移动之单词动作</a></li>
+<li><a href="#hml">移动之[H/M/L]</a></li>
+<li><a href="#_2">移动之跳转</a><ul>
+<li><a href="#_3">’‘ 和 两个反引号</a></li>
+<li><a href="#ctrl-octrl-i">ctrl - o/ctrl - i</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#1vim">1.vim中文帮助安装</a></li>
+<li><a href="#vim_1">无插件vim</a><ul>
+<li><a href="#_4">拼写</a></li>
+</ul>
+</li>
+<li><a href="#vim_2">vim 插件</a><ul>
+<li><a href="#airline">airline</a></li>
+<li><a href="#youcompleteme">YoucompleteMe</a></li>
+</ul>
+</li>
+<li><a href="#2-nerdtree">2. nerdtree</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+
+<!-- toc end -->
+    <div class="span8 article-content">
+
+            
+            
+<h1 id="vim">vim基本功</h1>
+<h3 id="_1">移动之单词动作</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">w</span>/W     #正向移动到第[count]个词首／字串的首部,
+<span style="color: #AA22FF; font-weight: bold">e</span><span style="color: #BB6688">/E     #正向移动到第[count]个单词/</span>字串的尾部,不停留在空行上。
+<span style="color: #AA22FF; font-weight: bold">b</span><span style="color: #BB6688">/B     #反向移动到第[count]个单词/</span>字串的首部
+ge<span style="color: #BB6688">/gE   #反向到第 [count] 个单词/</span>字串的尾部
+</pre></div>
+<p>单词：
+一个单词由字符、数字和下划线序列或者其他的非空白字符的序列组成。单词间可以空白
+字符 (空格、制表、换行) 分隔。这一规则可以用 ‘iskeyword’ 选项改变。空行也被认
+作单词。</p>
+<p>字串:
+一个字串由非空白字符序列组成。字串以空白分隔。空行也被认作字串。</p>
+<p>已折叠的行序列被认作由单个字符组成的单词。”w” 和 “W”、”e” 和 “E” 移动到折叠行
+之后的第一个单词或字串的开始/结尾处。”b” 和 “B” 移动到折叠之前的第一个单词的开
+始处。</p>
+<h3 id="hml">移动之[H/M/L]</h3>
+<p>使用H/M/L这三个键，可以让光标跳到当前窗口的顶部、中间、和底部，停留在第一个非空字符上。H命令和L命令前也可以加一个数字，但数字的含义不再是倍数，而是指距窗口顶部、底部的行数。例如，‘3H’表示光标移动到距窗口顶部第3行的位置；‘5L’表示光标移动到距窗口底部5行的位置。</p>
+<p><img alt="" src="http://7xpz68.com1.z0.glb.clouddn.com/HML.gif?/0/w/800/h/540"/></p>
+<h3 id="_2">移动之跳转</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">:help <span style="color: #AA22FF; font-weight: bold">jump</span>-motions
+</pre></div>
+<p>“跳转”包括如下的命令:</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">"'"、"`"、 "G"、 "/"、 "?"、 "n"、 "N"、 "%"、 "("、 ")"、 "[["、 "]]"、 "{"、 "}"、 ":s"、 ":tag"、 "L"、 "M"、 "H"</span>
+</pre></div>
+<h4 id="_3"><code>''</code> 和 <code>两个反引号</code></h4>
+<p>两个反引号是<code>esc</code>下面的这个键.</p>
+<p>开始编辑新文件的命令。如果用这些命令使光标 “跳转”，那么跳转之前的光标位置会被记住。除非包含该位置的行被
+改变或者删除，你可以用 <code>''</code> 和 ‘两个反引号’ 命令返回这个位置。</p>
+<p>两个命令的不同之处:</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">`两个反引号`   跳转到精确的列
+
+<span style="color: #BB4444">''</span>  跳转到光标所在行的第一个非空白字符上。
+</pre></div>
+<h4 id="ctrl-octrl-i">ctrl - o/ctrl - i</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">` ctrl - <span style="color: #AA22FF; font-weight: bold">o</span> `   #转到跳转表里第 [count] 个较旧的光标位置
+
+` ctrl - <span style="color: #AA22FF; font-weight: bold">i</span> `    #转到跳转表里第 [count] 个较新的光标位置
+</pre></div>
+<h1 id="1vim">1.vim中文帮助安装</h1>
+<p>vim版本7.4
+vimcdoc1.9</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir ~/.vim/help
+<span style="color: #AA22FF">cd</span> ~/.vim/help
+wget -c http://jaist.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-1.9.0.tar.gz
+./vimcdoc.sh -i  <span style="color: #008800; font-style: italic">#安装帮助</span>
+vim :h           <span style="color: #008800; font-style: italic">#启动vim 输入help查看帮助</span>
+
+sudo ./vimcdoc.sh -u  <span style="color: #008800; font-style: italic">#卸载中文帮助</span>
+:set <span style="color: #B8860B">helplang</span><span style="color: #666666">=[</span>cn|en<span style="color: #666666">]</span> <span style="color: #008800; font-style: italic">#设置中文or英文帮助，可以写入vimrc</span>
+</pre></div>
+<h1 id="vim_1">无插件vim</h1>
+<h2 id="_4">拼写</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BB4444">"开启关闭拼写检查</span>
+<span style="color: #BB4444">:set spell</span>
+<span style="color: #BB4444">:set nospell</span>
+<span style="color: #BB4444">:set spelllang=en #只检查英文</span>
+
+<span style="color: #BB4444">]s        : 将光标移到下一个拼写错误处</span>
+<span style="color: #BB4444">[s        : 将光标移到上一个拼写错误处</span>
+<span style="color: #BB4444">zg       : 将单词加入词典</span>
+<span style="color: #BB4444">zug     : 撤销将单词加入词典</span>
+<span style="color: #BB4444">z=        : 拼写建议]</span>
+
+
+<span style="color: #BB4444">zg 将单词添加到用户正确字典（z good）</span>
+<span style="color: #BB4444">zG 将单词添加到内部正确字典（z Good）</span>
+<span style="color: #BB4444">zw 将单词添加到用户错误字典（z wrong）</span>
+<span style="color: #BB4444">zW 将单词添加到内部错误字典（z Wrong）</span>
+<span style="color: #BB4444">zug 将单词从用户正确字典删除（z undo good）</span>
+<span style="color: #BB4444">zuG 将单词从内部错误字典删除（z undo Good）</span>
+<span style="color: #BB4444">zuw 将单词从用户错误字典删除（z undo wrong）</span>
+<span style="color: #BB4444">zuW 将单词从内部错误字典删除（z undo Wrong）</span>
+</pre></div>
+<h1 id="vim_2">vim 插件</h1>
+<h2 id="airline">airline</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim ~/.vim/bundle.vim
+....
+Plugin <span style="color: #BB4444">'bling/vim-airline'</span>
+....
+
+vim :PluginInstall
+
+vim ~/.vimrc
+    <span style="color: #AA22FF">set</span> <span style="color: #B8860B">t_Co</span><span style="color: #666666">=</span>256
+    <span style="color: #AA22FF">set</span> <span style="color: #B8860B">laststatus</span><span style="color: #666666">=</span>2
+    <span style="color: #AA22FF">let</span> g:airline_left_sep<span style="color: #666666">=</span><span style="color: #BB4444">'&gt;'</span>
+    <span style="color: #AA22FF">let</span> g:airline_theme<span style="color: #666666">=</span><span style="color: #BB4444">"luna"</span>
+</pre></div>
+<h2 id="youcompleteme">YoucompleteMe</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim ~/.vim/bundle.vim
+
+<span style="color: #008800; font-style: italic"># 1. Plugin配置安装</span>
+....
+Plugin <span style="color: #BB4444">'Valloric/YouCompleteMe'</span>
+....
+
+vim :PluginInstall
+
+<span style="color: #008800; font-style: italic">#2. 更新子模块</span>
+<span style="color: #AA22FF">cd</span> ~/.vim/bundle/YoucomleteMe/
+git submodule update --init --recursive
+
+<span style="color: #008800; font-style: italic">#3. 编译</span>
+./install.py
+
+<span style="color: #008800; font-style: italic">#4. vimrc配置</span>
+</pre></div>
+<h1 id="2-nerdtree">2. nerdtree</h1>
+<p>错误:  NERDTree: 1 invalid bookmarks
+   解决:  vim ~/.NERDTreeBookmarks 删除文件中不存在的目录</p>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-01-11T09:32:00+08:00"> 1 11, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#tools-ref">tools</a>
+        </div>
+        </section>
+</div>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="PowerVim" data-title="PowerVim" data-url="http://blog.pyshell.cn/powervim.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"devops"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- baidu tongji   -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b6fb6111b823b418109202b642b4a62b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- baidu tongji  end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

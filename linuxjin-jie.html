@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Chrysan" />
+        <meta name="copyright" content="Chrysan" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="探索linux不常用的小知识, ops, " />
+
+<meta property="og:title" content="linux进阶 "/>
+<meta property="og:url" content="/linuxjin-jie.html" />
+<meta property="og:description" content="linux系统终端探索 linux系统终端探索 1. tty 2. tpy 3. tps 4. pts 打开terminal4个窗口分别登陆到同一台远程服务器,此时查看 $ ls /dev/pts/ #查看登陆的终端编号 1 2 3 4 ptmx $ ps #查当前自己的终端编号 PID TTY TIME CMD 23446 pts/2 00:00:00 bash 23879 pts/2 00:00:00 ps $ ps aux|grep pts #查看所有登陆的终端 test 23408 0.0 ..." />
+<meta property="og:site_name" content="LearnDevOps" />
+<meta property="og:article:author" content="Chrysan" />
+<meta property="og:article:published_time" content="2016-03-28T07:21:28+08:00" />
+<meta name="twitter:title" content="linux进阶 ">
+<meta name="twitter:description" content="linux系统终端探索 linux系统终端探索 1. tty 2. tpy 3. tps 4. pts 打开terminal4个窗口分别登陆到同一台远程服务器,此时查看 $ ls /dev/pts/ #查看登陆的终端编号 1 2 3 4 ptmx $ ps #查当前自己的终端编号 PID TTY TIME CMD 23446 pts/2 00:00:00 bash 23879 pts/2 00:00:00 ps $ ps aux|grep pts #查看所有登陆的终端 test 23408 0.0 ...">
+
+        <title>linux进阶  · LearnDevOps
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/linuxjin-jie.html"> linux进阶  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <h1 id="linux">linux系统终端探索</h1>
+<p><a href="http://www.pythontab.com/html/2014/linuxkaiyuan_0116/673.html">linux系统终端探索</a></p>
+<h2 id="1-tty">1. tty</h2>
+<h2 id="2-tpy">2. tpy</h2>
+<h2 id="3-tps">3. tps</h2>
+<h2 id="4">4.</h2>
+<h2 id="pts">pts</h2>
+<p>打开terminal4个窗口分别登陆到同一台远程服务器,此时查看</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ ls /dev/pts/  <span style="color: #008800; font-style: italic">#查看登陆的终端编号</span>
+<span style="color: #666666">1</span>  <span style="color: #666666">2</span>  <span style="color: #666666">3</span>  <span style="color: #666666">4</span>  ptmx
+
+$ ps <span style="color: #008800; font-style: italic">#查当前自己的终端编号</span>
+  PID TTY          TIME CMD
+  <span style="color: #666666">23446</span> pts/2    00:00:00 bash
+  <span style="color: #666666">23879</span> pts/2    00:00:00 ps
+
+$ ps aux|grep pts <span style="color: #008800; font-style: italic">#查看所有登陆的终端</span>
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23408</span>  0.0  0.2 <span style="color: #666666">133672</span>  <span style="color: #666666">2204</span> ?        S    07:11   0:00 sshd: test@pts/1
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23409</span>  0.0  0.3 <span style="color: #666666">116752</span>  <span style="color: #666666">3492</span> pts/1    Ss   07:11   0:00 -bash
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23445</span>  0.0  0.2 <span style="color: #666666">133672</span>  <span style="color: #666666">2076</span> ?        S    07:11   0:00 sshd: test@pts/2
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23446</span>  0.0  0.3 <span style="color: #666666">116672</span>  <span style="color: #666666">3464</span> pts/2    Ss   07:11   0:00 -bash
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23482</span>  0.0  0.2 <span style="color: #666666">133672</span>  <span style="color: #666666">2084</span> ?        S    07:12   0:00 sshd: test@pts/3
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23483</span>  0.0  0.3 <span style="color: #666666">116540</span>  <span style="color: #666666">3244</span> pts/3    Ss+  07:12   0:00 -bash
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23522</span>  0.0  0.2 <span style="color: #666666">133672</span>  <span style="color: #666666">2080</span> ?        S    07:12   0:00 sshd: test@pts/4
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23523</span>  0.0  0.3 <span style="color: #666666">116540</span>  <span style="color: #666666">3228</span> pts/4    Ss+  07:12   0:00 -bash
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23593</span>  0.0  0.2 <span style="color: #666666">191320</span>  <span style="color: #666666">2732</span> pts/1    S    07:14   0:00 sudo bash
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23594</span>  0.0  0.3 <span style="color: #666666">116728</span>  <span style="color: #666666">3456</span> pts/1    S+   07:14   0:00 bash
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23918</span>  0.0  0.1 <span style="color: #666666">123356</span>  <span style="color: #666666">1380</span> pts/2    R+   07:28   0:00 ps aux
+<span style="color: #AA22FF">test</span>     <span style="color: #666666">23919</span>  0.0  0.0 <span style="color: #666666">112656</span>   <span style="color: #666666">964</span> pts/2    S+   07:28   0:00 grep --color<span style="color: #666666">=</span>auto pts
+
+$ <span style="color: #AA22FF">echo</span> 你好 |sudo tee /dev/pts/3 <span style="color: #008800; font-style: italic">#向其它终端中发送信息，此时你会在打开的其它窗口看到echo出来的信息</span>
+</pre></div>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-03-28T07:21:28+08:00"> 3 28, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#ops-ref">ops</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#tan-suo-linuxbu-chang-yong-de-xiao-zhi-shi-ref">探索linux不常用的小知识
+                    <span>1</span>
+</a></li>
+            </ul>
+        </div>
+        </section>
+</div>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="linux进阶" data-title="linux进阶" data-url="http://blog.pyshell.cn/linuxjin-jie.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"devops"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- baidu tongji   -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b6fb6111b823b418109202b642b4a62b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- baidu tongji  end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

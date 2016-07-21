@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Chrysan" />
+        <meta name="copyright" content="Chrysan" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="js, jquery, 前端, " />
+
+<meta property="og:title" content="jquery基础学习 "/>
+<meta property="og:url" content="/jqueryji-chu-xue-xi.html" />
+<meta property="og:description" content="jquery 基础学习 基本选择器 console.log($(&#34;#content&#34;)); // ID选择器 console.log($(&#39;p&#39;)); // 标签选择器 console.log($(&#39;.left&#39;)); // 类选择器&lt;div class=&#39;left&#39;&gt;&lt;/div&gt; console.log($(&#39;*&#39;)); // 选择所有元素 console.log($(&#39;div,p,.content&#39;)); //组合选择器 console.log($(&#39;:empty&#39;)) 层次选择器 console.log($(&#39;div span&#39;)); //选择div中 span的后代元素 console.log($(&#39;div &gt; span&#39;)); //选择div中 span的子元素 console.log($(&#39;.one + div&#39;)); //选择one的下一个div元素 相当于 ..." />
+<meta property="og:site_name" content="LearnDevOps" />
+<meta property="og:article:author" content="Chrysan" />
+<meta property="og:article:published_time" content="2016-04-22T00:00:00+08:00" />
+<meta name="twitter:title" content="jquery基础学习 ">
+<meta name="twitter:description" content="jquery 基础学习 基本选择器 console.log($(&#34;#content&#34;)); // ID选择器 console.log($(&#39;p&#39;)); // 标签选择器 console.log($(&#39;.left&#39;)); // 类选择器&lt;div class=&#39;left&#39;&gt;&lt;/div&gt; console.log($(&#39;*&#39;)); // 选择所有元素 console.log($(&#39;div,p,.content&#39;)); //组合选择器 console.log($(&#39;:empty&#39;)) 层次选择器 console.log($(&#39;div span&#39;)); //选择div中 span的后代元素 console.log($(&#39;div &gt; span&#39;)); //选择div中 span的子元素 console.log($(&#39;.one + div&#39;)); //选择one的下一个div元素 相当于 ...">
+
+        <title>jquery基础学习  · LearnDevOps
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/jqueryji-chu-xue-xi.html"> jquery基础学习  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h3>Contents</h3>
+        <div class="toc">
+<ul>
+<li><a href="#jquery">jquery 基础学习</a><ul>
+<li><a href="#_1">基本选择器</a></li>
+<li><a href="#_2">层次选择器</a></li>
+<li><a href="#_3">过滤选择器</a></li>
+<li><a href="#_4">属性操作</a></li>
+<li><a href="#_5">元素操作</a></li>
+<li><a href="#css">css操作</a></li>
+<li><a href="#jquery_1">循环jquery对象</a></li>
+<li><a href="#checkbox">checkbox操作</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+
+<!-- toc end -->
+    <div class="span8 article-content">
+
+            
+            <h1 id="jquery">jquery 基础学习</h1>
+
+<h2 id="_1">基本选择器</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">console.log($("#content")); // ID选择器
+console.log($('p'));        // 标签选择器
+console.log($('.left'));    // 类选择器&lt;div class='left'&gt;&lt;/div&gt;
+console.log($('*'));        // 选择所有元素
+console.log($('div,p,.content')); //组合选择器
+
+console.log($(':empty'))
+</pre></div>
+<h2 id="_2">层次选择器</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">console.log($('div span')); //选择div中 span的后代元素
+console.log($('div &gt; span')); //选择div中 span的子元素
+console.log($('.one + div')); //选择one的下一个div元素 相当于：$(.one).next('div')
+console.log($('#two ~ div ')); // 选择id为two的后面所有div兄弟元素 相当于：$('#two').nextAll('div')
+</pre></div>
+<h2 id="_3">过滤选择器</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">console.log($('div:fist')); //所有div中的第一个元素
+console.log($('div:last')); //所有div中的最后一个元素
+console.log($('input:not(.input-text')); //class名字不是input-text 的所有input标签
+console.log($('li:even')); //索引数为偶数的li标签
+console.log($('li:odd')); //索引数为奇数的li标签
+console.log($('li:eq(1)')); //索引数为1的li标签 index以0开始
+console.log($('li:gt(1')); //索引大于1
+console.log($('li:lt'));   //索引小于1
+console.log($(':header'));  // h系列标签选择器
+console.log($(':empty')); //所有空元素
+console.log($('div:empty')); //所有空div元素
+console.log($('p:contains('内容')); //含有文本'内容' 的p标签。
+console.log($('div:parent')); //包含子元素的div标签
+console.log($('div:[id]')); //含有id属性的div标签
+console.log($(':hidden')); //所有不可见元素
+console.log($('div:hidden')); //所有不可见的div元素
+console.log($('input[name=choose]')); //input中name是choose的标签
+</pre></div>
+<h2 id="_4">属性操作</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">removeAtt() //移除属性
+attr() //增加属性
+</pre></div>
+<h2 id="_5">元素操作</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">### 添加：
+    append() // 在被选元素的结尾插入内容
+    prepend() // 在被选元素的开头插入内容
+    after()  // 在被选元素之后插入内容
+    before() // 在被选元素之前插入内容
+
+### 删除：
+    remove() // 删除被选元素（及其子元素)
+    empty() // 从被选元素中删除子元素
+
+### 复制：
+    $(this).clone('ul').appendTo('div')  //复制当前节点中的 ul标签及子元素 添加到当前div中
+
+### 替换
+    $("p").replaceWith("&lt;strong&gt;this is a replace example&lt;/Strong&gt;");
+
+### 获取子元素个数
+
+    $(this).child('p').length
+</pre></div>
+<h2 id="css">css操作</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$('div').css('display','none'); //修改，添加
+</pre></div>
+<h2 id="jquery_1">循环jquery对象</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">＃注意jquery对象需要加上.ecah
+for(i in $("#top").each){
+    console.log(i)
+}
+</pre></div>
+<h2 id="checkbox">checkbox操作</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">//判断checkbox是否被选中
+if($('input[name=choose')[0].checked){
+    console.log('选中')
+}else{
+    console.log('未选中')
+}
+
+//改变选中状态（反选)
+
+ if($('input[name=choose')[0].checked){
+    console.log('选中')
+    $('input[name=choose')[0].checked == false;
+}else{
+    console.log('未选中')
+    $('input[name=choose')[0].checked == true;
+}
+</pre></div>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-04-22T00:00:00+08:00"> 4 22, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#qian-duan-ref">前端</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#jquery-ref">jquery
+                    <span>2</span>
+</a></li>
+                <li><a href="/tags.html#js-ref">js
+                    <span>3</span>
+</a></li>
+            </ul>
+        </div>
+        </section>
+</div>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="jquery基础学习" data-title="jquery基础学习" data-url="http://blog.pyshell.cn/jqueryji-chu-xue-xi.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"devops"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- baidu tongji   -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b6fb6111b823b418109202b642b4a62b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- baidu tongji  end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

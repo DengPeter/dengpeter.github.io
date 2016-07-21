@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Rongfei" />
+        <meta name="copyright" content="Rongfei" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="python, python基础, python, " />
+
+<meta property="og:title" content="python-training "/>
+<meta property="og:url" content="/python-training.html" />
+<meta property="og:description" content="re模块 re的方法 re.match() #从str的起始位置匹配模式，匹配不成功返回none,使用s.group() or s.groups()获取返回内容。 re.search() #扫描字符串，找到这个 RE 匹配的位置 re.findall() #找到 RE 匹配的所有子串，并把它们作为一个列表返回 re.finditer() #找到 RE 匹配的所有子串，并把它们作为一个迭代器返回 re语法介绍: # 正则语法 re.match(pattern, string, flags=0) pattern &#39;匹配的正则表达式&#39; string &#39;要匹配的字符串&#39; flags &#39;标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等&#39; # 返回匹配对象 group ..." />
+<meta property="og:site_name" content="LearnDevOps" />
+<meta property="og:article:author" content="Rongfei" />
+<meta property="og:article:published_time" content="2016-01-11T11:04:00+08:00" />
+<meta name="twitter:title" content="python-training ">
+<meta name="twitter:description" content="re模块 re的方法 re.match() #从str的起始位置匹配模式，匹配不成功返回none,使用s.group() or s.groups()获取返回内容。 re.search() #扫描字符串，找到这个 RE 匹配的位置 re.findall() #找到 RE 匹配的所有子串，并把它们作为一个列表返回 re.finditer() #找到 RE 匹配的所有子串，并把它们作为一个迭代器返回 re语法介绍: # 正则语法 re.match(pattern, string, flags=0) pattern &#39;匹配的正则表达式&#39; string &#39;要匹配的字符串&#39; flags &#39;标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等&#39; # 返回匹配对象 group ...">
+
+        <title>python-training  · LearnDevOps
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/python-training.html"> python-training  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h3>Contents</h3>
+        <div class="toc">
+<ul>
+<li><a href="#re">re模块</a><ul>
+<li><a href="#re_1">re的方法</a></li>
+<li><a href="#re_2">re语法介绍:</a></li>
+</ul>
+</li>
+<li><a href="#_1">递归</a></li>
+<li><a href="#_2">装饰器</a><ul>
+<li><a href="#_3">简单装饰器</a></li>
+<li><a href="#_4">传参装饰器</a></li>
+</ul>
+</li>
+<li><a href="#_5">迭代器 &amp; 生成器</a></li>
+<li><a href="#generator">生成器generator</a></li>
+<li><a href="#_6">队列</a><ul>
+<li><a href="#_7">单向队列</a><ul>
+<li><a href="#queuequeue">Queue.Queue()先进先出</a></li>
+<li><a href="#queuelifoqueue">Queue.LifoQueue 后进先出 先进后出</a></li>
+<li><a href="#python3">在python3中模块名有变化,</a></li>
+</ul>
+</li>
+<li><a href="#_8">双向队列</a></li>
+</ul>
+</li>
+<li><a href="#collections">collections 系列练习</a><ul>
+<li><a href="#counter">Counter</a></li>
+</ul>
+</li>
+<li><a href="#set">set()</a><ul>
+<li><a href="#1setadd">1.set.add</a></li>
+<li><a href="#2setclear">2.set.clear</a></li>
+<li><a href="#3setcopy">3.set.copy</a></li>
+<li><a href="#4setdifference">4.set.difference</a></li>
+<li><a href="#5setdifference_update">5.set.difference_update</a></li>
+<li><a href="#6setdiscard">6.set.discard</a></li>
+<li><a href="#7setintersection">7.set.intersection 两个集合的交集</a></li>
+<li><a href="#8setintersection_update">8.set.intersection_update</a></li>
+<li><a href="#_9">集合练习</a></li>
+</ul>
+</li>
+<li><a href="#_10">函数练习</a><ul>
+<li><a href="#1">1.无参数</a></li>
+<li><a href="#2">2.有参数</a></li>
+<li><a href="#3">3.默认参数</a></li>
+<li><a href="#4">4.指定参数</a></li>
+<li><a href="#5">5.动态参数</a></li>
+</ul>
+</li>
+<li><a href="#dict">dict() 方法练习</a><ul>
+<li><a href="#1dictclear">1.dict.clear</a></li>
+<li><a href="#2dictcopy">2.dict.copy</a></li>
+<li><a href="#3dictfromkeys">3.dict.fromkeys</a></li>
+<li><a href="#4dictget">4.dict.get</a></li>
+<li><a href="#5dictitems">5.dict.items</a></li>
+<li><a href="#6dictkeys">6.dict.keys</a></li>
+<li><a href="#7dictpop">7.dict.pop</a></li>
+<li><a href="#8dictpopitem">8.dict.popitem</a></li>
+<li><a href="#9dictsetdefau">9.dict.setdefau</a></li>
+<li><a href="#10dictupdate">10.dict.update</a></li>
+<li><a href="#11dictvalues">11.dict.values</a></li>
+</ul>
+</li>
+<li><a href="#list">list()</a><ul>
+<li><a href="#1listappend">1.list.append</a></li>
+<li><a href="#2listclear">2.list.clear</a></li>
+<li><a href="#3listcopy">3.list.copy</a></li>
+<li><a href="#4listcount">4.list.count</a></li>
+<li><a href="#5listextend">5.list.extend</a></li>
+<li><a href="#6listindex">6.list.index</a></li>
+<li><a href="#7listinsert">7.list.insert</a></li>
+<li><a href="#8listpop">8.list.pop</a></li>
+<li><a href="#9listremove">9.list.remove</a></li>
+<li><a href="#10listreverse">10.list.reverse</a></li>
+<li><a href="#11listsort">11.list.sort</a></li>
+</ul>
+</li>
+<li><a href="#tuple">tuple()</a><ul>
+<li><a href="#1tuplecount">1.tuple.count</a></li>
+<li><a href="#2tupleindex">2.tuple.index</a></li>
+</ul>
+</li>
+<li><a href="#str">str()的方法</a><ul>
+<li><a href="#1strcapitalize">1.str.capitalize</a></li>
+<li><a href="#2strcasefold">2.str.casefold</a></li>
+<li><a href="#3strcenter">3.str.center</a></li>
+<li><a href="#4strcount">4.str.count</a></li>
+<li><a href="#5strencode">5.str.encode</a></li>
+<li><a href="#6strendswith">6.str.endswith</a></li>
+<li><a href="#7strexpandtabs">7.str.expandtabs</a></li>
+<li><a href="#8strfind">8.str.find</a></li>
+<li><a href="#9strformat">9.str.format</a></li>
+<li><a href="#10strformat_map">10.str.format_map</a></li>
+<li><a href="#11strindex">11.str.index</a></li>
+<li><a href="#12strisalnum">12.str.isalnum</a></li>
+<li><a href="#13strisalpha">13.str.isalpha</a></li>
+<li><a href="#14strisdecimal">14.str.isdecimal</a></li>
+<li><a href="#15strisdigit">15.str.isdigit</a></li>
+<li><a href="#16strisidentifier">16.str.isidentifier</a></li>
+<li><a href="#17strislower">17.str.islower</a></li>
+<li><a href="#18strisnumeric">18.str.isnumeric</a></li>
+<li><a href="#19strisprintable">19.str.isprintable</a></li>
+<li><a href="#20strisspace">20.str.isspace</a></li>
+<li><a href="#21stristitle">21.str.istitle</a></li>
+<li><a href="#22strisupper">22.str.isupper</a></li>
+<li><a href="#23strjoin">23.str.join</a></li>
+<li><a href="#26strlstrip">26.str.lstrip</a></li>
+<li><a href="#27-strtranslate-strmaketrans">27. str.translate / str.maketrans</a></li>
+<li><a href="#28strpartition">28.str.partition</a></li>
+<li><a href="#29strreplace">29.str.replace</a></li>
+<li><a href="#36strsplit">36.str.split</a></li>
+<li><a href="#37strsplitlines">37.str.splitlines</a></li>
+<li><a href="#38strstartswith">38.str.startswith</a></li>
+<li><a href="#39strstrip">39.str.strip</a></li>
+<li><a href="#40strswapcase">40.str.swapcase</a></li>
+<li><a href="#41strtitle">41.str.title</a></li>
+<li><a href="#43strupper">43.str.upper</a></li>
+<li><a href="#44strzfill">44.str.zfill</a></li>
+</ul>
+</li>
+<li><a href="#builtins-python">builtins Python内置函数</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+
+<!-- toc end -->
+    <div class="span8 article-content">
+
+            
+            
+<h1 id="re">re模块</h1>
+<h4 id="re_1">re的方法</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">re<span style="color: #666666">.</span>match()  <span style="color: #008800; font-style: italic">#从str的起始位置匹配模式，匹配不成功返回none,使用s.group() or s.groups()获取返回内容。</span>
+re<span style="color: #666666">.</span>search() <span style="color: #008800; font-style: italic">#扫描字符串，找到这个 RE 匹配的位置</span>
+re<span style="color: #666666">.</span>findall() <span style="color: #008800; font-style: italic">#找到 RE 匹配的所有子串，并把它们作为一个列表返回</span>
+re<span style="color: #666666">.</span>finditer() <span style="color: #008800; font-style: italic">#找到 RE 匹配的所有子串，并把它们作为一个迭代器返回</span>
+</pre></div>
+<h4 id="re_2">re语法介绍:</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># 正则语法</span>
+re<span style="color: #666666">.</span>match(pattern, string, flags<span style="color: #666666">=0</span>)
+
+pattern <span style="color: #BB4444">'匹配的正则表达式'</span>
+string  <span style="color: #BB4444">'要匹配的字符串'</span>
+flags   <span style="color: #BB4444">'标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等'</span>
+
+<span style="color: #008800; font-style: italic"># 返回匹配对象</span>
+group(num<span style="color: #666666">=0</span>) <span style="color: #008800; font-style: italic">#匹配的整个表达式的字符串，</span>
+group()      <span style="color: #008800; font-style: italic">#可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</span>
+groups()     <span style="color: #008800; font-style: italic">#返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</span>
+</pre></div>
+<p>例子：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">re</span>
+
+In [<span style="color: #666666">2</span>]: s <span style="color: #666666">=</span> <span style="color: #BB4444">'abc,234,dwd,dwd'</span>
+
+In [<span style="color: #666666">3</span>]: m <span style="color: #666666">=</span> re<span style="color: #666666">.</span>match(<span style="color: #BB4444">'abc'</span>,s,<span style="color: #666666">2</span>)
+
+In [<span style="color: #666666">7</span>]: m<span style="color: #666666">.</span>group()
+Out[<span style="color: #666666">7</span>]: <span style="color: #BB4444">'abc'</span>
+</pre></div>
+<h1 id="_1">递归</h1>
+<p>递归简单来讲就是定义一个函数，自己调用自己。
+递归的特点：
+1. 在过程中调用自己
+2. 必须有一个结束条件，称为递归出口
+3. 递归每一层系统会为返回的所有内容开辟栈来存储，多次递归易造成栈溢出等， 
+4. 运行效率低，但简洁。</p>
+<p>使用递归的3个要求：</p>
+<ol>
+<li>每次递归在规模上都要减少（通常减半）</li>
+<li>前一次递归的结果为后一次递归的输入</li>
+<li>有递归结束条件，否则就成为死循环。</li>
+</ol>
+<p>例子：
+做一个除法计算，返回每次的计算结果</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">clac</span>(n):
+    <span style="color: #AA22FF; font-weight: bold">print</span>(n)
+    <span style="color: #AA22FF; font-weight: bold">if</span> n<span style="color: #666666">/2</span> <span style="color: #666666">&gt;</span> <span style="color: #666666">1</span>:
+        res <span style="color: #666666">=</span> clac(n<span style="color: #666666">/2</span>)
+        <span style="color: #008800; font-style: italic">#print('res',res)   #res接受returen的返回值</span>
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'N'</span>,n)            <span style="color: #008800; font-style: italic">#每退出一层n跟随每层的变化</span>
+    <span style="color: #AA22FF; font-weight: bold">return</span> n   <span style="color: #008800; font-style: italic">#return返回给res</span>
+
+clac(<span style="color: #666666">10</span>)
+</pre></div>
+<p>例子：通过二分查找来观察递归</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">
+</pre></div>
+<h1 id="_2">装饰器</h1>
+<p>有这样一个场景，公司内部的运维基础服务最初设计是完全开放的，任何人只要调用即可。而内容逐渐完善后需要增加用户登录验证功能。各部门要改调用接口是比较麻烦的，要自己修改基础代码也是比较麻烦，并且有很多重复的代码,装饰器就是解决这类的问题。</p>
+<h4 id="_3">简单装饰器</h4>
+<p>代码例子： #注释了执行步骤</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">login</span>(arg1):   <span style="color: #008800; font-style: italic">#1.python由上往下解释代码;4进入函数(sqlAPI被arg1传入)</span>
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">outer</span>(arg): <span style="color: #008800; font-style: italic">#5.进入函数内部;7进入函数arg带入sqlAPI函数的参数</span>
+         <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'outer'</span>) <span style="color: #008800; font-style: italic">#8.执行函数内部代码块</span>
+         arg1(arg) <span style="color: #008800; font-style: italic">#9.执行sqlAPI函数</span>
+    <span style="color: #AA22FF; font-weight: bold">return</span> outer  <span style="color: #008800; font-style: italic">#6.直接把函数return回去 </span>
+
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">home</span>(name):    <span style="color: #008800; font-style: italic">#2.遇到函数做标记</span>
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'Welcome [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">] to home page'</span><span style="color: #666666">%</span>name)
+
+<span style="color: #AA22FF">@login</span>  <span style="color: #008800; font-style: italic">#3.遇到@符装饰器 回到装饰器</span>
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">sqlAPI</span>(name): 
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'Welcome [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">] to sqlApi'</span><span style="color: #666666">%</span>name) <span style="color: #008800; font-style: italic">#10.跳过函数头直接执行函数内部代码块</span>
+
+
+
+sqlAPI(<span style="color: #BB4444">'Peter'</span>)   <span style="color: #008800; font-style: italic">#6调用函数</span>
+</pre></div>
+<h4 id="_4">传参装饰器</h4>
+<p>装饰器可以传递任何类型和数量的参数，包括函数在内也可以被传递。</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">login</span>(user,password):
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">outer</span>(sqlAPI):
+        <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">wrapper</span>(name): <span style="color: #008800; font-style: italic">#执行主体函数和处理装饰器传递的参数</span>
+            <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'username: [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">], password: [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">]'</span><span style="color: #666666">%</span>(user,password))
+            sqlAPI(name)
+        <span style="color: #AA22FF; font-weight: bold">return</span> wrapper
+    <span style="color: #AA22FF; font-weight: bold">return</span> outer
+
+
+<span style="color: #AA22FF">@login</span>(<span style="color: #BB4444">'afei'</span>,<span style="color: #BB4444">'123'</span>)  <span style="color: #008800; font-style: italic">#可以传递任意数量和形式的参数包括函数也可以被传递</span>
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">sqlAPI</span>(name):
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'Welcome [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">] to sqlApi'</span><span style="color: #666666">%</span>name)
+
+sqlAPI(<span style="color: #BB4444">'peter'</span>)
+</pre></div>
+<h1 id="_5">迭代器 &amp; 生成器</h1>
+<p>迭代器</p>
+<p>迭代器是访问集合元素的一种方式。迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。
+迭代器的一大优点是不要求事先准备好整个迭代过程中所有的元素。迭代器仅仅在迭代到某个元素时才计算该元素，而在这之前或之后，元素可以不存在或者被销毁。这个特点使得它特别适合用于遍历一些巨大的或是无限的集合，比如几个G的文件，或是斐波那契数列等等。</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: names <span style="color: #666666">=</span> <span style="color: #AA22FF">iter</span>([<span style="color: #BB4444">'Peter'</span>,<span style="color: #BB4444">'Alex'</span>,<span style="color: #BB4444">'Jack'</span>])  <span style="color: #008800; font-style: italic">#使用工厂函数iter生成一个迭代器</span>
+
+In [<span style="color: #666666">2</span>]: names<span style="color: #666666">.</span>__next__()  <span style="color: #008800; font-style: italic">#python2.7中是names.next()方法</span>
+Out[<span style="color: #666666">2</span>]: <span style="color: #BB4444">'Peter'</span>
+
+In [<span style="color: #666666">3</span>]: names<span style="color: #666666">.</span>__next__()
+Out[<span style="color: #666666">3</span>]: <span style="color: #BB4444">'Alex'</span>
+
+In [<span style="color: #666666">4</span>]: names<span style="color: #666666">.</span>__next__()
+Out[<span style="color: #666666">4</span>]: <span style="color: #BB4444">'Jack'</span>
+
+In [<span style="color: #666666">5</span>]: names<span style="color: #666666">.</span>__next__()   <span style="color: #008800; font-style: italic">#迭代器为空时抛出StopIteration:异常</span>
+<span style="color: #666666">---------------------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">StopIteration</span>                             Traceback (most recent call last)
+<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #AA22FF">input</span><span style="color: #666666">-5-317938</span>fc3664<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
+<span style="color: #666666">----&gt;</span> <span style="color: #666666">1</span> names<span style="color: #666666">.</span>__next__()
+
+<span style="color: #D2413A; font-weight: bold">StopIteration</span>:
+</pre></div>
+<p>python中迭代器是非常常用的一个方式,python专门为for关键字做了迭代器的语法糖。在for循环中，Python将自动调用工厂函数iter()获得迭代器，自动调用next()获取元素，还完成了检查StopIteration异常的工作。比如常用的文件读取:</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #AA22FF">open</span>(<span style="color: #BB4444">'test.log'</span>,<span style="color: #BB4444">'r'</span>)
+<span style="color: #AA22FF; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> f:
+    <span style="color: #AA22FF; font-weight: bold">print</span>(i)
+
+<span style="color: #666666">------</span>
+In [<span style="color: #666666">6</span>]: l <span style="color: #666666">=</span> (<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>)
+
+In [<span style="color: #666666">7</span>]: <span style="color: #AA22FF; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> l:
+   <span style="color: #666666">...</span>:     <span style="color: #AA22FF; font-weight: bold">print</span>(i)
+      <span style="color: #666666">...</span>:
+      <span style="color: #666666">1</span>
+      <span style="color: #666666">2</span>
+      <span style="color: #666666">3</span>
+      <span style="color: #666666">4</span>
+</pre></div>
+<h1 id="generator">生成器generator</h1>
+<p>想象一个场景，需要生成一个1百万个元素的列表。直接创建列表会消耗很大的内存空间。如果我们只需要访问列表中间的几个元素那整个列表空间资源就浪费了。
+python中提供了生成器generator来解决这个问题，只要是列表中的元素是能推算出来的，那就可以使用生成器，访问的时候通过迭代方式，就可以轻松的访问到我们所需的内容。看起来生成器是一边循环一边计算循环对象值。</p>
+<p>创建一个生成器</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>
+
+In [<span style="color: #666666">3</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">con</span>(arg):
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'准备生产杯子啦'</span>)
+    <span style="color: #AA22FF; font-weight: bold">while</span> <span style="color: #AA22FF">True</span>:
+        arg <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">yield</span>
+        <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'生产了 [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">] 个杯子，被[</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">]个人买走了'</span><span style="color: #666666">%</span>(arg1,arg2)]
+
+
+In [<span style="color: #666666">4</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">producer</span>(arg1,arg2):
+   <span style="color: #666666">...</span>:     c <span style="color: #666666">=</span> con(arg1)
+   <span style="color: #666666">...</span>:     c2 <span style="color: #666666">=</span> con(arg2)
+   <span style="color: #666666">...</span>:     c<span style="color: #666666">.</span>__next__()
+   <span style="color: #666666">...</span>:     c2<span style="color: #666666">.</span>__next__()
+   <span style="color: #666666">...</span>:     <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'开始生产杯子啦'</span>)
+   <span style="color: #666666">...</span>:     <span style="color: #AA22FF; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #AA22FF">range</span>(<span style="color: #666666">10</span>):
+   <span style="color: #666666">...</span>:         time<span style="color: #666666">.</span>sleep(<span style="color: #666666">1</span>)
+   <span style="color: #666666">...</span>:         <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'生产了 [</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">] 个杯子'</span><span style="color: #666666">%</span>i)
+   <span style="color: #666666">...</span>:         c<span style="color: #666666">.</span>send(i)
+   <span style="color: #666666">...</span>:         c2<span style="color: #666666">.</span>send(i)
+   <span style="color: #666666">...</span>:
+
+In [<span style="color: #666666">5</span>]: producer(<span style="color: #BB4444">'xxx'</span>,<span style="color: #BB4444">'aaa'</span>)
+<span style="border: 1px solid #FF0000">准备生产杯子啦</span>
+<span style="border: 1px solid #FF0000">开始生产杯子啦</span>
+<span style="border: 1px solid #FF0000">生产了</span> [<span style="color: #666666">0</span>] <span style="border: 1px solid #FF0000">个杯子</span>
+<span style="border: 1px solid #FF0000">生产了</span> [xxx] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">0</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [aaa] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">0</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [<span style="color: #666666">1</span>] <span style="border: 1px solid #FF0000">个杯子</span>
+<span style="border: 1px solid #FF0000">生产了</span> [xxx] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">1</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [aaa] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">1</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [<span style="color: #666666">2</span>] <span style="border: 1px solid #FF0000">个杯子</span>
+<span style="border: 1px solid #FF0000">生产了</span> [xxx] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">2</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [aaa] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">2</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [<span style="color: #666666">3</span>] <span style="border: 1px solid #FF0000">个杯子</span>
+<span style="border: 1px solid #FF0000">生产了</span> [xxx] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">3</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+<span style="border: 1px solid #FF0000">生产了</span> [aaa] <span style="border: 1px solid #FF0000">个杯子，被</span>[<span style="color: #666666">3</span>]<span style="border: 1px solid #FF0000">个人买走了</span>
+</pre></div>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">7</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">cas</span>(mo):
+    <span style="color: #AA22FF; font-weight: bold">while</span> mo <span style="color: #666666">&gt;0</span>:
+        mo <span style="color: #666666">-=</span> <span style="color: #666666">10</span>
+        <span style="color: #AA22FF; font-weight: bold">yield</span> <span style="color: #666666">10</span>
+        <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'--------'</span>
+   <span style="color: #666666">...</span>:
+   <span style="color: #666666">...</span>:
+   <span style="color: #666666">...</span>:
+   <span style="color: #666666">...</span>:         )
+   <span style="color: #666666">...</span>:
+
+In [<span style="color: #666666">8</span>]: a <span style="color: #666666">=</span> cas(<span style="color: #666666">50</span>)
+
+In [<span style="color: #666666">9</span>]: <span style="color: #AA22FF; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> a:
+   <span style="color: #666666">...</span>:     <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #666666">9</span>)
+   <span style="color: #666666">...</span>:
+<span style="color: #666666">9</span>
+<span style="color: #666666">--------</span>
+<span style="color: #666666">9</span>
+<span style="color: #666666">--------</span>
+<span style="color: #666666">9</span>
+<span style="color: #666666">--------</span>
+<span style="color: #666666">9</span>
+<span style="color: #666666">--------</span>
+<span style="color: #666666">9</span>
+<span style="color: #666666">--------</span>
+</pre></div>
+<p>yield 理解：
+函数中 return 是返回并退出函数，而yield是返回并中断函数，当再次执行函数时继续从中断的位置往下执行。</p>
+<h1 id="_6">队列</h1>
+<p>Python中，队列是线程间最常用的交换数据的形式。python中队列区分单向队列和双向队列。单向队列在python2中模块是 <code>import Queue</code>,在python3中是<code>import queue</code></p>
+<h4 id="_7">单向队列</h4>
+<p>python2中演示:</p>
+<h5 id="queuequeue">Queue.Queue()先进先出</h5>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># 创建一个队列,指定长度为2,长度小于0为不限制长度</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">Queue</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s <span style="color: #666666">=</span> Queue<span style="color: #666666">.</span>Queue(maxsize <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<p>s.put() 将值放入队列中</p>
+<ul>
+<li>put()方法将值插入到队尾，</li>
+<li>
+<p>put()方法有3个参数，item,block=True,timeout=None</p>
+</li>
+<li>
+<p>item是必须的，为插入项目的值，</p>
+</li>
+<li>
+<p>block是可选的，值为False，当队列满了之后引发Full异常,值为True时，将一直等待队列空出一个单元数据（貌似默认值就是True)</p>
+</li>
+<li>
+<p>timeout 可选， 等待时间，当不指定时间时，队列满了程序会一直等待队列空出一个数据单元，当指定timeout超时时间时，在指定时间内队列没有空出一个数据单元将引发Full异常。</p>
+</li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">3</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+Traceback (most recent call last):
+  File <span style="color: #BB4444">"&lt;input&gt;"</span>, line <span style="color: #666666">1</span>, <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>
+  File <span style="color: #BB4444">"/usr/lib/python2.7/Queue.py"</span>, line <span style="color: #666666">123</span>, <span style="color: #AA22FF; font-weight: bold">in</span> put
+    <span style="color: #AA22FF; font-weight: bold">raise</span> Full
+Full
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">True</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">True</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">3</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">True</span>)
+
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>,timeout<span style="color: #666666">=2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>,timeout<span style="color: #666666">=2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">3</span>,timeout<span style="color: #666666">=2</span>)
+Traceback (most recent call last):
+  File <span style="color: #BB4444">"&lt;input&gt;"</span>, line <span style="color: #666666">1</span>, <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>
+  File <span style="color: #BB4444">"/usr/lib/python2.7/Queue.py"</span>, line <span style="color: #666666">134</span>, <span style="color: #AA22FF; font-weight: bold">in</span> put
+    <span style="color: #AA22FF; font-weight: bold">raise</span> Full
+Full
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<p>s.get() 将值从队列中取出</p>
+<ul>
+<li>get()方法重队列头删除并返回一个数据单元，参数可选block,timeout</li>
+<li>block参数值为True和False，当队列为空时，参数True会一直等待直到有数据单元返回，参数False会直接引发Empty异常。</li>
+<li>timeout指定等待时间</li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>get()
+<span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>get()
+<span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>get(block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+Traceback (most recent call last):
+  File <span style="color: #BB4444">"&lt;input&gt;"</span>, line <span style="color: #666666">1</span>, <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>
+  File <span style="color: #BB4444">"/usr/lib/python2.7/Queue.py"</span>, line <span style="color: #666666">165</span>, <span style="color: #AA22FF; font-weight: bold">in</span> get
+    <span style="color: #AA22FF; font-weight: bold">raise</span> Empty
+Empty
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>get(timeout<span style="color: #666666">=2</span>)
+Traceback (most recent call last):
+  File <span style="color: #BB4444">"&lt;input&gt;"</span>, line <span style="color: #666666">1</span>, <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>
+  File <span style="color: #BB4444">"/usr/lib/python2.7/Queue.py"</span>, line <span style="color: #666666">176</span>, <span style="color: #AA22FF; font-weight: bold">in</span> get
+    <span style="color: #AA22FF; font-weight: bold">raise</span> Empty
+Empty
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<p>s.qsize() 返回队列的大小</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>qsize()
+<span style="color: #666666">0</span>
+</pre></div>
+<p>s.empty() 队列为空时返回True</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>empty()
+<span style="color: #AA22FF">True</span>
+</pre></div>
+<p>s.full()队列满时返回True</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>full()
+<span style="color: #AA22FF">False</span>
+</pre></div>
+<h5 id="queuelifoqueue">Queue.LifoQueue 后进先出 先进后出</h5>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s2 <span style="color: #666666">=</span> Queue<span style="color: #666666">.</span>LifoQueue(maxsize<span style="color: #666666">=2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>put(<span style="color: #666666">3</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+Traceback (most recent call last):
+    File <span style="color: #BB4444">"&lt;input&gt;"</span>, line <span style="color: #666666">1</span>, <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>
+    File <span style="color: #BB4444">"/usr/lib/python2.7/Queue.py"</span>, line <span style="color: #666666">123</span>, <span style="color: #AA22FF; font-weight: bold">in</span> put
+        <span style="color: #AA22FF; font-weight: bold">raise</span> Full
+Full
+
+<span style="color: #008800; font-style: italic">#注意取值和存值的顺序</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>get()
+<span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>get()
+<span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+<span style="color: #008800; font-style: italic">#再观察先进先出的取值和存值</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s <span style="color: #666666">=</span> Queue<span style="color: #666666">.</span>Queue(maxsize<span style="color: #666666">=2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s2 <span style="color: #666666">=</span> Queue<span style="color: #666666">.</span>LifoQueue(maxsize<span style="color: #666666">=2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>get()
+<span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>get()
+<span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>get()
+<span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s2<span style="color: #666666">.</span>get()
+<span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<p>python3</p>
+<h5 id="python3">在python3中模块名有变化,</h5>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">queue</span>
+
+In [<span style="color: #666666">2</span>]: s <span style="color: #666666">=</span> queue<span style="color: #666666">.</span>Queue(maxsize<span style="color: #666666">=2</span>)
+
+In [<span style="color: #666666">3</span>]: s<span style="color: #666666">.</span>
+s<span style="color: #666666">.</span>all_tasks_done    s<span style="color: #666666">.</span>get_nowait        s<span style="color: #666666">.</span>not_empty         s<span style="color: #666666">.</span>qsize
+s<span style="color: #666666">.</span>empty             s<span style="color: #666666">.</span>join              s<span style="color: #666666">.</span>not_full          s<span style="color: #666666">.</span>queue
+s<span style="color: #666666">.</span>full              s<span style="color: #666666">.</span>maxsize           s<span style="color: #666666">.</span>put               s<span style="color: #666666">.</span>task_done
+s<span style="color: #666666">.</span>get               s<span style="color: #666666">.</span>mutex             s<span style="color: #666666">.</span>put_nowait        s<span style="color: #666666">.</span>unfinished_tasks
+
+In [<span style="color: #666666">3</span>]: s<span style="color: #666666">.</span>put(<span style="color: #666666">1</span>)
+
+In [<span style="color: #666666">4</span>]: s<span style="color: #666666">.</span>put(<span style="color: #666666">2</span>)
+
+In [<span style="color: #666666">5</span>]: s<span style="color: #666666">.</span>put(<span style="color: #666666">3</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+<span style="color: #666666">---------------------------------------------------------------------------</span>
+Full                                      Traceback (most recent call last)
+<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #AA22FF">input</span><span style="color: #666666">-5-8</span>ebc2086f968<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
+<span style="color: #666666">----&gt;</span> <span style="color: #666666">1</span> s<span style="color: #666666">.</span>put(<span style="color: #666666">3</span>,block<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>)
+
+<span style="color: #666666">/</span>usr<span style="color: #666666">/</span>lib<span style="color: #666666">/</span>python3<span style="color: #666666">.4/</span>queue<span style="color: #666666">.</span>py <span style="color: #AA22FF; font-weight: bold">in</span> put(<span style="color: #AA22FF">self</span>, item, block, timeout)
+    <span style="color: #666666">131</span>                 <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> block:
+    <span style="color: #666666">132</span>                     <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_qsize() <span style="color: #666666">&gt;=</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>maxsize:
+<span style="color: #666666">--&gt;</span> <span style="color: #666666">133</span>                         <span style="color: #AA22FF; font-weight: bold">raise</span> Full
+    <span style="color: #666666">134</span>                 <span style="color: #AA22FF; font-weight: bold">elif</span> timeout <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF">None</span>:
+    <span style="color: #666666">135</span>                     <span style="color: #AA22FF; font-weight: bold">while</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_qsize() <span style="color: #666666">&gt;=</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>maxsize:
+
+Full:
+</pre></div>
+<h4 id="_8">双向队列</h4>
+<p>python3中 deque在collections中
+deque，全名double-ended queue）是一种具有队列和栈的性质的数据结构。双端队列中的元素可以从两端弹出，其限定插入和删除操作在表的两端进行</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> collections<span style="color: #666666">.</span>deque([])   <span style="color: #008800; font-style: italic">#创建空列表</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>append(<span style="color: #666666">1</span>)                 <span style="color: #008800; font-style: italic">#从后添加</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #666666">1</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>append(<span style="color: #666666">2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>append(<span style="color: #BB4444">'a'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'a'</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>appendleft(<span style="color: #BB4444">'b'</span>)           <span style="color: #008800; font-style: italic">#从头添加</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'a'</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>pop()                     <span style="color: #008800; font-style: italic">#从后取</span>
+<span style="color: #BB4444">'a'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>popleft()                 <span style="color: #008800; font-style: italic">#从前取</span>
+<span style="color: #BB4444">'b'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #666666">1</span>, <span style="color: #666666">2</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>remove(<span style="color: #666666">2</span>)                 <span style="color: #008800; font-style: italic">#删除指定元素</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #666666">1</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>extend([<span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'a'</span>])  <span style="color: #008800; font-style: italic">#从前扩展队列</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #666666">1</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'a'</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>extendleft([<span style="color: #BB4444">'d'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'d'</span>]) <span style="color: #008800; font-style: italic">#从后扩展队列</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #BB4444">'d'</span>, <span style="color: #666666">2</span>, <span style="color: #666666">1</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">1</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'a'</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>reverse()                    <span style="color: #008800; font-style: italic">#反转队列</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+deque([<span style="color: #BB4444">'a'</span>, <span style="color: #666666">2</span>, <span style="color: #666666">1</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #BB4444">'d'</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span>
+
+a<span style="color: #666666">.</span>clear()       <span style="color: #008800; font-style: italic">#清空队列</span>
+a<span style="color: #666666">.</span>count(n)      <span style="color: #008800; font-style: italic">#在队列中统计元素的个数，n表示统计的元素</span>
+a<span style="color: #666666">.</span>rotate(n)      <span style="color: #008800; font-style: italic">#旋转队列，默认时值为1，由右边开始旋转，负值代表左边旋转，n代表从队列的第一个元素开始，n从1开始计数</span>
+</pre></div>
+<h1 id="collections">collections 系列练习</h1>
+<h4 id="counter">Counter</h4>
+<h1 id="set">set()</h1>
+<p>集合练习</p>
+<h4 id="1setadd">1.set.add</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># 2.set.clear     #添加元素</span>
+In [<span style="color: #666666">51</span>]: s <span style="color: #666666">=</span> <span style="color: #AA22FF">set</span>([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #BB4444">'s'</span>])
+
+In [<span style="color: #666666">52</span>]: s<span style="color: #666666">.</span>add(<span style="color: #BB4444">'d'</span>)
+
+In [<span style="color: #666666">53</span>]: s
+Out[<span style="color: #666666">53</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'s'</span>, <span style="color: #BB4444">'d'</span>}
+</pre></div>
+<h4 id="2setclear">2.set.clear</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># 2.set.clear     #从set中移除所有元素</span>
+In [<span style="color: #666666">54</span>]: s<span style="color: #666666">.</span>clear()
+
+In [<span style="color: #666666">55</span>]: s
+Out[<span style="color: #666666">55</span>]: <span style="color: #AA22FF">set</span>()
+</pre></div>
+<h4 id="3setcopy">3.set.copy</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    <span style="color: #008800; font-style: italic">#3.set.copy      #返回set的浅拷贝</span>
+</pre></div>
+<h4 id="4setdifference">4.set.difference</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#4.set.difference            #返回由两个或多个set中不同的元素（差集)组成一个新set</span>
+In [<span style="color: #666666">56</span>]: s1 <span style="color: #666666">=</span> <span style="color: #AA22FF">set</span>([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">5</span>,<span style="color: #666666">6</span>])
+
+In [<span style="color: #666666">57</span>]: s2 <span style="color: #666666">=</span> <span style="color: #AA22FF">set</span>([<span style="color: #BB4444">'a'</span>,<span style="color: #BB4444">'b'</span>,<span style="color: #BB4444">'c'</span>,<span style="color: #BB4444">'d'</span>])
+
+In [<span style="color: #666666">58</span>]: s1<span style="color: #666666">.</span>dif
+s1<span style="color: #666666">.</span>difference         s1<span style="color: #666666">.</span>difference_update
+
+In [<span style="color: #666666">60</span>]: s3 <span style="color: #666666">=</span> s1<span style="color: #666666">.</span>difference(s2)
+
+In [<span style="color: #666666">61</span>]: s3
+Out[<span style="color: #666666">61</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>}
+
+In [<span style="color: #666666">63</span>]: s2
+Out[<span style="color: #666666">63</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+<span style="color: #008800; font-style: italic"># 上面s1里面的元素在s2中没有，所以s3得到的元素为s1本身</span>
+In [<span style="color: #666666">64</span>]: s4 <span style="color: #666666">=</span> s2<span style="color: #666666">.</span>difference(s1)
+
+In [<span style="color: #666666">65</span>]: s4
+Out[<span style="color: #666666">65</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+<span style="color: #008800; font-style: italic"># s4 用s2得到和s3相反的结果</span>
+</pre></div>
+<h4 id="5setdifference_update">5.set.difference_update</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">   <span style="color: #008800; font-style: italic">#5.set.difference_update     #从当前set中移除其它set中所有所有元素。</span>
+   In [<span style="color: #666666">66</span>]: s4<span style="color: #666666">.</span>difference_update(s1)
+
+   In [<span style="color: #666666">67</span>]: s4
+   Out[<span style="color: #666666">67</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+   In [<span style="color: #666666">68</span>]: s4<span style="color: #666666">.</span>difference_update(s2)
+
+   In [<span style="color: #666666">69</span>]: s4
+   Out[<span style="color: #666666">69</span>]: <span style="color: #AA22FF">set</span>()
+</pre></div>
+<h4 id="6setdiscard">6.set.discard</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#6.set.discard               #从set中删除一个元素，如果set中存在该元素</span>
+In [<span style="color: #666666">70</span>]: s3
+Out[<span style="color: #666666">70</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>}
+
+In [<span style="color: #666666">71</span>]: s3<span style="color: #666666">.</span>discard(<span style="color: #BB4444">'a'</span>)
+
+In [<span style="color: #666666">72</span>]: s3
+Out[<span style="color: #666666">72</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>}
+
+In [<span style="color: #666666">73</span>]: s3<span style="color: #666666">.</span>discard(<span style="color: #666666">4</span>)
+
+In [<span style="color: #666666">74</span>]: s3
+Out[<span style="color: #666666">74</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>}
+</pre></div>
+<h4 id="7setintersection">7.set.intersection 两个集合的交集</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#7.set.intersection          #返回两个或多个set的交集，即两个或多个set中都存在的元素</span>
+In [<span style="color: #666666">91</span>]: s1
+Out[<span style="color: #666666">91</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'a'</span>}
+
+In [<span style="color: #666666">92</span>]: s2
+Out[<span style="color: #666666">92</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+In [<span style="color: #666666">94</span>]: s3 <span style="color: #666666">=</span> s1<span style="color: #666666">.</span>intersection(s2)
+
+In [<span style="color: #666666">95</span>]: s3
+Out[<span style="color: #666666">95</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>}
+</pre></div>
+<h4 id="8setintersection_update">8.set.intersection_update</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#8.set.intersection_update   #更新当前set，只保留那些在当前set和其他set中都存在的</span>
+In [<span style="color: #666666">106</span>]: s1
+Out[<span style="color: #666666">106</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'a'</span>}
+
+In [<span style="color: #666666">107</span>]: s2
+Out[<span style="color: #666666">107</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+In [<span style="color: #666666">108</span>]: s1<span style="color: #666666">.</span>intersection_update(s2)
+
+In [<span style="color: #666666">109</span>]: s1
+Out[<span style="color: #666666">109</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>}
+</pre></div>
+<p>9.set.isdisjoint</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#9.set.isdisjoint            #如果两个set没有交集，返回true</span>
+In [<span style="color: #666666">111</span>]: s1
+Out[<span style="color: #666666">111</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>}
+
+In [<span style="color: #666666">112</span>]: s2
+Out[<span style="color: #666666">112</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+In [<span style="color: #666666">113</span>]: s2<span style="color: #666666">.</span>isdisjoint(s1)
+Out[<span style="color: #666666">113</span>]: <span style="color: #AA22FF">False</span>
+
+<span style="color: #666666">---------</span>
+
+In [<span style="color: #666666">115</span>]: s2
+Out[<span style="color: #666666">115</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+In [<span style="color: #666666">116</span>]: s3
+Out[<span style="color: #666666">116</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>}
+
+In [<span style="color: #666666">117</span>]: s3<span style="color: #666666">.</span>isdisjoint(s2)
+Out[<span style="color: #666666">117</span>]: <span style="color: #AA22FF">True</span>
+</pre></div>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">10.</span>set<span style="color: #666666">.</span>issubset             <span style="color: #008800; font-style: italic">#判断是否另外一个set包含当前set。</span>
+In [<span style="color: #666666">118</span>]: s2
+Out[<span style="color: #666666">118</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+In [<span style="color: #666666">119</span>]: s3
+Out[<span style="color: #666666">119</span>]: {<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>}
+
+In [<span style="color: #666666">120</span>]: s2<span style="color: #666666">.</span>issu
+s2<span style="color: #666666">.</span>issubset    s2<span style="color: #666666">.</span>issuperset
+
+In [<span style="color: #666666">120</span>]: s2<span style="color: #666666">.</span>issubset(s3)
+Out[<span style="color: #666666">120</span>]: <span style="color: #AA22FF">False</span>
+
+<span style="color: #666666">--------</span>
+
+In [<span style="color: #666666">125</span>]: s2
+Out[<span style="color: #666666">125</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'c'</span>, <span style="color: #BB4444">'d'</span>}
+
+In [<span style="color: #666666">126</span>]: s4
+Out[<span style="color: #666666">126</span>]: {<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>}
+
+In [<span style="color: #666666">127</span>]: s4<span style="color: #666666">.</span>issubset(s2)
+Out[<span style="color: #666666">127</span>]: <span style="color: #AA22FF">True</span>
+
+In [<span style="color: #666666">128</span>]: s2<span style="color: #666666">.</span>issubset(s4)
+Out[<span style="color: #666666">128</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h4 id="_9">集合练习</h4>
+<p>下面是一个集合的小练习</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">trset</span>():
+    <span style="color: #BB4444; font-style: italic">'''</span>
+<span style="color: #BB4444; font-style: italic">     -- set ---</span>
+<span style="color: #BB4444; font-style: italic">    set练习 将下面两个字典的key来用set来做比较，找出交集，差集，</span>
+<span style="color: #BB4444; font-style: italic">    1. 要删除   #  new里面没有old里面有的删除</span>
+<span style="color: #BB4444; font-style: italic">    2. 要更新   #  new里面没有old里面有的增加</span>
+<span style="color: #BB4444; font-style: italic">    3. 要添加   #  new 和old都有的更新</span>
+<span style="color: #BB4444; font-style: italic">    '''</span>
+
+    old_dict <span style="color: #666666">=</span> {
+        <span style="color: #BB4444">"#1"</span>:{ <span style="color: #BB4444">'hostname'</span>:<span style="color: #BB4444">"c1"</span>, <span style="color: #BB4444">'cpu_count'</span>: <span style="color: #666666">2</span>, <span style="color: #BB4444">'mem_capicity'</span>: <span style="color: #666666">80</span>  },
+        <span style="color: #BB4444">"#2"</span>:{ <span style="color: #BB4444">'hostname'</span>:<span style="color: #BB4444">"c1"</span>, <span style="color: #BB4444">'cpu_count'</span>: <span style="color: #666666">2</span>, <span style="color: #BB4444">'mem_capicity'</span>: <span style="color: #666666">80</span>  },
+        <span style="color: #BB4444">"#3"</span>:{ <span style="color: #BB4444">'hostname'</span>:<span style="color: #BB4444">"c1"</span>, <span style="color: #BB4444">'cpu_count'</span>: <span style="color: #666666">2</span>, <span style="color: #BB4444">'mem_capicity'</span>: <span style="color: #666666">80</span>  },
+    }
+
+    new_dict <span style="color: #666666">=</span> {
+        <span style="color: #BB4444">"#1"</span>:{ <span style="color: #BB4444">'hostname'</span>:<span style="color: #BB4444">"c1"</span>, <span style="color: #BB4444">'cpu_count'</span>: <span style="color: #666666">2</span>, <span style="color: #BB4444">'mem_capicity'</span>: <span style="color: #666666">800</span> },
+        <span style="color: #BB4444">"#3"</span>:{ <span style="color: #BB4444">'hostname'</span>:<span style="color: #BB4444">"c1"</span>, <span style="color: #BB4444">'cpu_count'</span>: <span style="color: #666666">2</span>, <span style="color: #BB4444">'mem_capicity'</span>: <span style="color: #666666">80</span> },
+        <span style="color: #BB4444">"#4"</span>:{ <span style="color: #BB4444">'hostname'</span>:<span style="color: #BB4444">"c2"</span>, <span style="color: #BB4444">'cpu_count'</span>: <span style="color: #666666">2</span>, <span style="color: #BB4444">'mem_capicity'</span>: <span style="color: #666666">80</span> },
+    }
+
+    old <span style="color: #666666">=</span> <span style="color: #AA22FF">set</span>(old_dict<span style="color: #666666">.</span>keys())
+    new <span style="color: #666666">=</span> <span style="color: #AA22FF">set</span>(new_dict<span style="color: #666666">.</span>keys())
+
+    update_set <span style="color: #666666">=</span> old<span style="color: #666666">.</span>intersection(new)
+    delete_set <span style="color: #666666">=</span> old<span style="color: #666666">.</span>difference(new)
+    add_set <span style="color: #666666">=</span> new<span style="color: #666666">.</span>difference(old)
+
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'update:'</span>,update_set)
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'delte:'</span>,delete_set)
+    <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'add:'</span>,add_set)
+</pre></div>
+<h1 id="_10">函数练习</h1>
+<p>python函数根据参数来区分可以分为5种形式：</p>
+<h4 id="1">1.无参数</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>():
+   <span style="color: #666666">...</span>:     <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #BB4444">'a'</span>)
+   <span style="color: #666666">...</span>:
+
+In [<span style="color: #666666">2</span>]:  show()
+a
+</pre></div>
+<h4 id="2">2.有参数</h4>
+<p>1个参数</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">3</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>(arg):
+   <span style="color: #666666">...</span>:         <span style="color: #AA22FF; font-weight: bold">print</span>(arg)
+   <span style="color: #666666">...</span>:
+
+In [<span style="color: #666666">4</span>]: show(<span style="color: #BB4444">'hello'</span>)
+hello
+</pre></div>
+<p>2个参数</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">5</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>(arg0,arg1):
+   <span style="color: #666666">...</span>:         <span style="color: #AA22FF; font-weight: bold">print</span>(arg0,arg1)
+   <span style="color: #666666">...</span>:
+
+In [<span style="color: #666666">6</span>]: show(<span style="color: #BB4444">'hello'</span>,<span style="color: #BB4444">'world'</span>)
+hello world
+</pre></div>
+<h4 id="3">3.默认参数</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">7</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>(arg,arg0<span style="color: #666666">=</span><span style="color: #BB4444">'88'</span>):
+   <span style="color: #666666">...</span>:         <span style="color: #008800; font-style: italic"># 默认的参数必须放在最后</span>
+   <span style="color: #666666">...</span>:         <span style="color: #AA22FF; font-weight: bold">print</span>(arg,arg0)
+   <span style="color: #666666">...</span>:
+
+In [<span style="color: #666666">8</span>]: show(<span style="color: #BB4444">'dd'</span>)
+dd <span style="color: #666666">88</span>
+
+In [<span style="color: #666666">9</span>]: show(<span style="color: #BB4444">'dd'</span>,<span style="color: #BB4444">'aa'</span>)
+dd aa
+</pre></div>
+<h4 id="4">4.指定参数</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">10</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>(arg,arg0,arg1):
+   <span style="color: #666666">....</span>:         <span style="color: #AA22FF; font-weight: bold">print</span>(arg,arg0,arg1)
+   <span style="color: #666666">....</span>:
+
+In [<span style="color: #666666">11</span>]: show(<span style="color: #BB4444">'a'</span>,<span style="color: #BB4444">'b'</span>,<span style="color: #BB4444">'c'</span>)
+a b c
+
+In [<span style="color: #666666">12</span>]: show(arg1<span style="color: #666666">=</span><span style="color: #BB4444">'a'</span>,arg0<span style="color: #666666">=</span><span style="color: #BB4444">'b'</span>,arg<span style="color: #666666">=</span><span style="color: #BB4444">'c'</span>)
+c b a
+</pre></div>
+<h4 id="5">5.动态参数</h4>
+<p>参数转换为元组</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [29]: def show(*arg): #参数转换为元组
+   ....:         print(arg,type(arg))
+   ....:
+
+In [30]: show('a')
+('a',) &lt;class 'tuple'&gt;
+
+In [31]: show(1,23,4,'sdf')
+(1, 23, 4, 'sdf') &lt;class 'tuple'&gt;
+</pre></div>
+<p>参数转换为字典</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">37</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>(<span style="color: #666666">**</span>arg): <span style="color: #008800; font-style: italic">#参数转换为字典</span>
+        <span style="color: #AA22FF; font-weight: bold">pass</span>
+        <span style="color: #AA22FF; font-weight: bold">print</span>(arg,<span style="color: #AA22FF">type</span>(arg))
+   <span style="color: #666666">....</span>:
+
+In [<span style="color: #666666">38</span>]: show(a<span style="color: #666666">=</span><span style="color: #BB4444">'v'</span>)
+{<span style="color: #BB4444">'a'</span>: <span style="color: #BB4444">'v'</span>} <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">dict</span><span style="color: #BB4444">'&gt;</span>
+
+In [<span style="color: #666666">39</span>]: show(a<span style="color: #666666">=</span><span style="color: #BB4444">'v'</span>,k1<span style="color: #666666">=</span><span style="color: #BB4444">'v1'</span>,k2<span style="color: #666666">=</span><span style="color: #BB4444">'v2'</span>)
+{<span style="color: #BB4444">'a'</span>: <span style="color: #BB4444">'v'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'v2'</span>} <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">dict</span><span style="color: #BB4444">'&gt;</span>
+</pre></div>
+<p>同时转换为tuple和dict</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#传参形式1</span>
+In [<span style="color: #666666">45</span>]: <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">show</span>(<span style="color: #666666">*</span>args,<span style="color: #666666">**</span>kwargs):
+        <span style="color: #AA22FF; font-weight: bold">pass</span>
+        <span style="color: #AA22FF; font-weight: bold">print</span>(args,<span style="color: #AA22FF">type</span>(args))
+        <span style="color: #AA22FF; font-weight: bold">print</span>(kwargs,<span style="color: #AA22FF">type</span>(kwargs))
+   <span style="color: #666666">....</span>:
+
+In [<span style="color: #666666">46</span>]: show(<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">5</span>,<span style="color: #BB4444">'a'</span>,<span style="color: #BB4444">'d'</span>,k1<span style="color: #666666">=</span><span style="color: #BB4444">'v1'</span>,k2<span style="color: #666666">=</span><span style="color: #BB4444">'v2'</span>)
+(<span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'d'</span>) <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">tuple</span><span style="color: #BB4444">'&gt;</span>
+{<span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'v2'</span>} <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">dict</span><span style="color: #BB4444">'&gt;</span>
+
+
+<span style="border: 1px solid #FF0000">传参形式</span><span style="color: #666666">2</span>
+In [<span style="color: #666666">47</span>]: li <span style="color: #666666">=</span> [<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">5</span>,<span style="color: #BB4444">'a'</span>]
+
+In [<span style="color: #666666">48</span>]: d <span style="color: #666666">=</span> {<span style="color: #BB4444">'k1'</span>:<span style="color: #BB4444">'v1'</span>,<span style="color: #BB4444">'k2'</span>:<span style="color: #BB4444">'v2'</span>}
+
+In [<span style="color: #666666">49</span>]:
+
+In [<span style="color: #666666">49</span>]: show(li,d)
+([<span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #BB4444">'a'</span>], {<span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'v2'</span>}) <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">tuple</span><span style="color: #BB4444">'&gt;</span>
+{} <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">dict</span><span style="color: #BB4444">'&gt;</span>
+
+
+<span style="color: #008800; font-style: italic">#传参形式3</span>
+In [<span style="color: #666666">50</span>]: show(<span style="color: #666666">*</span>li,<span style="color: #666666">**</span>d)
+(<span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #BB4444">'a'</span>) <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">tuple</span><span style="color: #BB4444">'&gt;</span>
+{<span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'v2'</span>} <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">dict</span><span style="color: #BB4444">'&gt;</span>
+</pre></div>
+<h1 id="dict">dict() 方法练习</h1>
+<h3 id="1dictclear">1.dict.clear</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>clear        <span style="color: #008800; font-style: italic">#删除dictionary中的所有key-value对</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> {<span style="color: #BB4444">'k1'</span>:<span style="color: #BB4444">'v1'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+{<span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>clear()
+</pre></div>
+<h3 id="2dictcopy">2.dict.copy</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>copy         <span style="color: #008800; font-style: italic">#浅拷贝dictionary</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> a<span style="color: #666666">.</span>copy()
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+{<span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>}
+</pre></div>
+<h3 id="3dictfromkeys">3.dict.fromkeys</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>fromkeys     <span style="color: #008800; font-style: italic">#返回一个新的dictionary，key由iterable的元素组成，value等于value</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> <span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>fromkeys([<span style="color: #BB4444">'k1'</span>,<span style="color: #BB4444">'k2'</span>,<span style="color: #BB4444">'k3'</span>],<span style="color: #BB4444">'vvv'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+{<span style="color: #BB4444">'k3'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>}
+</pre></div>
+<h3 id="4dictget">4.dict.get</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>get          <span style="color: #008800; font-style: italic">#返回dictionary中key为指定值k对应的value，</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>get(<span style="color: #BB4444">'k3'</span>)
+<span style="color: #BB4444">'vvv'</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> {<span style="color: #BB4444">'k1'</span>:a}
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+{<span style="color: #BB4444">'k1'</span>: {<span style="color: #BB4444">'k3'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>}}
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>get(<span style="color: #BB4444">'k1'</span>)[<span style="color: #BB4444">'k3'</span>]
+<span style="color: #BB4444">'vvv'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h3 id="5dictitems">5.dict.items</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>items        <span style="color: #008800; font-style: italic">#返回dictionary所有key-value对组成的集合</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>items()
+[(<span style="color: #BB4444">'k1'</span>, {<span style="color: #BB4444">'k3'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>})]
+</pre></div>
+<h2 id="6dictkeys">6.dict.keys</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>keys         <span style="color: #008800; font-style: italic">#返回dictionary所有key组成的集合</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>keys()
+[<span style="color: #BB4444">'k1'</span>]
+</pre></div>
+<h2 id="7dictpop">7.dict.pop</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>pop          <span style="color: #008800; font-style: italic">#从dictionary中删除指定key，返回指定key对应的value。如果dictionary中不存在指定key，如果指定了d，返回d，否则抛出例外</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> c <span style="color: #666666">=</span> b<span style="color: #666666">.</span>pop(<span style="color: #BB4444">'k1'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+{<span style="color: #BB4444">'k3'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+{}
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h2 id="8dictpopitem">8.dict.popitem</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>popitem      <span style="color: #008800; font-style: italic">#删除并返回key-value对(key, value)作为2-tuple，如果dictionary为空，抛出例外</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> e <span style="color: #666666">=</span> c<span style="color: #666666">.</span>popitem()
+<span style="color: #666666">&gt;&gt;&gt;</span> e
+(<span style="color: #BB4444">'k3'</span>, <span style="color: #BB4444">'vvv'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+{<span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h2 id="9dictsetdefau">9.dict.setdefau</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>setdefault   <span style="color: #008800; font-style: italic">#如果dictionary中不存在k，设置D[k]=d</span>
+
+
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+{<span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> c<span style="color: #666666">.</span>setdefault(<span style="color: #BB4444">'k1'</span>,<span style="color: #BB4444">'v1'</span>)
+<span style="color: #BB4444">'vvv'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+{<span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> c<span style="color: #666666">.</span>setdefault(<span style="color: #BB4444">'k4'</span>,<span style="color: #BB4444">'v4'</span>)
+<span style="color: #BB4444">'v4'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+{<span style="color: #BB4444">'k2'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'vvv'</span>, <span style="color: #BB4444">'k4'</span>: <span style="color: #BB4444">'v4'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h2 id="10dictupdate">10.dict.update</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>update      <span style="color: #008800; font-style: italic">#使用E(dict/iterable)和F的数据更新dicti</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> {<span style="color: #BB4444">'ak1'</span>:<span style="color: #BB4444">'av1'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> {<span style="color: #BB4444">'bk1'</span>:<span style="color: #BB4444">'bv1'</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>update(a)
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+{<span style="color: #BB4444">'ak1'</span>: <span style="color: #BB4444">'av1'</span>, <span style="color: #BB4444">'bk1'</span>: <span style="color: #BB4444">'bv1'</span>}
+</pre></div>
+<h2 id="11dictvalues">11.dict.values</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">dict</span><span style="color: #666666">.</span>values      <span style="color: #008800; font-style: italic">#返回dictionary所有value组成的集合</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>values()
+[<span style="color: #BB4444">'av1'</span>, <span style="color: #BB4444">'bv1'</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h1 id="list">list()</h1>
+<p>列表练习</p>
+<h3 id="1listappend">1.list.append</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>append           <span style="color: #008800; font-style: italic">#附加一个对象到list</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> [<span style="color: #BB4444">'a'</span>,<span style="color: #BB4444">'b'</span>,<span style="color: #666666">1</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>append(<span style="color: #BB4444">'d'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>]
+</pre></div>
+<h3 id="2listclear">2.list.clear</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>clear            <span style="color: #008800; font-style: italic">#删除list中的所有元素</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>clear()
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[]
+</pre></div>
+<h3 id="3listcopy">3.list.copy</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>copy             <span style="color: #008800; font-style: italic">#浅拷贝list</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> [<span style="color: #BB4444">'a'</span>,<span style="color: #BB4444">'b'</span>,<span style="color: #666666">1</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> a<span style="color: #666666">.</span>copy()
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>]
+</pre></div>
+<h3 id="4listcount">4.list.count</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>count            <span style="color: #008800; font-style: italic">#返回指定参数在list中出现的次数</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>count(<span style="color: #BB4444">'b'</span>)
+<span style="color: #666666">1</span>
+</pre></div>
+<h3 id="5listextend">5.list.extend</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>extend           <span style="color: #008800; font-style: italic">#附加指定iterable中的元素到list</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> [<span style="color: #666666">6</span>,<span style="color: #666666">6</span>,<span style="color: #666666">5</span>,<span style="color: #666666">4</span>,<span style="color: #666666">2</span>,<span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>extend(b)
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>, <span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h3 id="6listindex">6.list.index</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>index            <span style="color: #008800; font-style: italic">#返回指定值在list中第一次出现的位置，如果list上存在指</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>, <span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>index(<span style="color: #666666">1</span>)
+<span style="color: #666666">2</span>
+</pre></div>
+<h3 id="7listinsert">7.list.insert</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>insert           <span style="color: #008800; font-style: italic">#在list的指定位置index插入object</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>insert(<span style="color: #666666">2</span>,<span style="color: #BB4444">'sddsds'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>, <span style="color: #666666">4</span>]
+</pre></div>
+<h3 id="8listpop">8.list.pop</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>pop              <span style="color: #008800; font-style: italic">#删除并返回指定位置index的元素，默认为最后位置,如果index超过范围或list为空，抛出错误</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>, <span style="color: #666666">4</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> a<span style="color: #666666">.</span>pop()
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+<span style="color: #666666">4</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h3 id="9listremove">9.list.remove</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>remove           <span style="color: #008800; font-style: italic">#从list中删除第一次出现的指定值，如果指定值不存在，抛出例外</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>remove(<span style="color: #BB4444">'a'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>]
+</pre></div>
+<h3 id="10listreverse">10.list.reverse</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>reverse         <span style="color: #008800; font-style: italic">#反转list中的元素</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #666666">5</span>, <span style="color: #666666">4</span>, <span style="color: #666666">2</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>reverse()
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #666666">2</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">4</span>, <span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #BB4444">'b'</span>]
+</pre></div>
+<h3 id="11listsort">11.list.sort</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">list</span><span style="color: #666666">.</span>sort            <span style="color: #008800; font-style: italic">#对list进行排序</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #666666">2</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #666666">4</span>, <span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #BB4444">'sddsds'</span>, <span style="color: #BB4444">'b'</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>sort()
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+[<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #BB4444">'sddsds'</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h1 id="tuple">tuple()</h1>
+<p>元组练习</p>
+<h3 id="1tuplecount">1.tuple.count</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">tuple</span><span style="color: #666666">.</span>count       <span style="color: #008800; font-style: italic">#返回指定参数在tuple中出现的次数</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+(<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #BB4444">'sddsds'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>count(<span style="color: #666666">4</span>)
+<span style="color: #666666">2</span> 
+</pre></div>
+<h3 id="2tupleindex">2.tuple.index</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">tuple</span><span style="color: #666666">.</span>index       <span style="color: #008800; font-style: italic">#返回指定值在tuple中第一次出现的位置，如果tuple中不</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+(<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">6</span>, <span style="color: #BB4444">'b'</span>, <span style="color: #BB4444">'d'</span>, <span style="color: #BB4444">'sddsds'</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>count(<span style="color: #666666">4</span>)
+<span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>index(<span style="color: #666666">2</span>)
+<span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>index(<span style="color: #666666">1</span>)
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h1 id="str">str()的方法</h1>
+<p>字符串练习</p>
+<h3 id="1strcapitalize">1.str.capitalize</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>capitalize    <span style="color: #008800; font-style: italic">#返回首字母大写，其他字母小写的字符串</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> <span style="color: #BB4444">'peter'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>capitalize()
+<span style="color: #BB4444">'Peter'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<h3 id="2strcasefold">2.str.casefold</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>casefold      <span style="color: #008800; font-style: italic">#字符串转换成小写，用于不区分大小写的字符串比较</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> <span style="color: #BB4444">'peter'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> a<span style="color: #666666">.</span>capitalize()
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+<span style="color: #BB4444">'Peter'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>casefold()
+<span style="color: #BB4444">'peter'</span>
+</pre></div>
+<h3 id="3strcenter">3.str.center</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>center        <span style="color: #008800; font-style: italic">#返回指定长度的字符串，字符串内容居中，并使用指定字符填充</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>center(<span style="color: #666666">40</span>,<span style="color: #BB4444">'-'</span>)
+<span style="color: #BB4444">'-----------------Peter------------------'</span>
+</pre></div>
+<h3 id="4strcount">4.str.count</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>count         <span style="color: #008800; font-style: italic">#返回子字符串在字符串中出现的次数</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>count(<span style="color: #BB4444">'a'</span>)
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>count(<span style="color: #BB4444">'e'</span>)
+<span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+<span style="color: #BB4444">'Peter'</span>
+</pre></div>
+<h3 id="5strencode">5.str.encode</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>encode        <span style="color: #008800; font-style: italic">#对字符串进行编码，返回字节对象</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>encode(<span style="color: #BB4444">'gbk'</span>)
+b<span style="color: #BB4444">'Peter'</span>
+</pre></div>
+<h3 id="6strendswith">6.str.endswith</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>endswith      <span style="color: #008800; font-style: italic">#判断字符串是否以指定的后缀结尾</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+<span style="color: #BB4444">'Peter'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>endswith(<span style="color: #BB4444">'r'</span>)
+<span style="color: #AA22FF">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b<span style="color: #666666">.</span>endswith(<span style="color: #BB4444">'d'</span>)
+<span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="7strexpandtabs">7.str.expandtabs</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>expandtabs    <span style="color: #008800; font-style: italic">#使用空格替换tab</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF">str</span><span style="color: #666666">.</span>expandtabs(<span style="color: #BB4444">'hello</span><span style="color: #BB6622; font-weight: bold">\t</span><span style="color: #BB4444">world'</span>)
+<span style="color: #BB4444">'hello   world'</span>
+</pre></div>
+<h3 id="8strfind">8.str.find</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>find          <span style="color: #008800; font-style: italic">#返回子字符串在字符串中第一次出现的位置；如没找到，返回-1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> c<span style="color: #666666">.</span>find(<span style="color: #BB4444">'wo'</span>)
+<span style="color: #666666">8</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+<span style="color: #BB4444">'hello   world'</span>
+</pre></div>
+<h3 id="9strformat">9.str.format</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>format        <span style="color: #008800; font-style: italic">#执行字符串格式化操作，替换字段使用{}分隔，替换字段可以是表</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF">str</span><span style="color: #666666">.</span>format(<span style="color: #BB4444">'hello {}'</span>,<span style="color: #BB4444">'world'</span>)
+<span style="color: #BB4444">'hello world'</span>
+</pre></div>
+<h3 id="10strformat_map">10.str.format_map</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>format_map   <span style="color: #008800; font-style: italic">#执行字符串格式化操作，替换字段使用{}分隔，同str.for</span>
+</pre></div>
+<h3 id="11strindex">11.str.index</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>index        <span style="color: #008800; font-style: italic">#同find()，但如果在字符串中没找到子字符串，会抛出错误</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> <span style="color: #BB4444">'peter'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>index(<span style="color: #BB4444">'e'</span>)
+<span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>index(<span style="color: #BB4444">'a'</span>)
+Traceback (most recent call last):
+  File <span style="color: #BB4444">"&lt;input&gt;"</span>, line <span style="color: #666666">1</span>, <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>
+  <span style="color: #D2413A; font-weight: bold">ValueError</span>: substring <span style="color: #AA22FF; font-weight: bold">not</span> found
+</pre></div>
+<h3 id="12strisalnum">12.str.isalnum</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">12.</span>str<span style="color: #666666">.</span>isalnum      <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是字母或数字</span>
+   In [<span style="color: #666666">202</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'asf23234d'</span>
+
+   In [<span style="color: #666666">203</span>]: a<span style="color: #666666">.</span>isalnum()
+   Out[<span style="color: #666666">203</span>]: <span style="color: #AA22FF">True</span>
+
+   In [<span style="color: #666666">204</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">'asf'</span>
+
+   In [<span style="color: #666666">205</span>]: b<span style="color: #666666">.</span>isalnum()
+   Out[<span style="color: #666666">205</span>]: <span style="color: #AA22FF">True</span>
+
+   In [<span style="color: #666666">206</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">'a*sf32'</span>
+
+   In [<span style="color: #666666">207</span>]: c<span style="color: #666666">.</span>isalnum()
+   Out[<span style="color: #666666">207</span>]: <span style="color: #AA22FF">False</span>
+
+   In [<span style="color: #666666">208</span>]: d <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+   In [<span style="color: #666666">209</span>]: d<span style="color: #666666">.</span>isalnum()
+   Out[<span style="color: #666666">209</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="13strisalpha">13.str.isalpha</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">13.</span>str<span style="color: #666666">.</span>isalpha      <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是字母</span>
+    In [<span style="color: #666666">194</span>]: a
+    Out[<span style="color: #666666">194</span>]: <span style="color: #BB4444">'123'</span>
+
+    In [<span style="color: #666666">195</span>]: a<span style="color: #666666">.</span>isa
+    a<span style="color: #666666">.</span>isalnum  a<span style="color: #666666">.</span>isalpha
+
+    In [<span style="color: #666666">195</span>]: a<span style="color: #666666">.</span>isalpha()
+    Out[<span style="color: #666666">195</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">196</span>]: b
+    Out[<span style="color: #666666">196</span>]: <span style="color: #BB4444">'1a'</span>
+
+    In [<span style="color: #666666">197</span>]: b<span style="color: #666666">.</span>isa
+    b<span style="color: #666666">.</span>isalnum  b<span style="color: #666666">.</span>isalpha
+
+    In [<span style="color: #666666">197</span>]: b<span style="color: #666666">.</span>isalpha()
+    Out[<span style="color: #666666">197</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">198</span>]: c
+    Out[<span style="color: #666666">198</span>]: <span style="color: #BB4444">''</span>
+
+    In [<span style="color: #666666">199</span>]: c<span style="color: #666666">.</span>isalpha()
+    Out[<span style="color: #666666">199</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">200</span>]: d <span style="color: #666666">=</span> <span style="color: #BB4444">'adsf'</span>
+
+    In [<span style="color: #666666">201</span>]: d<span style="color: #666666">.</span>isalpha()
+    Out[<span style="color: #666666">201</span>]: <span style="color: #AA22FF">True</span>
+</pre></div>
+<h3 id="14strisdecimal">14.str.isdecimal</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">14.</span>str<span style="color: #666666">.</span>isdecimal    <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是十进制数字</span>
+    In [<span style="color: #666666">183</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'123'</span>
+
+    In [<span style="color: #666666">184</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">'1a'</span>
+
+    In [<span style="color: #666666">185</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+    In [<span style="color: #666666">189</span>]: e <span style="color: #666666">=</span> <span style="color: #BB4444">'1.3'</span>
+
+    In [<span style="color: #666666">190</span>]: a<span style="color: #666666">.</span>isdecimal()
+    Out[<span style="color: #666666">190</span>]: <span style="color: #AA22FF">True</span>
+
+    In [<span style="color: #666666">191</span>]: b<span style="color: #666666">.</span>isdecimal()
+    Out[<span style="color: #666666">191</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">192</span>]: c<span style="color: #666666">.</span>isdecimal()
+    Out[<span style="color: #666666">192</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">193</span>]: e<span style="color: #666666">.</span>isdecimal()
+    Out[<span style="color: #666666">193</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="15strisdigit">15.str.isdigit</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">15.</span>str<span style="color: #666666">.</span>isdigit      <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是数字</span>
+   In [<span style="color: #666666">183</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'123'</span>
+
+   In [<span style="color: #666666">184</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">'1a'</span>
+
+   In [<span style="color: #666666">185</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+   In [<span style="color: #666666">186</span>]: a<span style="color: #666666">.</span>isdigit()
+   Out[<span style="color: #666666">186</span>]: <span style="color: #AA22FF">True</span>
+
+   In [<span style="color: #666666">187</span>]: b<span style="color: #666666">.</span>isdigit()
+   Out[<span style="color: #666666">187</span>]: <span style="color: #AA22FF">False</span>
+
+   In [<span style="color: #666666">188</span>]: c<span style="color: #666666">.</span>isdigit()
+   Out[<span style="color: #666666">188</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="16strisidentifier">16.str.isidentifier</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">16.</span>str<span style="color: #666666">.</span>isidentifier <span style="color: #008800; font-style: italic">#判断字符串中是否是有效标识符</span>
+    In [<span style="color: #666666">172</span>]: a
+    Out[<span style="color: #666666">172</span>]: <span style="color: #BB4444">'peter'</span>
+
+    In [<span style="color: #666666">173</span>]: b
+    Out[<span style="color: #666666">173</span>]: <span style="color: #BB4444">'ASDF'</span>
+
+    In [<span style="color: #666666">174</span>]: a
+    Out[<span style="color: #666666">174</span>]: <span style="color: #BB4444">'peter'</span>
+
+    In [<span style="color: #666666">175</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">'12'</span>
+
+    In [<span style="color: #666666">176</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+    In [<span style="color: #666666">178</span>]: d <span style="color: #666666">=</span> <span style="color: #BB4444">'*'</span>
+
+    In [<span style="color: #666666">179</span>]: a<span style="color: #666666">.</span>isidentifier()
+    Out[<span style="color: #666666">179</span>]: <span style="color: #AA22FF">True</span>
+
+    In [<span style="color: #666666">180</span>]: b<span style="color: #666666">.</span>isidentifier()
+    Out[<span style="color: #666666">180</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">181</span>]: c<span style="color: #666666">.</span>isidentifier()
+    Out[<span style="color: #666666">181</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">182</span>]: b<span style="color: #666666">.</span>isidentifier()
+    Out[<span style="color: #666666">182</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="17strislower">17.str.islower</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">17.</span>str<span style="color: #666666">.</span>islower      <span style="color: #008800; font-style: italic">#判断字符串中是否小字并且至少有一个字符</span>
+       In [<span style="color: #666666">166</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'peter'</span>
+
+       In [<span style="color: #666666">167</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">'ASDF'</span>
+
+       In [<span style="color: #666666">168</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+       In [<span style="color: #666666">169</span>]: a<span style="color: #666666">.</span>islower()
+       Out[<span style="color: #666666">169</span>]: <span style="color: #AA22FF">True</span>
+
+       In [<span style="color: #666666">170</span>]: b<span style="color: #666666">.</span>islower()
+       Out[<span style="color: #666666">170</span>]: <span style="color: #AA22FF">False</span>
+
+       In [<span style="color: #666666">171</span>]: c<span style="color: #666666">.</span>islower()
+       Out[<span style="color: #666666">171</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="18strisnumeric">18.str.isnumeric</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">18.</span>str<span style="color: #666666">.</span>isnumeric    <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是数字字符</span>
+      In [<span style="color: #666666">159</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'124'</span>
+
+      In [<span style="color: #666666">160</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">'as234'</span>
+
+      In [<span style="color: #666666">161</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+      In [<span style="color: #666666">162</span>]: a<span style="color: #666666">.</span>isnumeric()
+      Out[<span style="color: #666666">162</span>]: <span style="color: #AA22FF">True</span>
+
+      In [<span style="color: #666666">163</span>]: b<span style="color: #666666">.</span>isnumeric()
+      Out[<span style="color: #666666">163</span>]: <span style="color: #AA22FF">False</span>
+
+      In [<span style="color: #666666">164</span>]: c<span style="color: #666666">.</span>isnumeric()
+      Out[<span style="color: #666666">164</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="19strisprintable">19.str.isprintable</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">19.</span>str<span style="color: #666666">.</span>isprintable  <span style="color: #008800; font-style: italic">#判断字符串的所有字符都是可打印字符或字符串为空</span>
+       In [<span style="color: #666666">151</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">"</span><span style="color: #BB6622; font-weight: bold">\t</span><span style="color: #BB4444">Puppy"</span>
+
+       In [<span style="color: #666666">152</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">"PUPPY</span><span style="color: #BB6622; font-weight: bold">\a</span><span style="color: #BB4444">"</span>
+
+       In [<span style="color: #666666">153</span>]: c <span style="color: #666666">=</span> <span style="color: #BB4444">"puppy"</span>
+
+       In [<span style="color: #666666">154</span>]: d <span style="color: #666666">=</span> <span style="color: #BB4444">"a puppy</span><span style="color: #BB6622; font-weight: bold">\b</span><span style="color: #BB4444">"</span>
+
+       In [<span style="color: #666666">155</span>]: a<span style="color: #666666">.</span>isprintable()
+       Out[<span style="color: #666666">155</span>]: <span style="color: #AA22FF">False</span>
+
+       In [<span style="color: #666666">156</span>]: b<span style="color: #666666">.</span>isprintable()
+       Out[<span style="color: #666666">156</span>]: <span style="color: #AA22FF">False</span>
+
+       In [<span style="color: #666666">157</span>]: c<span style="color: #666666">.</span>isprintable()
+       Out[<span style="color: #666666">157</span>]: <span style="color: #AA22FF">True</span>
+
+       In [<span style="color: #666666">158</span>]: d<span style="color: #666666">.</span>isprintable()
+       Out[<span style="color: #666666">158</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="20strisspace">20.str.isspace</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">20.</span>str<span style="color: #666666">.</span>isspace      <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是空白字符</span>
+    In [<span style="color: #666666">144</span>]: t2
+    Out[<span style="color: #666666">144</span>]: <span style="color: #BB4444">''</span>
+
+    In [<span style="color: #666666">145</span>]: t2<span style="color: #666666">.</span>isspace()
+    Out[<span style="color: #666666">145</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">146</span>]: t3 <span style="color: #666666">=</span> <span style="color: #BB4444">'  '</span>
+
+    In [<span style="color: #666666">147</span>]: t3<span style="color: #666666">.</span>isspace()
+    Out[<span style="color: #666666">147</span>]: <span style="color: #AA22FF">True</span>
+
+
+    In [<span style="color: #666666">149</span>]: t
+    Out[<span style="color: #666666">149</span>]: <span style="color: #BB4444">'peter is a student'</span>
+
+    In [<span style="color: #666666">150</span>]: t<span style="color: #666666">.</span>isspace()
+    Out[<span style="color: #666666">150</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="21stristitle">21.str.istitle</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">21.</span>str<span style="color: #666666">.</span>istitle      <span style="color: #008800; font-style: italic">#判断字符串中是否至少有一个字符，并且所有字符都是titlecase字符</span>
+    In [<span style="color: #666666">135</span>]: t <span style="color: #666666">=</span> <span style="color: #BB4444">'peter is a student'</span>
+
+    In [<span style="color: #666666">137</span>]: t1 <span style="color: #666666">=</span> t<span style="color: #666666">.</span>title()
+
+    In [<span style="color: #666666">138</span>]: t<span style="color: #666666">.</span>istitle()
+    Out[<span style="color: #666666">138</span>]: <span style="color: #AA22FF">False</span>
+
+    In [<span style="color: #666666">139</span>]: t1<span style="color: #666666">.</span>istitle()
+    Out[<span style="color: #666666">139</span>]: <span style="color: #AA22FF">True</span>
+
+    In [<span style="color: #666666">142</span>]: t2 <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+    In [<span style="color: #666666">143</span>]: t2<span style="color: #666666">.</span>istitle()
+    Out[<span style="color: #666666">143</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="22strisupper">22.str.isupper</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">22.</span>str<span style="color: #666666">.</span>isupper      <span style="color: #008800; font-style: italic">#判断字符串中是否全部是大写字母,空字符串为false</span>
+   In [<span style="color: #666666">124</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'Peter'</span>
+
+   In [<span style="color: #666666">125</span>]: a<span style="color: #666666">.</span>isupper()
+   Out[<span style="color: #666666">125</span>]: <span style="color: #AA22FF">False</span>
+
+   In [<span style="color: #666666">126</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'PETER'</span>
+
+   In [<span style="color: #666666">127</span>]: a<span style="color: #666666">.</span>isupper()
+   Out[<span style="color: #666666">127</span>]: <span style="color: #AA22FF">True</span>
+
+   In [<span style="color: #666666">128</span>]: b <span style="color: #666666">=</span> <span style="color: #BB4444">''</span>
+
+   In [<span style="color: #666666">129</span>]: b<span style="color: #666666">.</span>isupper()
+   Out[<span style="color: #666666">129</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="23strjoin">23.str.join</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">23.</span>str<span style="color: #666666">.</span>join         <span style="color: #008800; font-style: italic">#使用字符串作为分隔符串连多个数据为一个字符串</span>
+    In [<span style="color: #666666">116</span>]: a
+    Out[<span style="color: #666666">116</span>]: <span style="color: #BB4444">'peter'</span>
+
+    In [<span style="color: #666666">117</span>]: e <span style="color: #666666">=</span> [<span style="color: #BB4444">'a'</span>,<span style="color: #BB4444">'b'</span>,<span style="color: #BB4444">'c'</span>,<span style="color: #BB4444">'d'</span>]
+
+    In [<span style="color: #666666">118</span>]: <span style="color: #BB4444">''</span><span style="color: #666666">.</span>join(e)
+    Out[<span style="color: #666666">118</span>]: <span style="color: #BB4444">'abcd'</span>
+
+    In [<span style="color: #666666">119</span>]: <span style="color: #BB4444">'*'</span><span style="color: #666666">.</span>join(e)
+    Out[<span style="color: #666666">119</span>]: <span style="color: #BB4444">'a*b*c*d'</span>
+
+    In [<span style="color: #666666">120</span>]: <span style="color: #BB4444">'*'</span><span style="color: #666666">.</span>join(a)
+    Out[<span style="color: #666666">120</span>]: <span style="color: #BB4444">'p*e*t*e*r'</span>
+
+    In [<span style="color: #666666">121</span>]: <span style="color: #BB4444">''</span><span style="color: #666666">.</span>join(a)
+    Out[<span style="color: #666666">121</span>]: <span style="color: #BB4444">'peter'</span>
+</pre></div>
+<p>### 24.str.ljust</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">24.</span>str<span style="color: #666666">.</span>ljust        <span style="color: #008800; font-style: italic">#返回指定长度的字符串，字符串内容居左，并使用指定字符填充</span>
+   In [<span style="color: #666666">88</span>]: a<span style="color: #666666">.</span>ljust(<span style="color: #666666">10</span>,<span style="color: #BB4444">'-'</span>)
+   Out[<span style="color: #666666">88</span>]: <span style="color: #BB4444">'peter-----'</span>
+
+   In [<span style="color: #666666">89</span>]: a<span style="color: #666666">.</span>ljust(<span style="color: #666666">1</span>,<span style="color: #BB4444">'-'</span>)
+   Out[<span style="color: #666666">89</span>]: <span style="color: #BB4444">'peter'</span>
+
+   In [<span style="color: #666666">90</span>]: a<span style="color: #666666">.</span>ljust(<span style="color: #666666">6</span>,<span style="color: #BB4444">'0'</span>)
+   Out[<span style="color: #666666">90</span>]: <span style="color: #BB4444">'peter0'</span>
+</pre></div>
+<p>### 25.str.lower</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">25.</span>str<span style="color: #666666">.</span>lower        <span style="color: #008800; font-style: italic">#字符串转换成小写</span>
+    In [<span style="color: #666666">81</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'peter'</span>
+
+    In [<span style="color: #666666">82</span>]: a<span style="color: #666666">.</span>upper()
+    Out[<span style="color: #666666">82</span>]: <span style="color: #BB4444">'PETER'</span>
+
+    In [<span style="color: #666666">83</span>]: b <span style="color: #666666">=</span> a<span style="color: #666666">.</span>upper()
+
+    In [<span style="color: #666666">84</span>]: b
+    Out[<span style="color: #666666">84</span>]: <span style="color: #BB4444">'PETER'</span>
+
+    In [<span style="color: #666666">85</span>]: b<span style="color: #666666">.</span>lower()
+    Out[<span style="color: #666666">85</span>]: <span style="color: #BB4444">'peter'</span>
+</pre></div>
+<h3 id="26strlstrip">26.str.lstrip</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">26.</span>str<span style="color: #666666">.</span>lstrip       <span style="color: #008800; font-style: italic">#去掉字符串前面的空格，或参数中的字符</span>
+</pre></div>
+<h3 id="27-strtranslate-strmaketrans">27. str.translate / str.maketrans</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">str</span><span style="color: #666666">.</span>translate    <span style="color: #008800; font-style: italic">#根据table表的映射关系，将字符串中的每个字符转换成另一个#返回一个转换表</span>
+   In [<span style="color: #666666">32</span>]: m <span style="color: #666666">=</span> <span style="color: #AA22FF">str</span><span style="color: #666666">.</span>maketrans(<span style="color: #BB4444">'e'</span>,<span style="color: #BB4444">'b'</span>)
+
+   In [<span style="color: #666666">33</span>]: a<span style="color: #666666">.</span>translate(m)
+   Out[<span style="color: #666666">33</span>]: <span style="color: #BB4444">'pbtbr'</span>
+</pre></div>
+<h3 id="28strpartition">28.str.partition</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">28.</span>str<span style="color: #666666">.</span>partition    <span style="color: #008800; font-style: italic">#返回包含字符串中分隔符之前、分隔符、分隔符之后的子字符串的tuple</span>
+                    <span style="color: #008800; font-style: italic">#指定的分隔符，则返回一个3元的元组，第一个为分隔符左边的子串，第二个为分隔符本身，第三个为分隔符右边的子串</span>
+    In [<span style="color: #666666">77</span>]: g <span style="color: #666666">=</span> <span style="color: #BB4444">'www.google.com'</span>
+    In [<span style="color: #666666">79</span>]: g<span style="color: #666666">.</span>partition(<span style="color: #BB4444">'.'</span>)
+    Out[<span style="color: #666666">79</span>]: (<span style="color: #BB4444">'www'</span>, <span style="color: #BB4444">'.'</span>, <span style="color: #BB4444">'google.com'</span>)
+
+    In [<span style="color: #666666">80</span>]: g<span style="color: #666666">.</span>partition(<span style="color: #BB4444">'g'</span>)
+    Out[<span style="color: #666666">80</span>]: (<span style="color: #BB4444">'www.'</span>, <span style="color: #BB4444">'g'</span>, <span style="color: #BB4444">'oogle.com'</span>)
+</pre></div>
+<h3 id="29strreplace">29.str.replace</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">29.</span>str<span style="color: #666666">.</span>replace      <span style="color: #008800; font-style: italic">#替换字符串中所有的子字符串old为新的字符串new</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a<span style="color: #666666">.</span>replace(<span style="color: #BB4444">'e'</span>,<span style="color: #BB4444">'A'</span>)
+<span style="color: #BB4444">'pAtAr'</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>
+</pre></div>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">30.</span>str<span style="color: #666666">.</span>rfind        <span style="color: #008800; font-style: italic">#返回子字符串在字符串中最后一次出现的位置；如没找到，返回-1</span>
+<span style="color: #666666">31.</span>str<span style="color: #666666">.</span>rindex       <span style="color: #008800; font-style: italic">#同rfind()，但如果在字符串中没找到子字符串，会抛出错误</span>
+<span style="color: #666666">32.</span>str<span style="color: #666666">.</span>rjust        <span style="color: #008800; font-style: italic">#返回指定长度的字符串，字符串内容居右，并使用指定字符填充</span>
+<span style="color: #666666">33.</span>str<span style="color: #666666">.</span>rpartition   <span style="color: #008800; font-style: italic">#从后往前查找，返回包含字符串中分隔符之前、分隔符、分隔符之后</span>
+<span style="color: #666666">34.</span>str<span style="color: #666666">.</span>rsplit       <span style="color: #008800; font-style: italic">#从后往前拆分字符串，返回一个列表</span>
+<span style="color: #666666">35.</span>str<span style="color: #666666">.</span>rstrip       <span style="color: #008800; font-style: italic">#去掉字符串后面的空格，或参数中的字符</span>
+</pre></div>
+<h3 id="36strsplit">36.str.split</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">36.</span>str<span style="color: #666666">.</span>split        <span style="color: #008800; font-style: italic">#拆分字符串，返回一个列表</span>
+   In [<span style="color: #666666">58</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'  peter is a student '</span>
+
+   In [<span style="color: #666666">59</span>]: a<span style="color: #666666">.</span>split()
+   Out[<span style="color: #666666">59</span>]: [<span style="color: #BB4444">'peter'</span>, <span style="color: #BB4444">'is'</span>, <span style="color: #BB4444">'a'</span>, <span style="color: #BB4444">'student'</span>]
+</pre></div>
+<h3 id="37strsplitlines">37.str.splitlines</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">37.</span>str<span style="color: #666666">.</span>splitlines   <span style="color: #008800; font-style: italic">#字符串以换行符为分隔符拆分，去掉换行符；如果keepends</span>
+   In [<span style="color: #666666">54</span>]: a
+   Out[<span style="color: #666666">54</span>]: <span style="color: #BB4444">'peter</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB4444"> is </span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB4444">a student'</span>
+
+   In [<span style="color: #666666">55</span>]: <span style="color: #AA22FF; font-weight: bold">print</span>(a)
+   peter
+    <span style="color: #AA22FF; font-weight: bold">is</span>
+    a student
+
+    In [<span style="color: #666666">56</span>]: <span style="color: #AA22FF; font-weight: bold">print</span>(a<span style="color: #666666">.</span>splitlines())
+    [<span style="color: #BB4444">'peter'</span>, <span style="color: #BB4444">' is '</span>, <span style="color: #BB4444">'a student'</span>]
+    )
+</pre></div>
+<h3 id="38strstartswith">38.str.startswith</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">38.</span>str<span style="color: #666666">.</span>startswith   <span style="color: #008800; font-style: italic">#判断字符串是否以指定的前缀开始</span>
+   In [<span style="color: #666666">47</span>]: a
+   Out[<span style="color: #666666">47</span>]: <span style="color: #BB4444">'  peter is a student '</span>
+
+   In [<span style="color: #666666">48</span>]: a<span style="color: #666666">.</span>startswith(<span style="color: #BB4444">' '</span>)
+   Out[<span style="color: #666666">48</span>]: <span style="color: #AA22FF">True</span>
+
+   In [<span style="color: #666666">49</span>]: a<span style="color: #666666">.</span>startswith(<span style="color: #BB4444">'a'</span>)
+   Out[<span style="color: #666666">49</span>]: <span style="color: #AA22FF">False</span>
+</pre></div>
+<h3 id="39strstrip">39.str.strip</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">39.</span>str<span style="color: #666666">.</span>strip        <span style="color: #008800; font-style: italic">#去掉字符串前后的空格，或指定的所有字符</span>
+    In [<span style="color: #666666">41</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'  peter is a student '</span>
+
+    In [<span style="color: #666666">42</span>]: a
+    Out[<span style="color: #666666">42</span>]: <span style="color: #BB4444">'  peter is a student '</span>
+
+    In [<span style="color: #666666">43</span>]: a<span style="color: #666666">.</span>strip()
+    Out[<span style="color: #666666">43</span>]: <span style="color: #BB4444">'peter is a student'</span>
+</pre></div>
+<h3 id="40strswapcase">40.str.swapcase</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">40.</span>str<span style="color: #666666">.</span>swapcase     <span style="color: #008800; font-style: italic">#大写字符转换成小写字符，小写字符转换成大写字符</span>
+   In [<span style="color: #666666">38</span>]: b <span style="color: #666666">=</span> a<span style="color: #666666">.</span>title()
+
+   In [<span style="color: #666666">39</span>]: b
+   Out[<span style="color: #666666">39</span>]: <span style="color: #BB4444">'Peter Is A Student'</span>
+
+   In [<span style="color: #666666">40</span>]: b<span style="color: #666666">.</span>swapcase()
+   Out[<span style="color: #666666">40</span>]: <span style="color: #BB4444">'pETER iS a sTUDENT'</span>
+</pre></div>
+<h3 id="41strtitle">41.str.title</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">41.</span>str<span style="color: #666666">.</span>title        <span style="color: #008800; font-style: italic">#每个单词的第一个字符转换成titlecase字符，其他字符转</span>
+    In [<span style="color: #666666">34</span>]: a <span style="color: #666666">=</span> <span style="color: #BB4444">'peter is a student'</span>
+
+    In [<span style="color: #666666">35</span>]: a<span style="color: #666666">.</span>title()
+    Out[<span style="color: #666666">35</span>]: <span style="color: #BB4444">'Peter Is A Student'</span>
+</pre></div>
+<h3 id="43strupper">43.str.upper</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">43.</span>str<span style="color: #666666">.</span>upper        <span style="color: #008800; font-style: italic">#字符串转换成大写</span>
+   In [<span style="color: #666666">26</span>]: a<span style="color: #666666">.</span>upper()
+   Out[<span style="color: #666666">26</span>]: <span style="color: #BB4444">'PETER'</span>
+</pre></div>
+<h3 id="44strzfill">44.str.zfill</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">44.</span>str<span style="color: #666666">.</span>zfill        <span style="color: #008800; font-style: italic">#在字符串的左边填充0，不会截断字符串</span>
+    In [<span style="color: #666666">24</span>]: a<span style="color: #666666">.</span>zfill(<span style="color: #666666">10</span>)
+    Out[<span style="color: #666666">24</span>]: <span style="color: #BB4444">'00000peter'</span>
+
+    In [<span style="color: #666666">25</span>]: a<span style="color: #666666">.</span>zfill(<span style="color: #666666">5</span>)
+    Out[<span style="color: #666666">25</span>]: <span style="color: #BB4444">'peter'</span>
+</pre></div>
+<h1 id="builtins-python">builtins Python内置函数</h1>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">1.</span>abs       <span style="color: #008800; font-style: italic">#求绝对值</span>
+<span style="color: #666666">2.</span>all       <span style="color: #008800; font-style: italic">#判断迭代器中的所有数据是否都为true</span>
+<span style="color: #666666">3.</span>any       <span style="color: #008800; font-style: italic">#判断迭代器中的是否有一个数据为true</span>
+<span style="color: #666666">4.</span>bin       <span style="color: #008800; font-style: italic">#转换整数为一个二进制字符串</span>
+<span style="color: #666666">5.</span>bool      <span style="color: #008800; font-style: italic">#转换一个数据为布尔值</span>
+<span style="color: #666666">6.</span>bytearray <span style="color: #008800; font-style: italic">#将数据转换为字节数组</span>
+<span style="color: #666666">7.</span>bytes     <span style="color: #008800; font-style: italic">#将数据转换为字节数组</span>
+<span style="color: #666666">8.</span>callable  <span style="color: #008800; font-style: italic">#判断一个对象是否可调用</span>
+<span style="color: #666666">9.</span>chr       <span style="color: #008800; font-style: italic">#将整数转成字符</span>
+<span style="color: #666666">10.</span>classmethod  <span style="color: #008800; font-style: italic">#得到function的classmethod</span>
+<span style="color: #666666">11.</span>compile      <span style="color: #008800; font-style: italic">#编译source为code或AST对象</span>
+<span style="color: #666666">12.</span>complex      <span style="color: #008800; font-style: italic">#创建一个复数</span>
+<span style="color: #666666">13.</span>delattr      <span style="color: #008800; font-style: italic">#删除指定的属性</span>
+<span style="color: #666666">14.</span>dict         <span style="color: #008800; font-style: italic">#创建一个字典dictionary</span>
+<span style="color: #666666">15.</span>dir          <span style="color: #008800; font-style: italic">#返回对象的属性列表</span>
+<span style="color: #666666">16.</span>divmod       <span style="color: #008800; font-style: italic">#得到两个数字相除的结果和余数</span>
+<span style="color: #666666">17.</span>enumerate    <span style="color: #008800; font-style: italic">#得到一个枚举对象</span>
+<span style="color: #666666">18.</span>eval         <span style="color: #008800; font-style: italic">#执行一个表达式</span>
+<span style="color: #666666">19.</span><span style="color: #AA22FF; font-weight: bold">exec</span>         <span style="color: #008800; font-style: italic">#动态执行Python代码</span>
+<span style="color: #666666">20.</span>filter       <span style="color: #008800; font-style: italic">#过滤数据得到一个迭代器</span>
+<span style="color: #666666">21.</span>float        <span style="color: #008800; font-style: italic">#将字符串或数字转为浮点数</span>
+<span style="color: #666666">22.</span>format       <span style="color: #008800; font-style: italic">#格式化数据</span>
+<span style="color: #666666">23.</span>frozenset    <span style="color: #008800; font-style: italic">#得到新的frozenset对象</span>
+<span style="color: #666666">24.</span>getattr      <span style="color: #008800; font-style: italic">#得到对象属性的值</span>
+<span style="color: #666666">25.</span>globals      <span style="color: #008800; font-style: italic">#得到当前模块的全局符号表的字典</span>
+<span style="color: #666666">26.</span>hasattr      <span style="color: #008800; font-style: italic">#判断对象是否存在属性</span>
+<span style="color: #666666">27.</span>hash         <span style="color: #008800; font-style: italic">#得到对象的哈希值</span>
+<span style="color: #666666">28.</span>help         <span style="color: #008800; font-style: italic">#显示帮助信息</span>
+<span style="color: #666666">29.</span>hex          <span style="color: #008800; font-style: italic">#整数转换为十六进制表示</span>
+<span style="color: #666666">30.</span>id           <span style="color: #008800; font-style: italic">#得到对象的id</span>
+<span style="color: #666666">31.</span>input        <span style="color: #008800; font-style: italic">#输出提示符，读取用户输入</span>
+<span style="color: #666666">32.</span>int          <span style="color: #008800; font-style: italic">#将数字或字符串转为整数</span>
+<span style="color: #666666">33.</span>isinstance   <span style="color: #008800; font-style: italic">#判断object是否是classinfo的实例</span>
+<span style="color: #666666">34.</span>issubclass   <span style="color: #008800; font-style: italic">#判断一个类是否是另一个类的父类</span>
+<span style="color: #666666">35.</span>iter         <span style="color: #008800; font-style: italic">#得到一个迭代器</span>
+<span style="color: #666666">36.</span>len          <span style="color: #008800; font-style: italic">#返回对象的长度或集合的数据个数</span>
+<span style="color: #666666">37.</span>list         <span style="color: #008800; font-style: italic">#创建一个列表</span>
+<span style="color: #666666">38.</span>locals       <span style="color: #008800; font-style: italic">#得到当前符号表字典</span>
+<span style="color: #666666">39.</span>map          <span style="color: #008800; font-style: italic">#更改迭代器中的每个数据得到一个新的迭代器</span>
+<span style="color: #666666">40.</span>max          <span style="color: #008800; font-style: italic">#得到迭代器中最大的或两个或多个参数中最大的</span>
+<span style="color: #666666">41.</span>min          <span style="color: #008800; font-style: italic">#得到迭代器中最小的或两个或多个参数中最小的</span>
+<span style="color: #666666">42.</span>next         <span style="color: #008800; font-style: italic">#得到迭代器的下一个数据</span>
+<span style="color: #666666">43.</span>object       <span style="color: #008800; font-style: italic">#得到object的实例</span>
+<span style="color: #666666">44.</span>oct          <span style="color: #008800; font-style: italic">#整数转换为八进制表示</span>
+<span style="color: #666666">45.</span>open         <span style="color: #008800; font-style: italic">#打开文件并返回一个流</span>
+<span style="color: #666666">46.</span>ord          <span style="color: #008800; font-style: italic">#得到字符的整数表示</span>
+<span style="color: #666666">47.</span>pow          <span style="color: #008800; font-style: italic">#乘方运算</span>
+<span style="color: #666666">48.</span><span style="color: #AA22FF; font-weight: bold">print</span>        <span style="color: #008800; font-style: italic">#输出数据到流</span>
+<span style="color: #666666">49.</span>property     <span style="color: #008800; font-style: italic">#得到属性</span>
+<span style="color: #666666">50.</span>range        <span style="color: #008800; font-style: italic">#创建一个范围对象</span>
+<span style="color: #666666">51.</span>repr         <span style="color: #008800; font-style: italic">#得到对象的字符串表示</span>
+<span style="color: #666666">52.</span>reversed     <span style="color: #008800; font-style: italic">#反转序列得到一个迭代器</span>
+<span style="color: #666666">53.</span>round        <span style="color: #008800; font-style: italic">#浮点数按小数位数做舍入操作</span>
+<span style="color: #666666">54.</span>set          <span style="color: #008800; font-style: italic">#创建一个集合对象</span>
+<span style="color: #666666">55.</span>setattr      <span style="color: #008800; font-style: italic">#更改属性的值</span>
+<span style="color: #666666">56.</span>slice        <span style="color: #008800; font-style: italic">#得到分片对象</span>
+<span style="color: #666666">57.</span>sorted       <span style="color: #008800; font-style: italic">#排序可迭代的数据得到一个列表</span>
+<span style="color: #666666">58.</span>staticmethod     <span style="color: #008800; font-style: italic">#得到function的staticmethod</span>
+<span style="color: #666666">59.</span>str      <span style="color: #008800; font-style: italic">#得到对象的str版本</span>
+<span style="color: #666666">60.</span>sum      <span style="color: #008800; font-style: italic">#计算可迭代数据的合计</span>
+<span style="color: #666666">61.</span>tuple    <span style="color: #008800; font-style: italic">#创建一个元组</span>
+<span style="color: #666666">62.</span>type     <span style="color: #008800; font-style: italic">#返回对象的类型或创建一个新的类型对象</span>
+<span style="color: #666666">63.</span>vars     <span style="color: #008800; font-style: italic">#得到属性信息</span>
+</pre></div>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-01-11T11:04:00+08:00"> 1 11, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#python-ref">python</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#python-ref">python
+                    <span>7</span>
+</a></li>
+                <li><a href="/tags.html#pythonji-chu-ref">python基础
+                    <span>4</span>
+</a></li>
+            </ul>
+        </div>
+        </section>
+</div>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="python-training" data-title="python-training" data-url="http://blog.pyshell.cn/python-training.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"devops"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- baidu tongji   -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b6fb6111b823b418109202b642b4a62b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- baidu tongji  end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
