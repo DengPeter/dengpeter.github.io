@@ -10,18 +10,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content=", jsbase, " />
+<meta name="keywords" content="svn, ops, " />
 
-<meta property="og:title" content="前端问题汇总 "/>
-<meta property="og:url" content="/drafts/qian-duan-wen-ti-hui-zong.html" />
+<meta property="og:title" content="编译subversion1.8 "/>
+<meta property="og:url" content="/bian-yi-subversion18.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="LearnDevOps" />
 <meta property="og:article:author" content="Rongfei" />
 <meta property="og:article:published_time" content="2016-08-08T00:00:00+08:00" />
-<meta name="twitter:title" content="前端问题汇总 ">
+<meta name="twitter:title" content="编译subversion1.8 ">
 <meta name="twitter:description" content="">
 
-        <title>前端问题汇总  · LearnDevOps
+        <title>编译subversion1.8  · LearnDevOps
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/drafts/qian-duan-wen-ti-hui-zong.html"> 前端问题汇总  </a></h1>
+    <h1><a href="/bian-yi-subversion18.html"> 编译subversion1.8  </a></h1>
     </header>
 </div>
 
@@ -69,111 +69,53 @@
         <div class="span8 offset2 article-content">
 
             
-            <!-- Status: published -->
+            <p>svn 突然连不上服务器，执行svn任何命令会卡很久，最后提示:&rdquo;option Error 安全连接被切断&rdquo; &ldquo;在其他服务器上可以正常使用基本排除是服务器端的问题，再检查本地也没找出什么原因来。最后决定重新编译subversion，从1.6升级到1.8，升级完就可以使用了。困了几天，虽然不清楚为什么不能用，但现在总算可以使用了。记录下新版本的svn安装过程。</p>
+<ul>
+<li>软件包清单:</li>
+</ul>
+<p>apr,apr-util,serf(替换老版本的neon)，scons（安装serf使用),subversion</p>
+<ul>
+<li>依赖清单:</li>
+</ul>
+<p>sudo yum -y install expat-devel
+apr 和 apr-util 之前已经安装在/opt下面了，这里就略过。</p>
+<p>** scons安装</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">  wget -c  http://superb-sea2.dl.sourceforge.net/project/scons/scons/2.3.3/scons-2.3.3.tar.gz
 
-<h1 id="1">1. 改变字体大小 位置的变化</h1>
-<p>html code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;nav class=&quot;top-nav&quot;&gt;
-  &lt;h1 class=&quot;ml10 linehgt40 font16&quot;&gt;System&lt;/h1&gt;
-  &lt;ul class=&quot;font16&quot; &gt;
-    &lt;li&#39;&gt;&#39;&lt;/li&gt;
-    &lt;li&#39;&gt;&#39;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;
+  tar axf scons-2.3.3.tar.gz
+  sudo python setup.py install
 </pre></div>
 
 
-<p>css code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">html,body{margin:0;pading:0;width:100%;height:100%}
-.top-nav{
-  background-color: #141414;
-  height: 40px;
-  color: #fff;
-}
-.top-nav h1{
-  position: absolute;
-  left: 20px;
-  top: -10;
-}
-.top-nav ul{
-  position: absolute;
-  left:80px;
-  top: -5;
-}
+<p>** serf安装</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">  wget -c https://archive.apache.org/dist/serf/serf-1.3.8.tar.bz2
+  或者 svn checkout https://svn.apache.org/repos/asf/serf/trunk serf-trunk
+  tar axf serf-1.3.8.tar.bz2
+  <span style="color: #AA22FF">cd</span> serf-1.3.8
+  scons <span style="color: #B8860B">PREFIX</span><span style="color: #666666">=</span>/opt/serf <span style="color: #B8860B">APR</span><span style="color: #666666">=</span>/opt/apr <span style="color: #B8860B">APU</span><span style="color: #666666">=</span>/opt/apr-util
+  scons -Y ../serf-1.3.8
+  scons <span style="color: #B8860B">PREFIX</span><span style="color: #666666">=</span>/opt/serf <span style="color: #B8860B">LIBDIR</span><span style="color: #666666">=</span>/usr/lib64
+  sudo scons <span style="color: #B8860B">PREFIX</span><span style="color: #666666">=</span>/opt/serf install
 </pre></div>
 
 
-<p>问题描述： 字体的垂直位置是由绝对路径absolute top定位的，一旦字体大小改变top值也要跟着改变。有什么方法可以固定h1 和 li的位置，改变字体大小也不影响位置？
-解决方案：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">暂无
+<p>** subversion安装</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">   wget -c http://mirror.olnevhost.net/pub/apache/subversion/subversion-1.8.16.tar.gz
+
+  tar axf subversion-1.8.16.tar.gz
+  <span style="color: #AA22FF">cd</span> subversion-1.8.16
+  wget http://www.sqlite.org/sqlite-amalgamation-3071300.zip
+  unzip sqlite-amalgamation-3071300.zip
+  mv sqlite-amalgamation-3071300 sqlite-amalgamation
+  ./configure --prefix<span style="color: #666666">=</span>/opt/svn --with-apr<span style="color: #666666">=</span>/opt/apr --with-apr-util<span style="color: #666666">=</span>/opt/apr-util/ --with-serf<span style="color: #666666">=</span>/opt/serf/
+  make
+  sudo make install
+  sudo mv  /usr/bin/svn<span style="color: #666666">{</span>,.1.6<span style="color: #666666">}</span>
+  sudo ln -s /opt/svn/bin/svn /usr/bin/svn
 </pre></div>
 
 
-<h1 id="2">2 字体颜色大小等样式，只能用在包裹文字的标签上，在包裹文字标签的父级标签不生效</h1>
-<h1 id="body">body 背景不能顶头</h1>
-<p>html</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/base.css&quot;&gt;
-  &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class=&quot;container&quot;&gt;
-    &lt;nav&gt;
-      &lt;h1&gt;Sytem&lt;/h1&gt;
-      &lt;ul&gt;
-      &lt;li&#39;&gt;&#39;&lt;/li&gt;
-      &lt;li&#39;&gt;&#39;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre></div>
-
-
-<p>css</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">html{
-  background-color: #cccccc;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
-body{
-  margin: 0;
-  padding: 0;
-  background-color: #7f7f7f;
-  height: 100%;
-}
-</pre></div>
-
-
-<h1 id="3-line-height-height">3 line-height的用法 和 height的区别</h1>
-<p>在使用 height: 40px;显示的是 40px高度，
-但是使用了line-height: 40px; 的时候实际显示为200px;
-原因：
-line-height不能用在父标签上，而应该用在子标签上
-html code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;div&gt;
-  &lt;ul&gt;
-    &lt;li&#39;&gt;&#39;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre></div>
-
-
-<p>css code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">div{
-  height: 50px;
-}
-a{
-  line-height: 50px;
-}
-</pre></div>
+<p>以前遇到的错误： E170000: Unrecognized URL scheme for http，原因没有安装serf</p>
             
             
             <hr/>
@@ -183,13 +125,19 @@ a{
             <h4>Published</h4>
             <time pubdate="pubdate" datetime="2016-08-08T00:00:00+08:00"> 8 8, 2016</time>
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#jsbase-ref">jsbase</a>
+            <a class="category-link" href="/categories.html#ops-ref">ops</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#svn-ref">svn
+                    <span>1</span>
+</a></li>
+            </ul>
         </div>
         </section>
 </div>
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="前端问题汇总" data-title="前端问题汇总" data-url="http://blog.pyshell.cn/drafts/qian-duan-wen-ti-hui-zong.html"></div>
+<div class="ds-thread" data-thread-key="编译subversion1.8" data-title="编译subversion1.8" data-url="http://blog.pyshell.cn/bian-yi-subversion18.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
