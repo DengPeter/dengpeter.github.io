@@ -10,18 +10,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content=", jsbase, " />
+<meta name="keywords" content="git, gitlab, ops, " />
 
-<meta property="og:title" content="前端问题汇总 "/>
-<meta property="og:url" content="/drafts/qian-duan-wen-ti-hui-zong.html" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="gitlab折腾记 "/>
+<meta property="og:url" content="/gitlabzhe-teng-ji.html" />
+<meta property="og:description" content="gitlab安装" />
 <meta property="og:site_name" content="LearnDevOps" />
 <meta property="og:article:author" content="Rongfei" />
 <meta property="og:article:published_time" content="2016-08-19T00:00:00+08:00" />
-<meta name="twitter:title" content="前端问题汇总 ">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="gitlab折腾记 ">
+<meta name="twitter:description" content="gitlab安装">
 
-        <title>前端问题汇总  · LearnDevOps
+        <title>gitlab折腾记  · LearnDevOps
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/drafts/qian-duan-wen-ti-hui-zong.html"> 前端问题汇总  </a></h1>
+    <h1><a href="/gitlabzhe-teng-ji.html"> gitlab折腾记  </a></h1>
     </header>
 </div>
 
@@ -69,111 +69,54 @@
         <div class="span8 offset2 article-content">
 
             
-            <!-- Status: published -->
-
-<h1 id="1">1. 改变字体大小 位置的变化</h1>
-<p>html code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;nav class=&quot;top-nav&quot;&gt;
-  &lt;h1 class=&quot;ml10 linehgt40 font16&quot;&gt;System&lt;/h1&gt;
-  &lt;ul class=&quot;font16&quot; &gt;
-    &lt;li&#39;&gt;&#39;&lt;/li&gt;
-    &lt;li&#39;&gt;&#39;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;
+            <p>终于用上了gitlab感觉代码管理如此亲切。</p>
+<p>写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统一编译管理。
+开始在centos上通过安装，安装成功后使用到<code>git push</code>的时候报错<code>gitlab: git-http-push failed, return code 22</code>官方<a href="https://gitlab.com/gitlab-org/gitlab-ce/issues/2567">issues</a>
+属于gitlab的bug官网上issues中并没有解决,尝试了各种解决方法决定放弃。由于官方推荐的是debin系，决定采用ubunt安装，结果还是同样的问题无解。
+最后还是采用官方打包好的deb包run起来，尼玛可是数据库默认竟然是postgresql，换mysql结果又来一个无解的问题，还是乖乖的用postresql吧，这里记录的<a href="blog.pyshell.cn/">postgresql</a>相关内容。
+本篇记录下整个过程中遇到的坑。</p>
+<p>简要记录下对gitlab架构的梳理：</p>
+<p>gitlab:
+  rails框架写成的web端</p>
+<p>gitlab-shell:
+  git动作的实现</p>
+<p>gitlab-workhorse:
+   请求(任务)分发</p>
+<p>编译安装<a href="http://docs.gitlab.com/ce/install/installation.html">官方指南</a></p>
+<p>deb包安装<a href="https://about.gitlab.com/downloads/#ubuntu1604">官方指南</a></p>
+<p>按照官方指南一步步操作：</p>
+<h4 id="1-sslpostfix">1. 安装需要的组建ssl,postfix(发送邮件服务端)</h4>
+<p><code>sudo apt-get install curl openssh-server ca-certificates postfix</code></p>
+<h4 id="2">2. 启用官方源</h4>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo apt-get install gitlab-ce
 </pre></div>
 
 
-<p>css code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">html,body{margin:0;pading:0;width:100%;height:100%}
-.top-nav{
-  background-color: #141414;
-  height: 40px;
-  color: #fff;
-}
-.top-nav h1{
-  position: absolute;
-  left: 20px;
-  top: -10;
-}
-.top-nav ul{
-  position: absolute;
-  left:80px;
-  top: -5;
-}
-</pre></div>
-
-
-<p>问题描述： 字体的垂直位置是由绝对路径absolute top定位的，一旦字体大小改变top值也要跟着改变。有什么方法可以固定h1 和 li的位置，改变字体大小也不影响位置？
-解决方案：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">暂无
-</pre></div>
-
-
-<h1 id="2">2 字体颜色大小等样式，只能用在包裹文字的标签上，在包裹文字标签的父级标签不生效</h1>
-<h1 id="body">body 背景不能顶头</h1>
-<p>html</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/base.css&quot;&gt;
-  &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class=&quot;container&quot;&gt;
-    &lt;nav&gt;
-      &lt;h1&gt;Sytem&lt;/h1&gt;
-      &lt;ul&gt;
-      &lt;li&#39;&gt;&#39;&lt;/li&gt;
-      &lt;li&#39;&gt;&#39;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre></div>
-
-
-<p>css</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">html{
-  background-color: #cccccc;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
-body{
-  margin: 0;
-  padding: 0;
-  background-color: #7f7f7f;
-  height: 100%;
-}
-</pre></div>
-
-
-<h1 id="3-line-height-height">3 line-height的用法 和 height的区别</h1>
-<p>在使用 height: 40px;显示的是 40px高度，
-但是使用了line-height: 40px; 的时候实际显示为200px;
-原因：
-line-height不能用在父标签上，而应该用在子标签上
-html code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;div&gt;
-  &lt;ul&gt;
-    &lt;li&#39;&gt;&#39;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre></div>
-
-
-<p>css code:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">div{
-  height: 50px;
-}
-a{
-  line-height: 50px;
-}
-</pre></div>
+<h4 id="3-gitlab">3. 配置并启动gitlab</h4>
+<p><code>sudo gitlab-ctl reconfigure</code>
+上面3步困难的1.是官方源是国外的，下载安装包(280MB)比较慢,安装包大主要是把需要的rubygem包都已经打包在里面了，
+2.更新到中间会assleep一下卡了我好长时间，后面发现是ruby源慢造成的。果断换https://ruby.taobao.com。
+<code>gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/</code></p>
+<h4 id="4">4. 根据自己的实际情况配置：</h4>
+<ol>
+<li>修改访问地址: <code>vim /etc/gitlab/gitlab.rb; #external_url 'http://git.example.com'</code></li>
+<li>重启重新初始化gitlab <code>gitlab reconfigure</code></li>
+<li>浏览器访问 你的url 输入密码就可以登录了</li>
+</ol>
+<h4 id="5">5. 问题来了</h4>
+<h5 id="deb">deb安装完的相关工作路径在那里？</h5>
+<p>配置路径: <code>/etc/gitlab</code>
+配置/数据/日志存放路径: <code>/var/opt/gitlab</code></p>
+<p>web程序路径: <code>/opt/gitlab</code></p>
+<h5 id="postgresql">如何登录postgresql数据库？</h5>
+<p>这个问题也是困了好久,在<code>/var/opt/gitlab/gitalb-rails/etc/</code>发现<code>database.yml</code>文件，看到host居然是<code>/var/opt/gitlab/postgresql</code>
+果然用127.0.0.1 无法登录换做：<code>sudo -u gitlab psql  -h /var/opt/gitlab/postgresql -d databasename</code>竟然登录成功了，不知道这是什么思路。</p>
+<p>真搞不明白官方版本迭代如此快，为何跨平台遇到的问题，却迟迟不解决。
+写完了发现有点乱，只记录了主要的东东。</p>
+<!--
+替换postgresql为mysql的时候提示却少mysql2库，安装gme包各种错误，原来是没有安装ruby的开发库
+ `sudo  apt-get install ruby-dev` -->
             
             
             <hr/>
@@ -183,13 +126,22 @@ a{
             <h4>Published</h4>
             <time pubdate="pubdate" datetime="2016-08-19T00:00:00+08:00"> 8 19, 2016</time>
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#jsbase-ref">jsbase</a>
+            <a class="category-link" href="/categories.html#ops-ref">ops</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#git-ref">git
+                    <span>3</span>
+</a></li>
+                <li><a href="/tags.html#gitlab-ref">gitlab
+                    <span>1</span>
+</a></li>
+            </ul>
         </div>
         </section>
 </div>
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="前端问题汇总" data-title="前端问题汇总" data-url="http://blog.pyshell.cn/drafts/qian-duan-wen-ti-hui-zong.html"></div>
+<div class="ds-thread" data-thread-key="gitlab折腾记" data-title="gitlab折腾记" data-url="http://blog.pyshell.cn/gitlabzhe-teng-ji.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
