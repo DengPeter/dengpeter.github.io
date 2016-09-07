@@ -75,20 +75,20 @@
 <p><code>sudo yum -y install wget gcc glibc glibc-common gd gd-devel make net-snmp  unzip</code></p>
 <p>http php mysql 之前已经安装这里略过</p>
 <h3 id="soft">soft清单：</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.2.0.tar.gz
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.2.0.tar.gz
 $ wget http://nagios-plugins.org/download/nagios-plugins-2.1.2.tar.gz
 </pre></div>
 
 
 <h3 id="nagios_1">创建nagios用户</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo useradd nagios -s /sbin/nologin -M
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo useradd nagios -s /sbin/nologin -M
 sudo groupadd nagcmd
 sudo usermod -a -G nagcmd nagios
 </pre></div>
 
 
 <h3 id="install-nagios">install nagios</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ tar zxvf nagios-4.2.0.tar.gz
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ tar zxvf nagios-4.2.0.tar.gz
 $ tar zxvf nagios-plugins-2.1.2.tar.gz
 $ cd nagios-4.2.0
 $ ./configure --prefix=/opt/nagios --with-command-group=nagcmd
@@ -106,13 +106,13 @@ $ sudo /opt/nagios/bin/nagios -v /opt/nagios/etc/nagios.cfg
 
 
 <h3 id="nagiosapache">启动nagios,apache</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo /etc/init.d/nagios start
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo /etc/init.d/nagios start
 $ sudo /opt/apache/bin/apachectl start
 </pre></div>
 
 
 <h1 id="_2">登录用户名</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"> $ htpasswd –c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span> $ htpasswd –c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 </pre></div>
             
             
@@ -121,7 +121,7 @@ $ sudo /opt/apache/bin/apachectl start
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-08-09T00:00:00+08:00"> 8 9, 2016</time>
+            <time pubdate="pubdate" datetime="2016-08-09T00:00:00+08:00">8月 9, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#ops-ref">ops</a>
         </div>

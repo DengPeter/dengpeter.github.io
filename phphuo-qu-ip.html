@@ -72,7 +72,7 @@
             <p>最近跟开发联调php获取ip的问题，记录下过程。</p>
 <p>首先需求是 要获取1.服务器端IP，2.获取客户端IP</p>
 <p>涉及到的几个函数：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gethostbyname($_SERVER[&#39;SERVER_NAME&#39;]) // 获取到服务器端的公网ip
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>gethostbyname($_SERVER[&#39;SERVER_NAME&#39;]) // 获取到服务器端的公网ip
 get_client_ip() //获取客户端的本机ip(thinkphp框架提供)
 $_SERVER[&#39;REMOTE_ADDR&#39;] //同上
 $_SERVER[&#39;SERVER_ADDR&#39;] //获取的是运行代码机器的ip  问题：有时候获取的是127.0.0.1
@@ -82,7 +82,7 @@ $_SERVER[&#39;SERVER_ADDR&#39;] //获取的是运行代码机器的ip  问题：
 <p>问题1：获取客户端的服务器ip不正确，仔细查找发现原来是跟代理有关</p>
 <p>$_SERVER[&lsquo;REMOTE_ADDR&rsquo;获取客户端本机的ip，但是如果客户端有代理的话，得到的ip地址非客户端真实ip，而是代理的ip，此时用
 那么用$_SERVER[&ldquo;HTTP_X_FORWARDED_FOR&rdquo;]获取，同时也要注意：如果没有设置代理$_SERVER[&ldquo;HTTP_X_FORWARDED_FOR&rdquo;] 将得到null空值。可以使用if来判断一下。</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800">&lt;?php</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800">&lt;?php</span>
 <span style="color: #AA22FF; font-weight: bold">if</span> (<span style="color: #B8860B">$_SERVER</span>[<span style="color: #BB4444">&quot;HTTP_X_FORWARDED_FOR&quot;</span>]<span style="color: #666666">==</span><span style="color: #BB4444">&quot;&quot;</span>)
 {
 <span style="color: #B8860B">$user_ip</span><span style="color: #666666">=</span><span style="color: #B8860B">$_SERVER</span>[<span style="color: #BB4444">&quot;REMOTE_ADDR&quot;</span>];
@@ -106,7 +106,7 @@ $_SERVER[&lsquo;SERVER_ADDR&rsquo;] 获取到的ip非运行代码机器的ip，�
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-04-26T16:07:58+08:00"> 4 26, 2016</time>
+            <time pubdate="pubdate" datetime="2016-04-26T16:07:58+08:00">4月 26, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#ops-ref">ops</a>
             <h4>Tags</h4>

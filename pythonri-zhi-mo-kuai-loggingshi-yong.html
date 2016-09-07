@@ -96,7 +96,7 @@
 
 <p>日志级别：</p>
 <p>logging日志级别为debug,info,warn,error,critical.logging默认为warn级别</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">| 级别    |何时使用|
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>| 级别    |何时使用|
 | -------|-----------|
 | DEBUG |详细信息，典型地调试问题时会感兴趣|
 | INFO    |证明事情按预期工作|
@@ -108,7 +108,7 @@
 
 <p>现看最简单的日志运行：
 在终端中演示：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]:   <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">1</span>]:   <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging</span>
 
 In [<span style="color: #666666">2</span>]:   logging<span style="color: #666666">.</span>debug(<span style="color: #BB4444">&#39;debug message&#39;</span>)
 
@@ -126,7 +126,7 @@ CRITICAL:root:critical message
 
 
 <p>看到前面的输出debug和info并没有输出，我们增加一个level设置,这次写在log.py 文件中。</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/usr/local/bin/python</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic">#!/usr/local/bin/python</span>
 <span style="color: #008800; font-style: italic"># -*- coding:utf-8 -*-</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging</span>
 logging<span style="color: #666666">.</span>basicConfig(filename<span style="color: #666666">=</span><span style="color: #BB4444">&#39;logging.log&#39;</span>,level<span style="color: #666666">=</span>logging<span style="color: #666666">.</span>DEBUG)
@@ -139,7 +139,7 @@ logging<span style="color: #666666">.</span>critical(<span style="color: #BB4444
 
 
 <p>查看输出：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ python log.py
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ python log.py
 $ cat logging.log
 DEBUG:root:debug message
 INFO:root:info message
@@ -188,7 +188,7 @@ NullHandler类位于核心logging包，不做任何的格式化或者输出。
 <p>通过配置字典进行配置，使用dictConfig()函数读取配置信息；</p>
 <p>通过网络进行配置，使用listen()函数进行网络配置。</p>
 <p>basicConfig关键字参数</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">关键字       描述
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>关键字       描述
 filename    创建一个FileHandler，使用指定的文件名，而不是使用StreamHandler。
 filemode    如果指明了文件名，指明打开文件的模式（如果没有指明filemode，默认为&#39;a&#39;）。
 format    handler使用指明的格式化字符串。
@@ -199,7 +199,7 @@ stream    使用指明的流来初始化StreamHandler。该参数与&#39;filenam
 
 
 <p>有用的format格式</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">格式  描述
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>格式  描述
 %(levelno)s 打印日志级别的数值
 %(levelname)s   打印日志级别名称
 %(pathname)s    打印当前执行程序的路径
@@ -215,7 +215,7 @@ stream    使用指明的流来初始化StreamHandler。该参数与&#39;filenam
 
 
 <p>有用的datefmt格式:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">Directive   Meaning Notes
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Directive   Meaning Notes
 %a  Locale’s abbreviated weekday name.
 %A  Locale’s full weekday name.
 %b  Locale’s abbreviated month name.
@@ -244,7 +244,7 @@ stream    使用指明的流来初始化StreamHandler。该参数与&#39;filenam
 <p>配置示例
 显式配置
 使用程序logger.py如下:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># -*- encoding:utf-8 -*-</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># -*- encoding:utf-8 -*-</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging</span>
 
 <span style="color: #008800; font-style: italic"># create logger</span>
@@ -277,7 +277,7 @@ logger<span style="color: #666666">.</span>critical(<span style="color: #BB4444"
 
 <p>文件配置
 配置文件logging.conf如下:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># -*- encoding:utf-8 -*-</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># -*- encoding:utf-8 -*-</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging</span>
 
 <span style="color: #008800; font-style: italic"># create logger</span>
@@ -310,7 +310,7 @@ logger<span style="color: #666666">.</span>critical(<span style="color: #BB4444"
 
 <p>文件配置
 配置文件logging.conf如下:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">keys<span style="color: #666666">=</span>root,example01
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>keys<span style="color: #666666">=</span>root,example01
 
 [logger_root]
 level<span style="color: #666666">=</span>DEBUG
@@ -345,7 +345,7 @@ format<span style="color: #666666">=%</span>(asctime)s <span style="color: #6666
 
 
 <p>使用程序logger.py如下:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># -*- encoding:utf-8 -*-</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># -*- encoding:utf-8 -*-</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">logging.config</span>
 
@@ -368,7 +368,7 @@ logger<span style="color: #666666">.</span>critical(<span style="color: #BB4444"
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-07-27T00:00:00+08:00"> 7 27, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-27T00:00:00+08:00">7月 27, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#python-ref">python</a>
             <h4>Tags</h4>

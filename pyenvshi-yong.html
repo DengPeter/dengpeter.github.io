@@ -70,20 +70,31 @@
 
             
             <ol>
-<li>安装
-  git clone https://github.com/yyuu/pyenv.git
-  vim /etc/profile.d/pyenv.sh
-    export PYENV_ROOT=&rdquo;/opt/pyenv&rdquo;
-    export PATH=&rdquo;$PYENV_ROOT/bin:$PATH&rdquo;</li>
+<li>安装</li>
 </ol>
-<p>source /etc/profile.d/pyenv.sh</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone https://github.com/yyuu/pyenv.git
+vim /etc/profile.d/pyenv.sh
+  <span style="color: #AA22FF">export</span> <span style="color: #B8860B">PYENV_ROOT</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/opt/pyenv&quot;</span>
+  <span style="color: #AA22FF">export</span> <span style="color: #B8860B">PATH</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$PYENV_ROOT</span><span style="color: #BB4444">/bin:</span><span style="color: #B8860B">$PATH</span><span style="color: #BB4444">&quot;</span>
+
+<span style="color: #AA22FF">source</span> /etc/profile.d/pyenv.sh
+</pre></div>
+
+
+<p>pyenv 依赖ssl所以要安装openssl</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  sudo apt-get install openssl  libssl-dev
+  sudo apt-get install sqlite3  libsqlite-dev
+</pre></div>
+
+
 <ol>
-<li>命令
-  pyenv install -l #列举所有的可用的Python版本(未安装)
-  pyenv install 2.7.5 #安装某个版本的python
-  pyenv versions #列出所有已经安装的版本
-  pyenv local 2.7.5 #设置所要使用的某一个python版本，当然也可以用global那就是全局的作用了</li>
+<li>命令</li>
 </ol>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  pyenv install -l    <span style="color: #008800; font-style: italic"># 列举所有的可用的Python版本(未安装)</span>
+  pyenv install 2.7.5 <span style="color: #008800; font-style: italic"># 安装某个版本的python</span>
+  pyenv versions      <span style="color: #008800; font-style: italic"># 列出所有已经安装的版本</span>
+  pyenv <span style="color: #AA22FF">local</span> 2.7.5   <span style="color: #008800; font-style: italic"># 设置所要使用的某一个python版本，当然也可以用global那就是全局的作用了</span>
+</pre></div>
             
             
             <hr/>
@@ -91,7 +102,7 @@
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-06-15T00:00:00+08:00"> 6 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-06-15T00:00:00+08:00">6月 15, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
             <h4>Tags</h4>

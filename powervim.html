@@ -104,7 +104,7 @@
             
 <h1 id="vim">vim基本功</h1>
 <h3 id="_1">移动之单词动作</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">w</span>/W     #正向移动到第[count]个词首／字串的首部,
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">w</span>/W     #正向移动到第[count]个词首／字串的首部,
 <span style="color: #AA22FF; font-weight: bold">e</span><span style="color: #BB6688">/E     #正向移动到第[count]个单词/</span>字串的尾部,不停留在空行上。
 <span style="color: #AA22FF; font-weight: bold">b</span><span style="color: #BB6688">/B     #反向移动到第[count]个单词/</span>字串的首部
 ge<span style="color: #BB6688">/gE   #反向到第 [count] 个单词/</span>字串的尾部
@@ -122,29 +122,29 @@ ge<span style="color: #BB6688">/gE   #反向到第 [count] 个单词/</span>字�
 <p>使用H/M/L这三个键，可以让光标跳到当前窗口的顶部、中间、和底部，停留在第一个非空字符上。H命令和L命令前也可以加一个数字，但数字的含义不再是倍数，而是指距窗口顶部、底部的行数。例如，‘3H’表示光标移动到距窗口顶部第3行的位置；‘5L’表示光标移动到距窗口底部5行的位置。</p>
 <p><img alt="" src="http://7xpz68.com1.z0.glb.clouddn.com/HML.gif?/0/w/800/h/540"/></p>
 <h3 id="_2">移动之跳转</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">:help <span style="color: #AA22FF; font-weight: bold">jump</span>-motions
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>:help <span style="color: #AA22FF; font-weight: bold">jump</span>-motions
 </pre></div>
 <p>“跳转”包括如下的命令:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">"'"、"`"、 "G"、 "/"、 "?"、 "n"、 "N"、 "%"、 "("、 ")"、 "[["、 "]]"、 "{"、 "}"、 ":s"、 ":tag"、 "L"、 "M"、 "H"</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic">"'"、"`"、 "G"、 "/"、 "?"、 "n"、 "N"、 "%"、 "("、 ")"、 "[["、 "]]"、 "{"、 "}"、 ":s"、 ":tag"、 "L"、 "M"、 "H"</span>
 </pre></div>
 <h4 id="_3"><code>''</code> 和 <code>两个反引号</code></h4>
 <p>两个反引号是<code>esc</code>下面的这个键.</p>
 <p>开始编辑新文件的命令。如果用这些命令使光标 “跳转”，那么跳转之前的光标位置会被记住。除非包含该位置的行被
 改变或者删除，你可以用 <code>''</code> 和 ‘两个反引号’ 命令返回这个位置。</p>
 <p>两个命令的不同之处:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">`两个反引号`   跳转到精确的列
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>`两个反引号`   跳转到精确的列
 
 <span style="color: #BB4444">''</span>  跳转到光标所在行的第一个非空白字符上。
 </pre></div>
 <h4 id="ctrl-octrl-i">ctrl - o/ctrl - i</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">` ctrl - <span style="color: #AA22FF; font-weight: bold">o</span> `   #转到跳转表里第 [count] 个较旧的光标位置
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>` ctrl - <span style="color: #AA22FF; font-weight: bold">o</span> `   #转到跳转表里第 [count] 个较旧的光标位置
 
 ` ctrl - <span style="color: #AA22FF; font-weight: bold">i</span> `    #转到跳转表里第 [count] 个较新的光标位置
 </pre></div>
 <h1 id="1vim">1.vim中文帮助安装</h1>
 <p>vim版本7.4
 vimcdoc1.9</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir ~/.vim/help
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>mkdir ~/.vim/help
 <span style="color: #AA22FF">cd</span> ~/.vim/help
 wget -c http://jaist.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-1.9.0.tar.gz
 ./vimcdoc.sh -i  <span style="color: #008800; font-style: italic">#安装帮助</span>
@@ -155,7 +155,7 @@ sudo ./vimcdoc.sh -u  <span style="color: #008800; font-style: italic">#卸载�
 </pre></div>
 <h1 id="vim_1">无插件vim</h1>
 <h2 id="_4">拼写</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BB4444">"开启关闭拼写检查</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #BB4444">"开启关闭拼写检查</span>
 <span style="color: #BB4444">:set spell</span>
 <span style="color: #BB4444">:set nospell</span>
 <span style="color: #BB4444">:set spelllang=en #只检查英文</span>
@@ -178,7 +178,7 @@ sudo ./vimcdoc.sh -u  <span style="color: #008800; font-style: italic">#卸载�
 </pre></div>
 <h1 id="vim_2">vim 插件</h1>
 <h2 id="airline">airline</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim ~/.vim/bundle.vim
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim ~/.vim/bundle.vim
 ....
 Plugin <span style="color: #BB4444">'bling/vim-airline'</span>
 ....
@@ -192,7 +192,7 @@ vim ~/.vimrc
     <span style="color: #AA22FF">let</span> g:airline_theme<span style="color: #666666">=</span><span style="color: #BB4444">"luna"</span>
 </pre></div>
 <h2 id="youcompleteme">YoucompleteMe</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim ~/.vim/bundle.vim
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim ~/.vim/bundle.vim
 
 <span style="color: #008800; font-style: italic"># 1. Plugin配置安装</span>
 ....
@@ -220,7 +220,7 @@ git submodule update --init --recursive
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-01-11T09:32:00+08:00"> 1 11, 2016</time>
+            <time pubdate="pubdate" datetime="2016-01-11T09:32:00+08:00">1月 11, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
         </div>

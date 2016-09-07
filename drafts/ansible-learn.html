@@ -84,7 +84,7 @@ Status: published</p>
 <p>Ansible 是用python开发的一款服务器批量管理工具。基于ssh通信简单易用,无需客户端。</p>
 <h2 id="2">2.安装</h2>
 <p>Ansible 能够安装到 Linux、BSD、Mac OS X 等平台，Python 版本最低要求为 2.6。ansible是python编写可以使用python包管理器安装.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ sudo pip install ansible
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ sudo pip install ansible
 </pre></div>
 
 
@@ -101,7 +101,7 @@ Status: published</p>
 <p>默认hosts文件配置  <br />
 主机可以用ip，域名，别名等，一个主机可以属于多个组。可以指定要登陆的端口号，用户名，密码(不推荐直接明文指定密码) 建议使用:?(后面再添加)</p>
 <p>普通主机组</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ cat /etc/ansible/hosts
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ cat /etc/ansible/hosts
     mail.example.com  <span style="color: #008800; font-style: italic">#主机名 </span>
 
     <span style="color: #666666">[</span>webservers<span style="color: #666666">]</span>      <span style="color: #008800; font-style: italic">#组名</span>
@@ -116,13 +116,13 @@ Status: published</p>
 
 
 <p>指定端口</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ cat /etc/ansible/hosts
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ cat /etc/ansible/hosts
         www.example.com:端口号  <span style="color: #008800; font-style: italic">#端口号</span>
 </pre></div>
 
 
 <p>指定登陆用户名和连接方式</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ cat /etc/ansible/hosts
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ cat /etc/ansible/hosts
         <span style="color: #666666">[</span>targets<span style="color: #666666">]</span>
         localhost              <span style="color: #B8860B">ansible_connection</span><span style="color: #666666">=</span><span style="color: #AA22FF">local</span>
         other1.example.com     <span style="color: #B8860B">ansible_connection</span><span style="color: #666666">=</span>ssh        <span style="color: #B8860B">ansible_ssh_user</span><span style="color: #666666">=</span>mpdehaan
@@ -139,13 +139,13 @@ ansible_connection，目标主机连接类型，可以是local、ssh或paramiko�
 ansible_ssh_private_key_file, 连接目标主机的ssh私钥。
 ansible_*_interpreter，指定采用非Python的其他脚本语言，如Ruby、Perl或其他类似ansible_python_interpreter解释器。</p>
 <h3 id="33-api">3.3 模块及API</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ ansible-doc -l   <span style="color: #008800; font-style: italic">#查看所有的模块</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ ansible-doc -l   <span style="color: #008800; font-style: italic">#查看所有的模块</span>
     $ ansible-doc -s  module_name  <span style="color: #008800; font-style: italic">#模块的具体使用方法</span>
 </pre></div>
 
 
 <p>Ansible提供了非常丰富的功能模块，包括:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">Cloud（云计算）
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Cloud（云计算）
 Commands（命令行）
 Database（数据库）
 Files（文件管理）
@@ -173,28 +173,28 @@ Web Infrastruc-ture（Web基础服务）等等，
 <h4 id="341-ad-hoc-commands">3.4.1 Ad-Hoc Commands</h4>
 <p>ad-hoc 的使用场景通常一些比较临、单一的不需要经常重复操作的动作,不需要将这些执行的命令保存下来的我们就使用使用ad-hoc，
 Ad-hoc命令的格式一般如下：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ ansible groupname -i inventory -m module -a arguments
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ ansible groupname -i inventory -m module -a arguments
 </pre></div>
 
 
 <p>其中默认的模块名为command，即“-m command”可省略。获取远程webservers组主机的uptime</p>
 <h4 id="342-ad-hoc">3.4.2 ad-hoc 例子</h4>
 <p>展示一个查看 test主机运行时间的例子:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">inventory 文件：
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>inventory 文件：
 </pre></div>
 
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ cat /etc/ansible/host
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ cat /etc/ansible/host
        test1w.cn
        test0w
 </pre></div>
 
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">执行命令:
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>执行命令:
 </pre></div>
 
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ ansible all -i host -m <span style="color: #AA22FF">command</span> -a <span style="color: #BB4444">&quot;uptime&quot;</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ ansible all -i host -m <span style="color: #AA22FF">command</span> -a <span style="color: #BB4444">&quot;uptime&quot;</span>
       test1w.cn | success | <span style="color: #B8860B">rc</span><span style="color: #666666">=0</span> &gt;&gt;
       14:57:45 up <span style="color: #666666">88</span> days,  1:19,  <span style="color: #666666">1</span> user,  load average: 0.00, 0.00, 0.00
 
@@ -205,18 +205,18 @@ Ad-hoc命令的格式一般如下：</p>
 
 <h4 id="343-api">3.4.3 查看模块及api的帮助</h4>
 <p>命令格式:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ ansible-doc 模块名
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ ansible-doc 模块名
 </pre></div>
 
 
 <p>command 模块的帮助：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ ansible-doc <span style="color: #AA22FF">command</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ ansible-doc <span style="color: #AA22FF">command</span>
     &gt; COMMAND
 
           The <span style="color: #666666">[</span>command<span style="color: #666666">]</span> module takes the <span style="color: #AA22FF">command</span> name followed by a list of
           space-delimited arguments. The given <span style="color: #AA22FF">command</span> will be executed on all
           selected nodes. It will not be processed through the shell, so
-          variables like <span style="color: #BB4444">`</span>$HOME<span style="color: #BB4444">&#39; and operations like `&quot;&lt;&quot;&#39;</span>, <span style="color: #BB4444">`&quot;&gt;&quot;&#39;, `&quot;|&quot;&#39;</span>, and
+          variables like <span style="color: #BB4444">`</span><span style="color: #B8860B">$HOME</span><span style="color: #BB4444">&#39; and operations like `&quot;&lt;&quot;&#39;</span>, <span style="color: #BB4444">`&quot;&gt;&quot;&#39;, `&quot;|&quot;&#39;</span>, and
           <span style="color: #BB4444">`&quot;&amp;&quot;</span><span style="border: 1px solid #FF0000">&#39;</span> will not work <span style="color: #666666">(</span>use the <span style="color: #666666">[</span>shell<span style="color: #666666">]</span> module <span style="color: #AA22FF; font-weight: bold">if</span> you need these
           features<span style="color: #666666">)</span>.
 
@@ -236,7 +236,7 @@ Ad-hoc命令的格式一般如下：</p>
 
 <h4 id="344">3.4.4 常用模块</h4>
 <p>ansible 执行远程命令主要有3个模块:command、script、shell</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">command: 为ansible默认模块，可以远程执行所有的shell命令。
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>command: 为ansible默认模块，可以远程执行所有的shell命令。
 
 script: 可以向远程端执行master端存储的shell脚本，相当于scp＋shell组合，
 
@@ -258,7 +258,7 @@ copy: 向远程主机copy文件
 <p>playbook 是由<a href="http://www.178linux.com/doc/ansible/docs/YAMLSyntax.html">yaml</a> 语言来定义的 xxx.yml 以yml为后缀的文件。 可以由文件，目录等层级来组织，通过includer多层次调用。可以直接执行任意一个文件。</p>
 <h5 id="ansibleyaml">ansible中基本的YAML</h5>
 <p>yml中主要标识:开头，列表，字典</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    --- #yml文档以开头以&quot;---&quot;开始
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    --- #yml文档以开头以&quot;---&quot;开始
 
     - a #列表以&quot;- &quot;英文横线加一个空格开始
     - b
@@ -270,7 +270,7 @@ copy: 向远程主机copy文件
 
 
 <p>官方文档中提供的一个简单的例子:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">---
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>---
 - hosts: webservers
   vars:
     http_port: 80
@@ -301,7 +301,7 @@ copy: 向远程主机copy文件
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-12-04T10:57:00+08:00">12 4, 2015</time>
+            <time pubdate="pubdate" datetime="2015-12-04T10:57:00+08:00">12月 4, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#ops-ref">ops</a>
         </div>

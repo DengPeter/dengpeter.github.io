@@ -71,7 +71,7 @@
             
             <p>很多时候打开mysql的终端，并不能直观的看到当前是哪个用户在哪个库下面，极其容易造成误操作。mysql给我们提供了终端提示符定制的功能就像系统PS1变量一样。</p>
 <p>在配置文件中my.cnf增加</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim my.cnf
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim my.cnf
 [client]
 prompt=&quot;\h@\u [\d]&gt;&quot;
 </pre></div>
@@ -85,7 +85,7 @@ prompt=&quot;\h@\u [\d]&gt;&quot;
 <p><a href="http://dev.mysql.com/doc/refman/5.7/en/mysql-commands.html">官方文档</a>
 The prompt command reconfigures the default mysql&gt; prompt. The string for defining the prompt can contain the following special sequences.
 Option  Description</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">\C  The current connection identifier (MySQL 5.7.6 and up)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>\C  The current connection identifier (MySQL 5.7.6 and up)
 \c  A counter that increments for each statement you issue
 \D  The full current date
 \d  The default database
@@ -122,30 +122,30 @@ x, for any “x” not listed above
 
 <p>You can set the prompt in several ways:</p>
 <p>Use an environment variable. You can set the MYSQL_PS1 environment variable to a prompt string. For example:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">shell&gt; export MYSQL_PS1=&quot;(\u@\h) [\d]&gt; &quot;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>shell&gt; export MYSQL_PS1=&quot;(\u@\h) [\d]&gt; &quot;
 </pre></div>
 
 
 <p>Use a command-line option. You can set the &ndash;prompt option on the command line to mysql. For example:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">shell&gt; mysql --prompt=&quot;(\u@\h) [\d]&gt; &quot;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>shell&gt; mysql --prompt=&quot;(\u@\h) [\d]&gt; &quot;
 (user@host) [database]&gt;
 </pre></div>
 
 
 <p>Use an option file. You can set the prompt option in the [mysql] group of any MySQL option file, such as /etc/my.cnf or the .my.cnf file in your home directory. For example:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">[mysql]
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>[mysql]
 prompt=(\\u@\\h) [\\d]&gt;\\_
 </pre></div>
 
 
 <p>In this example, note that the backslashes are doubled. If you set the prompt using the prompt option in an option file, it is advisable to double the backslashes when using the special prompt options. There is some overlap in the set of permissible prompt options and the set of special escape sequences that are recognized in option files. (The rules for escape sequences in option files are listed in Section 5.2.6, “Using Option Files”.) The overlap may cause you problems if you use single backslashes. For example, \s is interpreted as a space rather than as the current seconds value. The following example shows how to define a prompt within an option file to include the current time in HH:MM:SS&gt; format:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">[mysql]
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>[mysql]
 prompt=&quot;\\r:\\m:\\s&gt; &quot;
 </pre></div>
 
 
 <p>Set the prompt interactively. You can change your prompt interactively by using the prompt (or \R) command. For example:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">mysql&gt; prompt (\u@\h) [\d]&gt;\_
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>mysql&gt; prompt (\u@\h) [\d]&gt;\_
 PROMPT set to &#39;(\u@\h) [\d]&gt;\_&#39;
 (user@host) [database]&gt;
 (user@host) [database]&gt; prompt
@@ -159,7 +159,7 @@ mysql&gt;
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-07-18T00:00:00+08:00"> 7 18, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-18T00:00:00+08:00">7月 18, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#database-ref">database</a>
             <h4>Tags</h4>

@@ -82,14 +82,14 @@
     - pip包
 注意各setuptool的版本需要和python版本对应起来。</p>
 <h5 id="_1">下载安装包</h5>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">wget -c  -O setuptools-26.1.1.tar.gz https://github.com/pypa/setuptools/archive/v26.1.1.tar.gz
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>wget -c  -O setuptools-26.1.1.tar.gz https://github.com/pypa/setuptools/archive/v26.1.1.tar.gz
 wget -c https://pypi.python.org/packages/e7/a8/7556133689add8d1a54c0b14aeff0acb03c64707ce100ecd53934da1aa13/pip-8.1.2.tar.gz
 wget -c https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tar.xz
 </pre></div>
 
 
 <h5 id="python34">安装python3.4</h5>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">tar axf Python-3.4.0.tar.xz
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>tar axf Python-3.4.0.tar.xz
 <span style="color: #AA22FF">cd</span> Python-3.4.0
 ./configure --prefix<span style="color: #666666">=</span>/opt/python34
 make
@@ -98,7 +98,7 @@ sudo make install
 
 
 <h5 id="setuptool">安装setuptool</h5>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">tar axf  setuptools-26.1.1.tar.gz
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>tar axf  setuptools-26.1.1.tar.gz
 <span style="color: #AA22FF">cd</span> setuptools-26.1.1
 /opt/python34/bin/python3  setup.py build
 sudo /opt/python34/bin/python3  setup.py install
@@ -106,7 +106,7 @@ sudo /opt/python34/bin/python3  setup.py install
 
 
 <h5 id="pip">安装pip</h5>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">tar axf pip-8.1.2.tar.gz
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>tar axf pip-8.1.2.tar.gz
 <span style="color: #AA22FF">cd</span> pip-8.1.2
 /opt/python34/bin/python3  setup.py build
 sudo /opt/python34/bin/python3  setup.py install
@@ -115,7 +115,7 @@ sudo /opt/python34/bin/python3  setup.py install
 
 <p>配置系统环境：
 在/opt/下面建一个bin目录，将要用的命令都链接过去</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo mkdir /opt/bin
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo mkdir /opt/bin
 <span style="color: #AA22FF">cd</span> /opt/bin
 ln -s /opt/python34/bin/python3 /opt/bin
 ln -s /opt/python34/bin/pip3 /opt/bin
@@ -123,8 +123,8 @@ ln -s /opt/python34/bin/pip3 /opt/bin
 
 
 <p>在配置到系统变量中</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim /etc/profile.d/opt.sh
-<span style="color: #AA22FF">export</span> <span style="color: #B8860B">PATH</span><span style="color: #666666">=</span>$PATH:/opt/bin
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim /etc/profile.d/opt.sh
+<span style="color: #AA22FF">export</span> <span style="color: #B8860B">PATH</span><span style="color: #666666">=</span><span style="color: #B8860B">$PATH</span>:/opt/bin
 <span style="color: #AA22FF">source</span> /etc/profile.d/opt.sh
 </pre></div>
             
@@ -134,7 +134,7 @@ ln -s /opt/python34/bin/pip3 /opt/bin
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">9月 6, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#python-ref">python</a>
             <h4>Tags</h4>

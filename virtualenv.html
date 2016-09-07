@@ -78,14 +78,14 @@ Slug: python虚拟沙盒virtual
 <!-- draft: draft -->
 
 <h2 id="1-virtualenv">1. 安装virtualenv</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ pip install virtualenv
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ pip install virtualenv
 </pre></div>
 
 
 <h2 id="2-python">2. 创建虚python虚拟环境</h2>
 <p>创建python虚拟环境，可以指定不同的版本，安装不同的第三方库.<!-- #还没尝试-->
 下面安装django1.7版本为例</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">   $ virtualenv <span style="color: #666666">[</span>虚拟环境名称<span style="color: #666666">]</span>  <span style="color: #008800; font-style: italic">#格式</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>   $ virtualenv <span style="color: #666666">[</span>虚拟环境名称<span style="color: #666666">]</span>  <span style="color: #008800; font-style: italic">#格式</span>
    $ virtualenv django16env     <span style="color: #008800; font-style: italic">#实例</span>
    $ <span style="color: #AA22FF">cd</span> django16env/bin
    $ ./pip install <span style="color: #B8860B">jdango</span><span style="color: #666666">==</span>1.7
@@ -93,7 +93,7 @@ Slug: python虚拟沙盒virtual
 
 
 <h2 id="3">3. 启动/退出虚拟环境</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ <span style="color: #AA22FF">cd</span> django16env/bin/activate
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ <span style="color: #AA22FF">cd</span> django16env/bin/activate
     $ <span style="color: #AA22FF">source</span> activate   <span style="color: #008800; font-style: italic">#启动环境  ＃ 命令前会多个括号，里面会显示虚拟环境名称</span>
     $ deactivate        <span style="color: #008800; font-style: italic">#退出环境</span>
 </pre></div>
@@ -102,7 +102,7 @@ Slug: python虚拟沙盒virtual
 <h2 id="4-virtualenvwrapper">4. 使用virtualenvwrapper 管理虚拟环境</h2>
 <p>virtualenvwrapper 提供了对虚拟环境的方便快捷的管理方式：创建，删除，切换，查看等操作。并且将虚拟环境集中到一个地方使得对多版本多项目的虚拟环境的管理变得方便。</p>
 <h3 id="41-virtualenvwrapper">4.1 安装virtualenvwrapper</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ sudo  pip install virtualenvwrapper  <span style="color: #008800; font-style: italic">#这是装在主系统中的</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ sudo  pip install virtualenvwrapper  <span style="color: #008800; font-style: italic">#这是装在主系统中的</span>
 $ mkdir ~/virenv                       <span style="color: #008800; font-style: italic">#创建管理目录</span>
 $ cat /etc/profile.d/virtualenv.sh     <span style="color: #008800; font-style: italic">#配置环境变量</span>
 $    <span style="color: #AA22FF">export</span> <span style="color: #B8860B">WORKON_HOME</span><span style="color: #666666">=</span><span style="color: #BB4444">&#39;~/virenv&#39;</span>
@@ -111,13 +111,13 @@ $    <span style="color: #AA22FF">export</span> <span style="color: #B8860B">WOR
 
 
 <h3 id="42">4.2 常用命令</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ mkvirtualenv   <span style="color: #666666">[</span>虚拟环境名<span style="color: #666666">]</span> <span style="color: #008800; font-style: italic">#创建虚拟环境,创建完后会自动切换环境</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ mkvirtualenv   <span style="color: #666666">[</span>虚拟环境名<span style="color: #666666">]</span> <span style="color: #008800; font-style: italic">#创建虚拟环境,创建完后会自动切换环境</span>
 
     $ lsvirtualenv -b             <span style="color: #008800; font-style: italic">#查看已经创建的虚拟环境 </span>
 
     $ workon <span style="color: #666666">[</span>环境名称<span style="color: #666666">]</span>           <span style="color: #008800; font-style: italic">#切换虚拟环境 </span>
 
-    $ <span style="color: #AA22FF">echo</span> $VIRTUAL_ENV           <span style="color: #008800; font-style: italic">#查看虚拟环境路径</span>
+    $ <span style="color: #AA22FF">echo</span> <span style="color: #B8860B">$VIRTUAL_ENV</span>           <span style="color: #008800; font-style: italic">#查看虚拟环境路径</span>
 
     $ lssitepackages              <span style="color: #008800; font-style: italic">#查看安装了哪些包</span>
 
@@ -138,7 +138,7 @@ $    <span style="color: #AA22FF">export</span> <span style="color: #B8860B">WOR
 
 
 <h2 id="5">5 错误归总</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">chrysan@chrsyan:~$ mkvirtualenv pelican
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chrysan@chrsyan:~$ mkvirtualenv pelican
 ERROR: virtualenvwrapper could not find virtualenv in your path   <span style="color: #008800; font-style: italic">#是因为系统中的virtualenv 不能正常运行，重新安装即可</span>
 chrysan@chrsyan:~$ virtualenv pelican
 The program <span style="color: #BB4444">&#39;virtualenv&#39;</span> is currently not installed. You can install it by typing:
@@ -152,7 +152,7 @@ chrysan@chrsyan:~$ sudo apt-get install virtualenv
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-12-17T16:44:00+08:00">12 17, 2015</time>
+            <time pubdate="pubdate" datetime="2015-12-17T16:44:00+08:00">12月 17, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
             <h4>Tags</h4>

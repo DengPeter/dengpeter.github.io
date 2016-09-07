@@ -76,7 +76,7 @@ tmux以键盘为主，虽然大部分操作都有快捷键可用，但palne切�
 <h2 id="_2">安装：</h2>
 <p><code>yum install tmux</code></p>
 <h2 id="_3">配置文件：</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">```
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>```
 全局 /etc/tmux.conf
 用户级别: $HOME/.tmux.conf  #优先级高
 ```
@@ -84,7 +84,7 @@ tmux以键盘为主，虽然大部分操作都有快捷键可用，但palne切�
 
 
 <h2 id="_4">概念：</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"> ```
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span> ```
   1. session
     在终端可以创建多个session
   2. windows
@@ -99,7 +99,7 @@ tmux以键盘为主，虽然大部分操作都有快捷键可用，但palne切�
 <h1 id="session">session 使用：</h1>
 <p>session的操作基本都是在terminal中操作，跟普通linux命令一致</p>
 <h2 id="_5">创建：</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">```
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>```
 tmux new -s [sessionName]
 tmux new -s local # 创建一个新session 命名为 local
 tmux new -s remote # 创建一个session 命名为 remote
@@ -109,7 +109,7 @@ tmux new -s test -d #创建一个新session 命名为 test 放在后台运行 #-
 
 
 <h2 id="session_1">查看session:</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">```
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>```
  tmux ls
 
  ```
@@ -117,7 +117,7 @@ tmux new -s test -d #创建一个新session 命名为 test 放在后台运行 #-
 
 
 <h2 id="session_2">进入某个session</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">```
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>```
 tmux attach -t local  #进入local会话
 ```
 </pre></div>
@@ -134,7 +134,7 @@ tmux attach -t local  #进入local会话
   <code>unbind C-b ＃取消绑定
   set -g prefix M-a  ＃绑定alt+a键作为prefix键</code></p>
 <h1 id="_7">快捷键</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">  system:
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  system:
     prefix - ? #列出所有快捷键；按q返回
              d  脱离当前会话；这样可以暂时返回Shell界面，输入tmux attach能够重新进入之前的会话
              D  选择要脱离的会话；在同时开启了多个会话时使用
@@ -191,7 +191,7 @@ tmux attach -t local  #进入local会话
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-07-12T00:00:00+08:00"> 7 12, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-12T00:00:00+08:00">7月 12, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
             <h4>Tags</h4>

@@ -74,14 +74,14 @@
 SQLAlchemy“采用简单的Python语言，为高效和高性能的数据库访问设计，实现了完整的企业级持久模型”。SQLAlchemy的理念是，SQL数据库的量级和性能重要于对象集合；而对象集合的抽象又重要于表和行。
 sqlalchemy主要有2大模式：core和orm来写sql。</p>
 <h3 id="_2">安装</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sqlalchemy
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install sqlalchemy
 yum install mysql-devel
 pip install MySQL-python
 </pre></div>
 
 
 <h3 id="mysql">链接mysql数据库</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">from sqlalchemy import *
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>from sqlalchemy import *
 <span style="color: #B8860B">engine</span> <span style="color: #666666">=</span> create_engine<span style="color: #666666">(</span><span style="color: #BB4444">&#39;mysql+pymysql://user:password@host:3306/test&#39;</span><span style="color: #666666">)</span>
 
 <span style="color: #008800; font-style: italic"># default</span>
@@ -99,7 +99,7 @@ pip install MySQL-python
 
 
 <h3 id="sqlite">链接sqlite数据库</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># sqlite://&lt;nohostname&gt;/&lt;path&gt;</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># sqlite://&lt;nohostname&gt;/&lt;path&gt;</span>
 <span style="color: #008800; font-style: italic"># where &lt;path&gt; is relative:</span>
 <span style="color: #B8860B">engine</span> <span style="color: #666666">=</span> create_engine<span style="color: #666666">(</span><span style="color: #BB4444">&#39;sqlite:///foo.db&#39;</span><span style="color: #666666">)</span>
 </pre></div>
@@ -107,7 +107,7 @@ pip install MySQL-python
 
 <h3 id="core">core实例</h3>
 <h5 id="_3">创建表</h5>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># -*- coding:utf-8 -*-</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># -*- coding:utf-8 -*-</span>
 
 <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sqlalchemy</span> <span style="color: #AA22FF; font-weight: bold">import</span> create_engine
 <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sqlalchemy</span> <span style="color: #AA22FF; font-weight: bold">import</span> Table,Column,Integer,String,MetaData,ForeignKey
@@ -141,7 +141,7 @@ metadata<span style="color: #666666">.</span>create_all(engine)
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-08-11T00:00:00+08:00"> 8 11, 2016</time>
+            <time pubdate="pubdate" datetime="2016-08-11T00:00:00+08:00">8月 11, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#python-ref">python</a>
             <h4>Tags</h4>

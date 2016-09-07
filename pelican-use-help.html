@@ -71,7 +71,7 @@
             
             <h1 id="1">1.  基础使用</h1>
 <p>mate定义:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">Title: 文章标题
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Title: 文章标题
 Date: 创建日期
 Modified: 修改日期
 Category: 文章分类
@@ -85,12 +85,12 @@ draft: 设置为草稿设置后前台不显示
 
 <h1 id="github">部署到github上面</h1>
 <h3 id="1-githubcomgithubio">1. 在github.com上面创建一个与自己用户名相同前缀的仓库后缀用github.io</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    peterdeng.github.io
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    peterdeng.github.io
 </pre></div>
 
 
 <h4 id="2">2. 下载仓库/上传测试页面</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">git clone https://github.com/peterdegn/peterdeng.github.io
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone https://github.com/peterdegn/peterdeng.github.io
 <span style="color: #AA22FF">cd</span> peterdeng.github.io
 <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Hello World&quot;</span> &gt; index.html
 git add .
@@ -103,7 +103,7 @@ git push origin master
 <p>浏览器中访问 peterdeng.github.io</p>
 <h4 id="4">4. 域名解析</h4>
 <p>4.1  在仓库中增加CNAME文件,写入顶级域名,提交到远程仓库</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&#39;pyshell.cn&#39;</span> &gt;CNAME
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&#39;pyshell.cn&#39;</span> &gt;CNAME
 git add CNAME
 git commit -m <span style="color: #BB4444">&#39;add pyshell.cn to CNAME&#39;</span>
 git push origin master
@@ -118,7 +118,7 @@ git push origin master
 <h2 id="_1">多说插件</h2>
 <p>1.注册一个多说账户
 2.获取通用代码并修改:data-thread-key,data-title,data-url</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;!-- 多说评论框 start --&gt;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;!-- 多说评论框 start --&gt;
 <span style="color: #008800; font-style: italic">#&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; data-title=&quot;请替换成文章的标题&quot; data-url=&quot;请替换成文章的网址&quot;&gt;&lt;/div&gt;</span>
 &lt;div <span style="color: #B8860B">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;ds-thread&quot;</span> data-thread-key<span style="color: #666666">=</span><span style="color: #BB4444">&quot;article.title&quot;</span> data-title<span style="color: #666666">=</span><span style="color: #BB4444">&quot;article.title&quot;</span> data-url<span style="color: #666666">=</span><span style="color: #BB4444">&quot;site.url/article.url&quot;</span>&gt;&lt;/div&gt;
 &lt;!-- 多说评论框 end --&gt;
@@ -140,7 +140,7 @@ ds.charset <span style="color: #666666">=</span> <span style="color: #BB4444">&#
 
 
 <p>3.将以上代码加入到thems下的templetes/article.html中</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">vim ./themes/模版名/templates/article.html
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim ./themes/模版名/templates/article.html
 .......
 <span style="color: #008800; font-style: italic">#添加到这里</span>
 &lt;/article&gt;
@@ -158,7 +158,7 @@ ds.charset <span style="color: #666666">=</span> <span style="color: #BB4444">&#
 <code>markdown</code>中的超链接跳转是当前窗口，如果想让它新标签窗口打开，可以用以下代码实现，
 原理很简单：遍历\&lt;a href=&rdquo;#&rdquo;>标签然后给它加上target=&rdquo;_blank&rdquo;属性。</p>
 </blockquote>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&lt;</span>script type<span style="color: #666666">=</span><span style="color: #BB4444">&quot;text/javascript&quot;</span><span style="color: #666666">&gt;</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&lt;</span>script type<span style="color: #666666">=</span><span style="color: #BB4444">&quot;text/javascript&quot;</span><span style="color: #666666">&gt;</span>
     $(<span style="color: #AA22FF">document</span>).ready(<span style="color: #AA22FF; font-weight: bold">function</span>() {
         <span style="color: #008800; font-style: italic">//为超链接加上target=&#39;_blank&#39;属性</span>
         $(<span style="color: #BB4444">&#39;a[href^=&quot;http&quot;]&#39;</span>).each(<span style="color: #AA22FF; font-weight: bold">function</span>() {
@@ -172,7 +172,7 @@ ds.charset <span style="color: #666666">=</span> <span style="color: #BB4444">&#
 
 <h1 id="3_1">3 待深入了解</h1>
 <p>安装依赖:   找时间仔细看看每个模块是做什么用的</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    $ pygments, pytz, six, feedgenerator, unidecode, python-dateutil, MarkupSafe, jinja2, docutils, blinker, pelican
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    $ pygments, pytz, six, feedgenerator, unidecode, python-dateutil, MarkupSafe, jinja2, docutils, blinker, pelican
 </pre></div>
             
             
@@ -181,7 +181,7 @@ ds.charset <span style="color: #666666">=</span> <span style="color: #BB4444">&#
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-12-04T15:44:00+08:00">12 4, 2015</time>
+            <time pubdate="pubdate" datetime="2015-12-04T15:44:00+08:00">12月 4, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
             <h4>Tags</h4>

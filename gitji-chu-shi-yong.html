@@ -70,7 +70,7 @@
 
             
             <h1 id="1-git">1. 理解git工作流</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">1. 工作区, edit file 在这里编辑文件
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>1. 工作区, edit file 在这里编辑文件
 2. 缓存区, git add 提交到这里
 3. HEAD区, git commit 提交到这里
 4. remote, git push 推送到远端仓库
@@ -83,26 +83,26 @@
 
 <h1 id="2">2. 基础命令</h1>
 <h2 id="21-git-init">2.1. 创建新仓库(git init)</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir dirname #创建一个目录名为dirname
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>mkdir dirname #创建一个目录名为dirname
 cd dirname
 git init     #初始化git仓库也叫创建仓库
 </pre></div>
 
 
 <h2 id="22-git-clone">2.2. 检出仓库(git clone)</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">git clone /path/to/repository
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone /path/to/repository
 git clone username@host:/path/to/repository
 </pre></div>
 
 
 <h2 id="23-git-add-git-commit">2.3. 添加和提交(git add / git commit)</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">git add &lt;filename or dirname&gt;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git add &lt;filename or dirname&gt;
 git commit &lt;filename or dirname&gt;
 </pre></div>
 
 
 <h2 id="24">2.4. 推送改动</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">git push origin &lt;master&gt;  #master 为任意远端branch
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git push origin &lt;master&gt;  #master 为任意远端branch
 还没有clone仓库，但想把本地代码推送到远端仓库可用直接添加：
 git remote add origin &lt;server&gt;
 cd existing_folder
@@ -118,7 +118,7 @@ git push -u origin master
 <p>分支的作用是用来将特性开发绝缘开来。在你创建仓库的时候默认分支是master。在其他分支上进行开发，完成后再将它们合并到主分支上。创建分支的时候会把当前分支的代码复制过去。
   分支流程：创建分支&ndash;&gt;修改代码&ndash;&gt;合并分支到主干上</p>
 <p>## 创建分支</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">➜ mkdir test #创建一个test目录
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>➜ mkdir test #创建一个test目录
 ➜ git init   #初始化一个git仓库 默认为master分支
 Initialized empty Git repository in /path/test/.git/
 
@@ -135,7 +135,7 @@ Initialized empty Git repository in /path/test/.git/
 
 
 <p>## 创建分支(git branch branchname)：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">➜  test git:(master) git branch  0.1  #创建一个分支，名为0.1
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>➜  test git:(master) git branch  0.1  #创建一个分支，名为0.1
 ➜  test git:(master) git branch       #查看当前分支
 0.1
 * master
@@ -143,7 +143,7 @@ Initialized empty Git repository in /path/test/.git/
 
 
 <p>＃＃ 切换分支(git checkout branchname):</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">➜  test git:(master) git checkout 0.1 #切换分支
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>➜  test git:(master) git checkout 0.1 #切换分支
 Switched to branch &#39;0.1&#39;
 ➜  test git:(0.1) git branch          #列出当前仓库中的分支，当前分支前有一个*标识
 * 0.1
@@ -153,7 +153,7 @@ Switched to branch &#39;0.1&#39;
 
 
 <p>## 删除分支( git branch -d branchname)</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">➜  test git:(0.1) git branch -d 0.1  #删除分支，不能删除当前所在分支
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>➜  test git:(0.1) git branch -d 0.1  #删除分支，不能删除当前所在分支
 error: Cannot delete the branch &#39;0.1&#39; which you are currently on.
 ➜  test git:(0.1) git checkout master
 Switched to branch &#39;master&#39;
@@ -188,7 +188,7 @@ Deleted branch 0.1 (was f674b2f).
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-07-15T00:00:00+08:00"> 7 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-15T00:00:00+08:00">7月 15, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#toolsgit-ref">tools,git</a>
             <h4>Tags</h4>

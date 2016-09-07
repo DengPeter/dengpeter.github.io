@@ -105,7 +105,7 @@
 <h1 id="_1">浏览器对象</h1>
 <h2 id="0-window">0. window</h2>
 <h2 id="1-navigator">1. navigator</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">document.write('&lt;p&gt;浏览器名称:',navigator.appName,'&lt;/p&gt;')
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>document.write('&lt;p&gt;浏览器名称:',navigator.appName,'&lt;/p&gt;')
 document.write('&lt;p&gt;浏览器次名称:',navigator.appCodeName,'&lt;/p&gt;')
 document.write('&lt;p&gt;浏览器版本和系统平台:',navigator.appVersion,'&lt;/p&gt;')
 document.write('&lt;p&gt;浏览器次要版本:',navigator.appMinorVersion,'&lt;/p&gt;')
@@ -209,7 +209,7 @@ document.write('&lt;p&gt;浏览器用于 HTTP 请求的用户代理头的值:',n
 </tbody>
 </table>
 <h2 id="1-document">1. document选择器</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">### 属性
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>### 属性
     // 属性
     var title = document.title
     var domain = document.domain
@@ -238,7 +238,7 @@ document.write('&lt;p&gt;浏览器用于 HTTP 请求的用户代理头的值:',n
 </pre></div>
 <h1 id="2">2. 小例子</h1>
 <h4 id="1">点击＋1</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;div&gt;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;div&gt;
     &lt;p id='num'&gt;1&lt;/p&gt;
     &lt;input type="button" value='+1' onclick='AddNum();'&gt;
 &lt;/div&gt;
@@ -253,7 +253,7 @@ function AddNum(){
 &lt;/script&gt;
 </pre></div>
 <h4 id="_2">搜索提示框</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">   &lt;!-- 搜索框 --&gt;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>   &lt;!-- 搜索框 --&gt;
 &lt;div class='search-box'&gt;
     &lt;form action=""&gt;
         &lt;input id='input-text' type="text" value='请输入关键词' onFocus='CleanText();' onblur='Retext();'/&gt;
@@ -278,7 +278,7 @@ function Retext(){
 &lt;/scirpt&gt;
 </pre></div>
 <h4 id="title">滚动title</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;script&gt;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;script&gt;
     var title = document.title;
     console.log(title.charAt(0));
 
@@ -293,7 +293,7 @@ function Retext(){
 &lt;/script&gt;
 </pre></div>
 <h4 id="_3">滚动内容</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;div&gt;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;div&gt;
     &lt;h1&gt;h1标签 滚动测试&lt;/h1&gt;
 &lt;/div&gt;
 
@@ -316,7 +316,7 @@ MyInterval = setInterval('Rolling();',500)
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-04-22T00:00:00+08:00"> 4 22, 2016</time>
+            <time pubdate="pubdate" datetime="2016-04-22T00:00:00+08:00">4月 22, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#qian-duan-ref">前端</a>
             <h4>Tags</h4>

@@ -93,10 +93,10 @@
             
             
 <h1 id="_1">终端中打开窗口</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ open .
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ open .
 </pre></div>
 <h1 id="_2">窗口中打开终端:</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">1. 在键盘快捷键中设置(勾选 加快捷键设置)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>1. 在键盘快捷键中设置(勾选 加快捷键设置)
 
     系统偏好设置&gt;键盘&gt;服务&gt;文件和文件夹&gt;新建于文件夹位置的中断标签
 
@@ -104,7 +104,7 @@
 然后在Finder右键一个文件夹，右键菜单里面 Services 选择 New Terminal Tab at Folder 就打开了当前位置的终端了。类似Linux下面的右键，用终端打开。
 </pre></div>
 <h1 id="ssh">启动ssh</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">#1.编辑/etc/sshd_config文件，注释掉
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>#1.编辑/etc/sshd_config文件，注释掉
 #ForceCommand /usr/local/bin/ssh_session
 
 #2.启动sshd服务：
@@ -123,7 +123,7 @@ sudo launchctl list | grep ssh
 #5.最后ssh localhost 成功
 </pre></div>
 <h1 id="brew">brew 命令</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">brew install  softname
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>brew install  softname
 brew uninstall softname
 brew search   softname #支持正则
 brew list           #列出已安装的软件
@@ -133,7 +133,7 @@ brew info           #显示软件信息
 brew deps           #显示包依赖
 </pre></div>
 <h1 id="_3">用户管理</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">创建用户 "opera":
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>创建用户 "opera":
 dscl . -create /Users/opera
 dscl . -create /Users/opera UserShell /bin/bash
 dscl . -create /Users/opera RealName "Lucius Q. User"
@@ -153,27 +153,27 @@ dscl . -append /Groups/admin GroupMembership opera
 </pre></div>
 <h1 id="ls-gnu">ls 像gnu一样高亮；</h1>
 <p>Mac OS X 是基于 FreeBSD 的，所以一些工具 ls, top 等都是 BSD 那一套，ls 不是 GNU ls，所以即使 Terminal/iTerm2 配置了颜色，但是在 Mac 上敲入 ls 命令也不会显示高亮，可以通过安装 coreutils 来解决（brew install coreutils），不过如果对 ls 颜色不挑剔的话有个简单办法就是在 .bash_profile 里输出 CLICOLOR=1：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ vi ~/.bash_profile
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ vi ~/.bash_profile
 export CLICOLOR=1
 
 brew install coreutils
 </pre></div>
 <h1 id="iterm2">iterm2</h1>
 <h2 id="_4">快捷键：</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cmd + u #开启/关闭半透明屏幕
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cmd + u #开启/关闭半透明屏幕
 </pre></div>
 <h1 id="mac-dd-u">mac 下dd 命令刻录系统到u盘</h1>
 <p>在linux下直接dd if of就可以开始刻录了，但是在mac里面却提示</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo dd if=/data/iso/linuxmint-18-cinnamon-64bit.iso of=/dev/disk2
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo dd if=/data/iso/linuxmint-18-cinnamon-64bit.iso of=/dev/disk2
 dd: /dev/disk2: Resource busy
 </pre></div>
 <p>如果直接把磁盘退出又完全退出了，找了下发现diskutil命令可以直接取消挂载目录而不退出u盘</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo diskutil unmountDisk /dev/disk2
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo diskutil unmountDisk /dev/disk2
 Unmount of all volumes on disk2 was successfu
 </pre></div>
 <p>取消挂载点后就可以正常dd了</p>
 <p>查看dd刻录进度</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">---------
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>---------
 </pre></div>
             
             
@@ -182,7 +182,7 @@ Unmount of all volumes on disk2 was successfu
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-04-26T16:17:35+08:00"> 4 26, 2016</time>
+            <time pubdate="pubdate" datetime="2016-04-26T16:17:35+08:00">4月 26, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
             <h4>Tags</h4>

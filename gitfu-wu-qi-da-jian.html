@@ -72,7 +72,7 @@
             <h1 id="1">1. 搭建简易服务器</h1>
 <p>通过ssh协议搭建简易的git服务器</p>
 <p>在远程服务器上:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">1. 创建git用户
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>1. 创建git用户
   useradd git -c&#39;git code control&#39; /bin/git-shell
 
 2. 创建git代码仓库目录
@@ -88,7 +88,7 @@
 
 
 <p>在开发人员机器上</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">1. 将ssh生成的公钥写入到远程服务器git用户的.ssh/authorized_keys中,注意authorized_kesy的权限是600
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>1. 将ssh生成的公钥写入到远程服务器git用户的.ssh/authorized_keys中,注意authorized_kesy的权限是600
   cat ~/.ssh/id_rsa.pub
 
 2. 将blog项目代码推送到远程仓库
@@ -110,7 +110,7 @@
 <p>git ssh服务器搭建非常的简单，但是只要能登录的用户对代码都有读写权限。一般公司都还是会根据不同的项目开发人员来设定权限的。我们通过gitosis来实现权限精细管理。</p>
 <h1 id="2-gitosis">2. gitosis权限控制</h1>
 <p>安装gitosis</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ git clone https://github.com/tv42/gitosis.git
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ git clone https://github.com/tv42/gitosis.git
 $ cd gitosis
 $ yum install python-setuptools
 $ sudo python setup.py install
@@ -118,12 +118,12 @@ $ sudo python setup.py install
 
 
 <p>默认 Gitosis 会把/home/git 作为存储所有 Git 仓库的根目录，这没什么不好，不过我们之前已经把项目仓库都放在 /git 里面了，所以为方便起见，我们可以做一个符号连接，直接划转过去，而不必重新配置：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ ln -s /git /home/git/repositories
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ ln -s /git /home/git/repositories
 </pre></div>
 
 
 <p>Gitosis 将会帮我们管理用户公钥，所以先把当前控制文件改名备份，以便稍后重新添加，准备好让 Gitosis 自动管理 authorized_keys 文件：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ mv /home/git/.ssh/authorized_keys /home/git/.ssh/authorized_keys.bak
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ mv /home/git/.ssh/authorized_keys /home/git/.ssh/authorized_keys.bak
 
 $ $ sudo -H -u git /opt/python2.7/bin/gitosis-init &lt;.ssh/authorized_keys.bak
   Initialized empty Git repository in /coldata1/git/gitosis-admin.git/
@@ -132,12 +132,12 @@ $ $ sudo -H -u git /opt/python2.7/bin/gitosis-init &lt;.ssh/authorized_keys.bak
 
 
 <p>这样该公钥的拥有者就能修改用于配置 Gitosis 的那个特殊 Git 仓库了。接下来，需要手工对该仓库中的 post-update 脚本加上可执行权限：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">  $ sudo chmod 755 /git/gitosis-admin.git/hooks/post-update
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  $ sudo chmod 755 /git/gitosis-admin.git/hooks/post-update
 </pre></div>
 
 
 <p>基本上就算是好了。如果设定过程没出什么差错，现在可以试一下用初始化 Gitosis 的公钥的拥有者身份 SSH 登录服务器，应该会看到类似下面这样：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">  $ ssh git@gitserver
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  $ ssh git@gitserver
   PTY allocation request failed on channel 0
   ERROR:gitosis.serve.main:Need SSH_ORIGINAL_COMMAND in environment.
     Connection to gitserver closed.
@@ -145,14 +145,14 @@ $ $ sudo -H -u git /opt/python2.7/bin/gitosis-init &lt;.ssh/authorized_keys.bak
 
 
 <p>说明 Gitosis 认出了该用户的身份，但由于没有运行任何 Git 命令，所以它切断了连接。那么，现在运行一个实际的 Git 命令 — 克隆 Gitosis 的控制仓库：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"># 在你本地计算机上
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span># 在你本地计算机上
 $ git clone git@gitserver:gitosis-admin.git
 $ git clone git@git.ztgt.cn:gitosis-admin.git
 </pre></div>
 
 
 <p>这会得到一个名为 gitosis-admin 的工作目录，主要由两部分组成：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">➜  gitosis-admin git:(master) ls ./*
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>➜  gitosis-admin git:(master) ls ./*
 ./gitosis.conf
 ./keydir:
 afei@localhostmac.pub
@@ -161,7 +161,7 @@ afei@localhostmac.pub
 
 <p>gitosis.conf 文件是用来设置用户、仓库和权限的控制文件。keydir 目录则是保存所有具有访问权限用户公钥的地方— 每人一个。在 keydir 里的文件名（比如上面的 afei@localhostmac.pub）应该跟你的不一样 — Gitosis 会自动从使用 gitosis-init 脚本导入的公钥尾部的描述中获取该名字。</p>
 <p>看一下 gitosis.conf 文件的内容，它应该只包含与刚刚克隆的 gitosis-admin 相关的信息：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">➜  gitosis-admin git:(master) cat gitosis.conf
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>➜  gitosis-admin git:(master) cat gitosis.conf
 [gitosis]
 
 [group gitosis-admin]
@@ -181,7 +181,7 @@ writable = gitosis-admin
 <p>members 是用户名,取自keydir中的文件名afei@localhostmac.pub去掉.pub后缀；可以添加多个用户以空格分割
 writable 是项目名称;项目名称的形式可以是<code>writable = app/adroid.git</code> <code>writable = app/ios.git</code>;这样在服务器上存放的时候。android和ios代码库就会放在app目录下面。</p>
 <p>一个完整的例子：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    #在本机(管理员的本地代码库中修改)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    #在本机(管理员的本地代码库中修改)
     1. 添加新用户
       ➜  gitosis-admin git:(master) ls
       gitosis.conf  keydir/
@@ -211,7 +211,7 @@ writable 是项目名称;项目名称的形式可以是<code>writable = app/adro
 
 
 <p>接下来有权限的用户就可以克隆代码了。</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@git.example.com:app/android.git
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone git@git.example.com:app/android.git
 </pre></div>
 
 
@@ -219,7 +219,7 @@ writable 是项目名称;项目名称的形式可以是<code>writable = app/adro
 <p>readonly
   writable</p>
 <h1 id="gitosis">gitosis 错误：</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">```
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>```
 $ sudo -H -u git /opt/python2.7/bin/gitosis-init &lt;.ssh/authorized_keys.bak
 Traceback (most recent call last):
   File &quot;/opt/python2.7/bin/gitosis-init&quot;, line 9, in &lt;module&gt;
@@ -244,7 +244,7 @@ Traceback (most recent call last):
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-07-15T00:00:00+08:00"> 7 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-15T00:00:00+08:00">7月 15, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#ops-ref">ops</a>
             <h4>Tags</h4>

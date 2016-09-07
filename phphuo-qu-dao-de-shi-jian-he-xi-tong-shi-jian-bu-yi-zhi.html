@@ -73,7 +73,7 @@
 仔细排查发现php获取到的系统时间跟终端里的date/clock命令获取到的时间不一致。
 最后发现是php.ini 文件中的 date.timezone没有设置的原因。
 解决方法:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ vim /etc/php.ini
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ vim /etc/php.ini
  .....
  date.timezone <span style="color: #666666">=</span> Asia/Shanghai
  .....
@@ -81,7 +81,7 @@
 
 
 <p>补充下Centos时区设置方法</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">$ date -R <span style="color: #008800; font-style: italic">#查看时区</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ date -R <span style="color: #008800; font-style: italic">#查看时区</span>
 Mon, <span style="color: #666666">04</span> Jan <span style="color: #666666">2016</span> 16:31:04 +0800
 
 $ vim /etc/sysconfig/clock <span style="color: #008800; font-style: italic">#查看时区</span>
@@ -95,7 +95,7 @@ $ cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime  <span style="color: #008
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-01-04T16:20:00+08:00"> 1 4, 2016</time>
+            <time pubdate="pubdate" datetime="2016-01-04T16:20:00+08:00">1月 4, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#ops-ref">ops</a>
             <h4>Tags</h4>

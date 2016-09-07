@@ -86,7 +86,7 @@
             
             
 <h1 id="python">python原始字符串</h1>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: string <span style="color: #666666">=</span> <span style="color: #BB4444">'This is a </span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB4444">normal string'</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">1</span>]: string <span style="color: #666666">=</span> <span style="color: #BB4444">'This is a </span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB4444">normal string'</span>
 
 In [<span style="color: #666666">3</span>]: <span style="color: #AA22FF; font-weight: bold">print</span>(string)
 This <span style="color: #AA22FF; font-weight: bold">is</span> a
@@ -101,7 +101,7 @@ This <span style="color: #AA22FF; font-weight: bold">is</span> a \nnormal string
 <p>经典之语: ‘linux中一切皆文件’,相信熟悉linux的同学对此是有深刻的理解。那在python中也有同样的一句话：‘python中一切皆对象，对象是由类创建’。
 下面我们来一起理解这句话。</p>
 <p>相信大家都很熟悉以下的内置用法:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #666666">1+1</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">1</span>]: <span style="color: #666666">1+1</span>
 Out[<span style="color: #666666">1</span>]: <span style="color: #666666">2</span>
 
 In [<span style="color: #666666">2</span>]:  strs <span style="color: #666666">=</span> <span style="color: #BB4444">'hello world'</span>
@@ -120,7 +120,7 @@ In [<span style="color: #666666">7</span>]: dic
 Out[<span style="color: #666666">7</span>]: {<span style="color: #BB4444">'k1'</span>: <span style="color: #BB4444">'v1'</span>}
 </pre></div>
 <p>上面有数学运算，变量赋值字符串，列表，字典等。上面展示的这些’东西’,在python中都算是对象。那它们怎么来的呢？我们一起来看看下面的展示注意与上面的区别。</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">9</span>]: a<span style="color: #666666">.</span>__add__(<span style="color: #666666">1</span>)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">9</span>]: a<span style="color: #666666">.</span>__add__(<span style="color: #666666">1</span>)
 Out[<span style="color: #666666">9</span>]: <span style="color: #666666">2</span>
 
 In [<span style="color: #666666">10</span>]: strs <span style="color: #666666">=</span> <span style="color: #AA22FF">str</span>(<span style="color: #BB4444">'hello world'</span>)
@@ -144,12 +144,12 @@ In [<span style="color: #666666">12</span>]: li <span style="color: #666666">=</
  Out[<span style="color: #666666">15</span>]: {<span style="color: #BB4444">'k'</span>: <span style="color: #BB4444">'1'</span>, <span style="color: #BB4444">'v'</span>: <span style="color: #BB4444">'1'</span>}
 </pre></div>
 <p>两种展示的方式详解:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">li <span style="color: #666666">=</span> [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">5</span>]
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>li <span style="color: #666666">=</span> [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">5</span>]
 li <span style="color: #666666">=</span> <span style="color: #AA22FF">list</span>([<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">5</span>])
 </pre></div>
 <p>等价的两种创建列表的方式，
 第二种方式跟我们自己写的类实例化的方式是一致的，事实上也确实如此列表的创建是实例化python自身提供的list类的过程。我们可以通过几个方式来说明：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># 1. 打印li的类型，是来自list的类(class)所创建的</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># 1. 打印li的类型，是来自list的类(class)所创建的</span>
 In [<span style="color: #666666">21</span>]: <span style="color: #AA22FF; font-weight: bold">print</span>(<span style="color: #AA22FF">type</span>(li))
 <span style="color: #666666">&lt;</span><span style="color: #AA22FF; font-weight: bold">class</span> <span style="border: 1px solid #FF0000">'</span><span style="color: #0000FF">list</span><span style="color: #BB4444">'&gt;</span>
 
@@ -165,7 +165,7 @@ In [<span style="color: #666666">21</span>]: <span style="color: #AA22FF; font-w
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-01-11T11:04:00+08:00"> 1 11, 2016</time>
+            <time pubdate="pubdate" datetime="2016-01-11T11:04:00+08:00">1月 11, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#python-ref">python</a>
             <h4>Tags</h4>

@@ -87,7 +87,7 @@ request.get_host()  主机地址</p>
     {% endblock %}</code></li>
 </ol>
 <h2 id="model">获取Model中所有字段名</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">dir(Model._meta)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>dir(Model._meta)
 foo._meta.fields
 foo._meta.get_fields()
 foo._meta.get_all_field_names() #得到所有field的name
@@ -99,7 +99,7 @@ foo.objects.all().values()
 
 <h2 id="models_1">获取models中所有字段 值</h2>
 <h2 id="json">将获取的字段名转换为json格式返回给客户段</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">    title_list = []
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    title_list = []
     for i in item_title:
         title_list.append(str(i).split(&#39;.&#39;)[-1])
     result = json.dumps(result)
@@ -108,7 +108,7 @@ foo.objects.all().values()
 
 
 <h2 id="models_2">获取models文件中的所有类名</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">models_dict = {}
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>models_dict = {}
   for i in models.__dict__: # 也可以用 dir(models)
       if isinstance(getattr(models,i),ModelBase):
           modename = getattr(models,i)
@@ -117,7 +117,7 @@ foo.objects.all().values()
 
 
 <h2 id="querysetjson">Queryset转换为json</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">  from django.core import serializers
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  from django.core import serializers
   item_title = getattr(models,result)._meta.fields
   result = serializers.serialize(&#39;json&#39;,getattr(models,result).objects.all())
   result = json.dumps(result)
@@ -129,7 +129,7 @@ foo.objects.all().values()
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-07-15T00:00:00+08:00"> 7 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-15T00:00:00+08:00">7月 15, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#python-ref">python</a>
             <h4>Tags</h4>
