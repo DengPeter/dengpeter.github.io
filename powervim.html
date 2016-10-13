@@ -14,12 +14,12 @@
 
 <meta property="og:title" content="PowerVim "/>
 <meta property="og:url" content="/powervim.html" />
-<meta property="og:description" content="vim基本功 移动之单词动作 w/W #正向移动到第[count]个词首／字串的首部, e/E #正向移动到第[count]个单词/字串的尾部,不停留在空行上。 b/B #反向移动到第[count]个单词/字串的首部 ge/gE #反向到第 [count] 个单词/字串的尾部 单词： 一个单词由字符、数字和下划线序列或者其他的非空白字符的序列组成。单词间可以空白 字符 (空格、制表、换行) 分隔。这一规则可以用 ‘iskeyword’ 选项改变。空行也被认 作单词。 字串: 一个字串由非空白字符序列组成。字串以空白分隔。空行也被认作字串。 已折叠的行序列被认作由单个字符组成的单词。”w” 和 “W”、”e ..." />
+<meta property="og:description" content="昨天vim8.0发布了,今天先来自己的工作平台上编译一下,体验下新功能. 工作系统为桌面版ubuntu16.04 下载vim8.0: $ git clone https://github.com/vim/vim.git 安装依赖： configure 出现错误：no terminal library found checking whether stack_t has an ss_base field... no checking --with-tlib argument... empty: automatic terminal library selection checking for tgetent in -ltinfo... no checking for tgetent in -lncurses ..." />
 <meta property="og:site_name" content="LearnDevOps" />
 <meta property="og:article:author" content="Rongfei" />
-<meta property="og:article:published_time" content="2016-01-11T09:32:00+08:00" />
+<meta property="og:article:published_time" content="2016-09-14T00:00:00+08:00" />
 <meta name="twitter:title" content="PowerVim ">
-<meta name="twitter:description" content="vim基本功 移动之单词动作 w/W #正向移动到第[count]个词首／字串的首部, e/E #正向移动到第[count]个单词/字串的尾部,不停留在空行上。 b/B #反向移动到第[count]个单词/字串的首部 ge/gE #反向到第 [count] 个单词/字串的尾部 单词： 一个单词由字符、数字和下划线序列或者其他的非空白字符的序列组成。单词间可以空白 字符 (空格、制表、换行) 分隔。这一规则可以用 ‘iskeyword’ 选项改变。空行也被认 作单词。 字串: 一个字串由非空白字符序列组成。字串以空白分隔。空行也被认作字串。 已折叠的行序列被认作由单个字符组成的单词。”w” 和 “W”、”e ...">
+<meta name="twitter:description" content="昨天vim8.0发布了,今天先来自己的工作平台上编译一下,体验下新功能. 工作系统为桌面版ubuntu16.04 下载vim8.0: $ git clone https://github.com/vim/vim.git 安装依赖： configure 出现错误：no terminal library found checking whether stack_t has an ss_base field... no checking --with-tlib argument... empty: automatic terminal library selection checking for tgetent in -ltinfo... no checking for tgetent in -lncurses ...">
 
         <title>PowerVim  · LearnDevOps
 </title>
@@ -66,153 +66,58 @@
 </div>
 
 <div class="row-fluid">
-    <div class="span2 table-of-content">
-        <nav>
-        <h3>Contents</h3>
-        <div class="toc">
-<ul>
-<li><a href="#vim">vim基本功</a><ul>
-<li><a href="#_1">移动之单词动作</a></li>
-<li><a href="#hml">移动之[H/M/L]</a></li>
-<li><a href="#_2">移动之跳转</a><ul>
-<li><a href="#_3">’‘ 和 两个反引号</a></li>
-<li><a href="#ctrl-octrl-i">ctrl - o/ctrl - i</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#1vim">1.vim中文帮助安装</a></li>
-<li><a href="#vim_1">无插件vim</a><ul>
-<li><a href="#_4">拼写</a></li>
-</ul>
-</li>
-<li><a href="#vim_2">vim 插件</a><ul>
-<li><a href="#airline">airline</a></li>
-<li><a href="#youcompleteme">YoucompleteMe</a></li>
-</ul>
-</li>
-<li><a href="#2-nerdtree">2. nerdtree</a></li>
-</ul>
-</div>
-        </nav>
-    </div>
-
-<!-- toc end -->
-    <div class="span8 article-content">
+        <div class="span8 offset2 article-content">
 
             
-            
-<h1 id="vim">vim基本功</h1>
-<h3 id="_1">移动之单词动作</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">w</span>/W     #正向移动到第[count]个词首／字串的首部,
-<span style="color: #AA22FF; font-weight: bold">e</span><span style="color: #BB6688">/E     #正向移动到第[count]个单词/</span>字串的尾部,不停留在空行上。
-<span style="color: #AA22FF; font-weight: bold">b</span><span style="color: #BB6688">/B     #反向移动到第[count]个单词/</span>字串的首部
-ge<span style="color: #BB6688">/gE   #反向到第 [count] 个单词/</span>字串的尾部
+            <p>昨天vim8.0发布了,今天先来自己的工作平台上编译一下,体验下新功能.
+工作系统为桌面版ubuntu16.04</p>
+<p>下载vim8.0:</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ git clone https://github.com/vim/vim.git
 </pre></div>
-<p>单词：
-一个单词由字符、数字和下划线序列或者其他的非空白字符的序列组成。单词间可以空白
-字符 (空格、制表、换行) 分隔。这一规则可以用 ‘iskeyword’ 选项改变。空行也被认
-作单词。</p>
-<p>字串:
-一个字串由非空白字符序列组成。字串以空白分隔。空行也被认作字串。</p>
-<p>已折叠的行序列被认作由单个字符组成的单词。”w” 和 “W”、”e” 和 “E” 移动到折叠行
-之后的第一个单词或字串的开始/结尾处。”b” 和 “B” 移动到折叠之前的第一个单词的开
-始处。</p>
-<h3 id="hml">移动之[H/M/L]</h3>
-<p>使用H/M/L这三个键，可以让光标跳到当前窗口的顶部、中间、和底部，停留在第一个非空字符上。H命令和L命令前也可以加一个数字，但数字的含义不再是倍数，而是指距窗口顶部、底部的行数。例如，‘3H’表示光标移动到距窗口顶部第3行的位置；‘5L’表示光标移动到距窗口底部5行的位置。</p>
-<p><img alt="" src="http://7xpz68.com1.z0.glb.clouddn.com/HML.gif?/0/w/800/h/540"/></p>
-<h3 id="_2">移动之跳转</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>:help <span style="color: #AA22FF; font-weight: bold">jump</span>-motions
+
+
+<p>安装依赖：</p>
+<p>configure 出现错误：<code>no terminal library found</code></p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>checking whether stack_t has an ss_base field... no
+checking --with-tlib argument... empty: automatic terminal library selection
+checking <span style="color: #AA22FF; font-weight: bold">for</span> tgetent in -ltinfo... no
+checking <span style="color: #AA22FF; font-weight: bold">for</span> tgetent in -lncurses... no
+checking <span style="color: #AA22FF; font-weight: bold">for</span> tgetent in -ltermlib... no
+checking <span style="color: #AA22FF; font-weight: bold">for</span> tgetent in -ltermcap... no
+checking <span style="color: #AA22FF; font-weight: bold">for</span> tgetent in -lcurses... no
+no terminal library found
+checking <span style="color: #AA22FF; font-weight: bold">for</span> tgetent<span style="color: #666666">()</span>... configure: error: NOT FOUND!
+      You need to install a terminal library; <span style="color: #AA22FF; font-weight: bold">for</span> example ncurses.
+      Or specify the name of the library with --with-tlib.
+<span style="color: #BB4444">````</span>
+安装 libncurses5-dev
+<span style="color: #BB4444">```</span>shell
+sudo apt-get install libncurses5-dev
 </pre></div>
-<p>“跳转”包括如下的命令:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic">"'"、"`"、 "G"、 "/"、 "?"、 "n"、 "N"、 "%"、 "("、 ")"、 "[["、 "]]"、 "{"、 "}"、 ":s"、 ":tag"、 "L"、 "M"、 "H"</span>
+
+
+<p>make 出现错误:<code>if_python.c:67:20: fatal error: Python.h: 没有那个文件或目录</code></p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install python-dev
+sudo apt-get install python3-dev
 </pre></div>
-<h4 id="_3"><code>''</code> 和 <code>两个反引号</code></h4>
-<p>两个反引号是<code>esc</code>下面的这个键.</p>
-<p>开始编辑新文件的命令。如果用这些命令使光标 “跳转”，那么跳转之前的光标位置会被记住。除非包含该位置的行被
-改变或者删除，你可以用 <code>''</code> 和 ‘两个反引号’ 命令返回这个位置。</p>
-<p>两个命令的不同之处:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>`两个反引号`   跳转到精确的列
 
-<span style="color: #BB4444">''</span>  跳转到光标所在行的第一个非空白字符上。
+
+<p>编译vim8.0
+加入对python的支持</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>./configure --enable-pythoninterp<span style="color: #666666">=</span>yes --enable-python3interp<span style="color: #666666">=</span>yes --with-python-config-dir<span style="color: #666666">=</span>/usr/lib/python2.7/config-x86_64-linux-gnu --with-python3-config-dir<span style="color: #666666">=</span>/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu
+
+make
+make install
 </pre></div>
-<h4 id="ctrl-octrl-i">ctrl - o/ctrl - i</h4>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>` ctrl - <span style="color: #AA22FF; font-weight: bold">o</span> `   #转到跳转表里第 [count] 个较旧的光标位置
 
-` ctrl - <span style="color: #AA22FF; font-weight: bold">i</span> `    #转到跳转表里第 [count] 个较新的光标位置
+
+<p>配置vim8.0系统变量</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim .profile
+<span style="color: #B8860B">PATH</span><span style="color: #666666">=</span><span style="color: #B8860B">$PATH</span>:/opt/vim/bin
 </pre></div>
-<h1 id="1vim">1.vim中文帮助安装</h1>
-<p>vim版本7.4
-vimcdoc1.9</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>mkdir ~/.vim/help
-<span style="color: #AA22FF">cd</span> ~/.vim/help
-wget -c http://jaist.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-1.9.0.tar.gz
-./vimcdoc.sh -i  <span style="color: #008800; font-style: italic">#安装帮助</span>
-vim :h           <span style="color: #008800; font-style: italic">#启动vim 输入help查看帮助</span>
-
-sudo ./vimcdoc.sh -u  <span style="color: #008800; font-style: italic">#卸载中文帮助</span>
-:set <span style="color: #B8860B">helplang</span><span style="color: #666666">=[</span>cn|en<span style="color: #666666">]</span> <span style="color: #008800; font-style: italic">#设置中文or英文帮助，可以写入vimrc</span>
-</pre></div>
-<h1 id="vim_1">无插件vim</h1>
-<h2 id="_4">拼写</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #BB4444">"开启关闭拼写检查</span>
-<span style="color: #BB4444">:set spell</span>
-<span style="color: #BB4444">:set nospell</span>
-<span style="color: #BB4444">:set spelllang=en #只检查英文</span>
-
-<span style="color: #BB4444">]s        : 将光标移到下一个拼写错误处</span>
-<span style="color: #BB4444">[s        : 将光标移到上一个拼写错误处</span>
-<span style="color: #BB4444">zg       : 将单词加入词典</span>
-<span style="color: #BB4444">zug     : 撤销将单词加入词典</span>
-<span style="color: #BB4444">z=        : 拼写建议]</span>
 
 
-<span style="color: #BB4444">zg 将单词添加到用户正确字典（z good）</span>
-<span style="color: #BB4444">zG 将单词添加到内部正确字典（z Good）</span>
-<span style="color: #BB4444">zw 将单词添加到用户错误字典（z wrong）</span>
-<span style="color: #BB4444">zW 将单词添加到内部错误字典（z Wrong）</span>
-<span style="color: #BB4444">zug 将单词从用户正确字典删除（z undo good）</span>
-<span style="color: #BB4444">zuG 将单词从内部错误字典删除（z undo Good）</span>
-<span style="color: #BB4444">zuw 将单词从用户错误字典删除（z undo wrong）</span>
-<span style="color: #BB4444">zuW 将单词从内部错误字典删除（z undo Wrong）</span>
-</pre></div>
-<h1 id="vim_2">vim 插件</h1>
-<h2 id="airline">airline</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim ~/.vim/bundle.vim
-....
-Plugin <span style="color: #BB4444">'bling/vim-airline'</span>
-....
-
-vim :PluginInstall
-
-vim ~/.vimrc
-    <span style="color: #AA22FF">set</span> <span style="color: #B8860B">t_Co</span><span style="color: #666666">=</span>256
-    <span style="color: #AA22FF">set</span> <span style="color: #B8860B">laststatus</span><span style="color: #666666">=</span>2
-    <span style="color: #AA22FF">let</span> g:airline_left_sep<span style="color: #666666">=</span><span style="color: #BB4444">'&gt;'</span>
-    <span style="color: #AA22FF">let</span> g:airline_theme<span style="color: #666666">=</span><span style="color: #BB4444">"luna"</span>
-</pre></div>
-<h2 id="youcompleteme">YoucompleteMe</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>vim ~/.vim/bundle.vim
-
-<span style="color: #008800; font-style: italic"># 1. Plugin配置安装</span>
-....
-Plugin <span style="color: #BB4444">'Valloric/YouCompleteMe'</span>
-....
-
-vim :PluginInstall
-
-<span style="color: #008800; font-style: italic">#2. 更新子模块</span>
-<span style="color: #AA22FF">cd</span> ~/.vim/bundle/YoucomleteMe/
-git submodule update --init --recursive
-
-<span style="color: #008800; font-style: italic">#3. 编译</span>
-./install.py
-
-<span style="color: #008800; font-style: italic">#4. vimrc配置</span>
-</pre></div>
-<h1 id="2-nerdtree">2. nerdtree</h1>
-<p>错误:  NERDTree: 1 invalid bookmarks
-   解决:  vim ~/.NERDTreeBookmarks 删除文件中不存在的目录</p>
+<p>安装完成,接下来就要开始体验各种新功能了</p>
             
             
             <hr/>
@@ -220,7 +125,7 @@ git submodule update --init --recursive
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-01-11T09:32:00+08:00">1月 11, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-14T00:00:00+08:00">9月 14, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
         </div>

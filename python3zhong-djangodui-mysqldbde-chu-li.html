@@ -10,18 +10,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="python, tools, dev, tools, " />
+<meta name="keywords" content="django, python, " />
 
-<meta property="og:title" content="pyenv使用 "/>
-<meta property="og:url" content="/pyenvshi-yong.html" />
+<meta property="og:title" content="python3中django对MySQLdb的处理 "/>
+<meta property="og:url" content="/python3zhong-djangodui-mysqldbde-chu-li.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="LearnDevOps" />
 <meta property="og:article:author" content="Rongfei" />
-<meta property="og:article:published_time" content="2016-06-15T00:00:00+08:00" />
-<meta name="twitter:title" content="pyenv使用 ">
+<meta property="og:article:published_time" content="2016-09-20T00:00:00+08:00" />
+<meta name="twitter:title" content="python3中django对MySQLdb的处理 ">
 <meta name="twitter:description" content="">
 
-        <title>pyenv使用  · LearnDevOps
+        <title>python3中django对MySQLdb的处理  · LearnDevOps
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/pyenvshi-yong.html"> pyenv使用  </a></h1>
+    <h1><a href="/python3zhong-djangodui-mysqldbde-chu-li.html"> python3中django对MySQLdb的处理  </a></h1>
     </header>
 </div>
 
@@ -69,22 +69,11 @@
         <div class="span8 offset2 article-content">
 
             
-            <ol>
-<li>安装
-  <!-- git clone https://github.com/yyuu/pyenv.git -->
-  curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-  vim /etc/profile.d/pyenv.sh
-    export PYENV_ROOT=&rdquo;/opt/pyenv&rdquo;
-    export PATH=&rdquo;$PYENV_ROOT/bin:$PATH&rdquo;</li>
-</ol>
-<p>source /etc/profile.d/pyenv.sh</p>
-<ol>
-<li>命令
-  pyenv install -l #列举所有的可用的Python版本(未安装)
-  pyenv install 2.7.5 #安装某个版本的python
-  pyenv versions #列出所有已经安装的版本
-  pyenv local 2.7.5 #设置所要使用的某一个python版本，当然也可以用global那就是全局的作用了</li>
-</ol>
+            <p>MySQLdb在python3中已经不支持了，替代的库为pymysql。可是在django中依然在采用MySQLdb,变更方法在项目的__init__.py文件中加入：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ cat __init__.py
+import pymysql
+pymysql.install_as_MySQLdb<span style="color: #666666">()</span>
+</pre></div>
             
             
             <hr/>
@@ -92,19 +81,13 @@
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-06-15T00:00:00+08:00">6月 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-20T00:00:00+08:00">9月 20, 2016</time>
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#tools-ref">tools</a>
+            <a class="category-link" href="/categories.html#python-ref">python</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#dev-ref">dev
-                    <span>1</span>
-</a></li>
-                <li><a href="/tags.html#python-ref">python
-                    <span>7</span>
-</a></li>
-                <li><a href="/tags.html#tools-ref">tools
-                    <span>2</span>
+                <li><a href="/tags.html#django-ref">django
+                    <span>5</span>
 </a></li>
             </ul>
         </div>
@@ -112,7 +95,7 @@
 </div>
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="pyenv使用" data-title="pyenv使用" data-url="http://blog.pyshell.cn/pyenvshi-yong.html"></div>
+<div class="ds-thread" data-thread-key="python3中django对MySQLdb的处理" data-title="python3中django对MySQLdb的处理" data-url="http://blog.pyshell.cn/python3zhong-djangodui-mysqldbde-chu-li.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

@@ -10,18 +10,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="python, tools, dev, tools, " />
+<meta name="keywords" content="ubuntu, tools, " />
 
-<meta property="og:title" content="pyenv使用 "/>
-<meta property="og:url" content="/pyenvshi-yong.html" />
+<meta property="og:title" content="ubuntu-unity桌面优化 "/>
+<meta property="og:url" content="/ubuntu-unityzhuo-mian-you-hua.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="LearnDevOps" />
 <meta property="og:article:author" content="Rongfei" />
-<meta property="og:article:published_time" content="2016-06-15T00:00:00+08:00" />
-<meta name="twitter:title" content="pyenv使用 ">
+<meta property="og:article:published_time" content="2016-10-11T00:00:00+08:00" />
+<meta name="twitter:title" content="ubuntu-unity桌面优化 ">
 <meta name="twitter:description" content="">
 
-        <title>pyenv使用  · LearnDevOps
+        <title>ubuntu-unity桌面优化  · LearnDevOps
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/pyenvshi-yong.html"> pyenv使用  </a></h1>
+    <h1><a href="/ubuntu-unityzhuo-mian-you-hua.html"> ubuntu-unity桌面优化  </a></h1>
     </header>
 </div>
 
@@ -69,22 +69,29 @@
         <div class="span8 offset2 article-content">
 
             
-            <ol>
-<li>安装
-  <!-- git clone https://github.com/yyuu/pyenv.git -->
-  curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-  vim /etc/profile.d/pyenv.sh
-    export PYENV_ROOT=&rdquo;/opt/pyenv&rdquo;
-    export PATH=&rdquo;$PYENV_ROOT/bin:$PATH&rdquo;</li>
-</ol>
-<p>source /etc/profile.d/pyenv.sh</p>
-<ol>
-<li>命令
-  pyenv install -l #列举所有的可用的Python版本(未安装)
-  pyenv install 2.7.5 #安装某个版本的python
-  pyenv versions #列出所有已经安装的版本
-  pyenv local 2.7.5 #设置所要使用的某一个python版本，当然也可以用global那就是全局的作用了</li>
-</ol>
+            <p>** 问题： ubuntu16.04默认alt键绑定了2个功能：1.显示菜单，2.触发HUD
+实际使用中alt-d 是出现HUD搜索框，而非定位到浏览器地址栏。
+很多程序窗口有失去焦点时隐藏的功能，但有很多快捷键是alt开始的，当按下alt时显示菜单焦点就失去了。
+使用<code>ccsm</code>来取消设置</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ sudo apt-get install compizconfig-settings-manager
+$ ccsm
+</pre></div>
+
+
+<p>取消HUD:</p>
+<p>进入ubuntu unity plugin -&gt; 点击 Key to the HUD when tapped 按钮取消勾选Enable -&gt; 点击OK确定。</p>
+<p>取消alt显示菜单</p>
+<p>进入 ubuntu unity plugin -&gt; 点击 Key to show the menu bar hwile pressed 将alt键 换为 super键(视窗键)</p>
+<p>@ 注：使用ccsm 修改Ubuntu桌面环境，容易造成桌面崩溃。切记不清楚的选项不要修改。</p>
+<p>** 问题ubuntu的super键（视窗键）是默认触发启动器的用起来非常不爽，每次按super键的时候都要显示侧边栏和启动器搜索框，并且少了一个非常顺手的功能键，键盘操作效率大打折扣。
+改变super的绑定使用 unity-tweak-tools就可以。</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$ sudo apt-get install unity-tweak-tools
+$ unity-tweak-tools
+</pre></div>
+
+
+<p>在 unity -&gt; 附加 -&gt; 显示启动器 -&gt; 鼠标单击super 然后按 backspace 就disable它了。
+要再显示启动器和侧边栏的时候使用super + tab 组合键来完成。</p>
             
             
             <hr/>
@@ -92,18 +99,12 @@
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-06-15T00:00:00+08:00">6月 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-10-11T00:00:00+08:00">10月 11, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#tools-ref">tools</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#dev-ref">dev
-                    <span>1</span>
-</a></li>
-                <li><a href="/tags.html#python-ref">python
-                    <span>7</span>
-</a></li>
-                <li><a href="/tags.html#tools-ref">tools
+                <li><a href="/tags.html#ubuntu-ref">ubuntu
                     <span>2</span>
 </a></li>
             </ul>
@@ -112,7 +113,7 @@
 </div>
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="pyenv使用" data-title="pyenv使用" data-url="http://blog.pyshell.cn/pyenvshi-yong.html"></div>
+<div class="ds-thread" data-thread-key="ubuntu-unity桌面优化" data-title="ubuntu-unity桌面优化" data-url="http://blog.pyshell.cn/ubuntu-unityzhuo-mian-you-hua.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

@@ -4,24 +4,24 @@
         <meta charset="utf-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Rongfei" />
-        <meta name="copyright" content="Rongfei" />
+        <meta name="author" content="Chrysan" />
+        <meta name="copyright" content="Chrysan" />
 
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="python, tools, dev, tools, " />
+<meta name="keywords" content="git, ops, " />
 
-<meta property="og:title" content="pyenv使用 "/>
-<meta property="og:url" content="/pyenvshi-yong.html" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="centos6编译安装git2.1 "/>
+<meta property="og:url" content="/centos6bian-yi-an-zhuang-git21.html" />
+<meta property="og:description" content="依赖安装 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel ..." />
 <meta property="og:site_name" content="LearnDevOps" />
-<meta property="og:article:author" content="Rongfei" />
-<meta property="og:article:published_time" content="2016-06-15T00:00:00+08:00" />
-<meta name="twitter:title" content="pyenv使用 ">
-<meta name="twitter:description" content="">
+<meta property="og:article:author" content="Chrysan" />
+<meta property="og:article:published_time" content="2016-09-29T11:09:00+08:00" />
+<meta name="twitter:title" content="centos6编译安装git2.1 ">
+<meta name="twitter:description" content="依赖安装 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel ...">
 
-        <title>pyenv使用  · LearnDevOps
+        <title>centos6编译安装git2.1  · LearnDevOps
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/pyenvshi-yong.html"> pyenv使用  </a></h1>
+    <h1><a href="/centos6bian-yi-an-zhuang-git21.html"> centos6编译安装git2.1  </a></h1>
     </header>
 </div>
 
@@ -69,22 +69,62 @@
         <div class="span8 offset2 article-content">
 
             
-            <ol>
-<li>安装
-  <!-- git clone https://github.com/yyuu/pyenv.git -->
-  curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-  vim /etc/profile.d/pyenv.sh
-    export PYENV_ROOT=&rdquo;/opt/pyenv&rdquo;
-    export PATH=&rdquo;$PYENV_ROOT/bin:$PATH&rdquo;</li>
-</ol>
-<p>source /etc/profile.d/pyenv.sh</p>
-<ol>
-<li>命令
-  pyenv install -l #列举所有的可用的Python版本(未安装)
-  pyenv install 2.7.5 #安装某个版本的python
-  pyenv versions #列出所有已经安装的版本
-  pyenv local 2.7.5 #设置所要使用的某一个python版本，当然也可以用global那就是全局的作用了</li>
-</ol>
+            <h1 id="_1">依赖安装</h1>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel
+sudo yum update curl libcurl
+sudo  yum -y install libcurl-devel.x86_64
+sudo yum install xmlto
+sudo yum -y install asciidoc
+sudo yum -y install  expat-devel.x86_64
+
+sudo yum update curl libcurl
+sudo yum install zlib-devel openssl-devel perl cpio expat-devel gettext-devel libcurl-devel.x86_64 xmlto asciidoc expat-devel.x86_64
+</pre></div>
+
+
+<p>perl.mak错误：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>make<span style="color: #666666">[</span>1<span style="color: #666666">]</span>: *** <span style="color: #666666">[</span>perl.mak<span style="color: #666666">]</span> 错误 2
+sudo yum -y install perl-devel
+</pre></div>
+
+
+<p>http.c错误</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo yum update curl libcurl
+sudo  yum -y install libcurl-devel.x86_64
+</pre></div>
+
+
+<p>http-push错误:
+make: *** [http-push.o] 错误 1</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo yum -y install  expat-devel.x86_64
+</pre></div>
+
+
+<p>asciidoc错误
+/bin/sh: line 1: asciidoc: command not found</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>yum -y install asciidoc
+</pre></div>
+
+
+<p>xmlto错误：
+/bin/sh: line 1: xmlto: command not found</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span> yum install xmlto
+</pre></div>
+
+
+<h1 id="_2">编译&amp;安装</h1>
+<p>git的新版本源码中已经没有configure文件了，直接通过make参数决定其放在什么位置</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>wget -O git-2.10.0.tar.gz https://github.com/git/git/archive/v2.10.0.tar.gz
+tar axf git-v2.10.0.tar.gz
+<span style="color: #AA22FF">cd</span>
+make <span style="color: #B8860B">prefix</span><span style="color: #666666">=</span>/opt/git all doc
+sudo make <span style="color: #B8860B">prefix</span><span style="color: #666666">=</span>/opt/git install install-doc
+
+cat /etc/profile.d/custom.sh
+<span style="color: #008800; font-style: italic"># -- git settings --</span>
+<span style="color: #AA22FF">export</span> <span style="color: #B8860B">PATH</span><span style="color: #666666">=</span><span style="color: #B8860B">$PATH</span>:/opt/git/bin
+<span style="color: #AA22FF">source</span> /etc/profile.d/custom.sh
+</pre></div>
             
             
             <hr/>
@@ -92,19 +132,13 @@
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-06-15T00:00:00+08:00">6月 15, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-29T11:09:00+08:00">9月 29, 2016</time>
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#tools-ref">tools</a>
+            <a class="category-link" href="/categories.html#ops-ref">ops</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#dev-ref">dev
-                    <span>1</span>
-</a></li>
-                <li><a href="/tags.html#python-ref">python
-                    <span>7</span>
-</a></li>
-                <li><a href="/tags.html#tools-ref">tools
-                    <span>2</span>
+                <li><a href="/tags.html#git-ref">git
+                    <span>4</span>
 </a></li>
             </ul>
         </div>
@@ -112,7 +146,7 @@
 </div>
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="pyenv使用" data-title="pyenv使用" data-url="http://blog.pyshell.cn/pyenvshi-yong.html"></div>
+<div class="ds-thread" data-thread-key="centos6编译安装git2.1" data-title="centos6编译安装git2.1" data-url="http://blog.pyshell.cn/centos6bian-yi-an-zhuang-git21.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

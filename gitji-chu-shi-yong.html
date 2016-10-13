@@ -165,6 +165,18 @@ Deleted branch 0.1 (was f674b2f).
 </pre></div>
 
 
+<h2 id="_1">合并分支</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>1. 切换到要被合并的分支
+2. 执行 git merge branchnme
+例子：
+分支01a 合并到 master主干上
+```python
+git checkout master
+git merge 01a
+```
+</pre></div>
+
+
 <h1 id="4-git-fetchgit-merge-git-pull">4. 更新(git fetch)与合并(git merge) git pull</h1>
 <p>git pull 命令做了2件事情  1.获取（fetch） 2.合并（merge） 远端的改动。
   相当于是先执行 git fetch;然后再执行git merge
@@ -181,6 +193,45 @@ Deleted branch 0.1 (was f674b2f).
 <p>假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：
 <code>git fetch origin</code>
 <code>git reset --hard origin/master</code></p>
+<h1 id="gitignore">.gitignore文件使用</h1>
+<ol>
+<li>作用域
+全局gitignore：</li>
+</ol>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic">#1.创建全局文件</span>
+cat  <span style="color: #666666">~/.</span>gitignore
+<span style="color: #666666">*.</span>pyc
+<span style="color: #666666">*.</span>swp
+<span style="color: #008800; font-style: italic">#2. 加入到全局配置</span>
+git config <span style="color: #666666">--</span><span style="color: #AA22FF; font-weight: bold">global</span> core<span style="color: #666666">.</span>excludesfile <span style="color: #666666">~/.</span>gitignore
+<span style="color: #008800; font-style: italic">#或者直接写入到配置文件</span>
+vim <span style="color: #666666">~/.</span>gitconfig
+[core]
+    excludesfile <span style="color: #666666">=</span> <span style="color: #666666">/</span>home<span style="color: #666666">/</span>user<span style="color: #666666">/.</span>gitignore
+</pre></div>
+
+
+<p>项目gitignore</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic">#在项目文件中</span>
+vim workspace<span style="color: #666666">/</span>project<span style="color: #666666">/.</span>gitignore
+<span style="color: #666666">*.</span>pyc
+<span style="color: #666666">*.</span>swp
+</pre></div>
+
+
+<p>注:此处的全局配置为用户级别的设置在同一个用户下所有的项目都生效</p>
+<h3 id="gitignore_1">.gitignore 不生效</h3>
+<p>当.gitignore文件不是随项目一起创建的，而是git有过提交后才创建的。你会发现此时.gitignore的文件并没有生效。git status的时候想要屏蔽的文件依然还在未add里面提醒。
+先执行 <code>git rm -r --cache</code> 再查看 <code>git status</code> 文件全部没有纳入版本控制，此时再执行<code>git add .</code>将所有文件纳入版本控制。
+检测是否生效</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># 创建一个文件并查看文件是否在add区有提醒</span>
+touch test<span style="color: #666666">.</span>py
+git status
+<span style="color: #008800; font-style: italic"># 将新建的文件添加到.gitignore 再查看</span>
+cat <span style="color: #666666">.</span>gitignore
+test<span style="color: #666666">.</span>py
+git status
+</pre></div>
             
             
             <hr/>
@@ -197,7 +248,7 @@ Deleted branch 0.1 (was f674b2f).
                     <span>1</span>
 </a></li>
                 <li><a href="/tags.html#git-ref">git
-                    <span>3</span>
+                    <span>4</span>
 </a></li>
             </ul>
         </div>

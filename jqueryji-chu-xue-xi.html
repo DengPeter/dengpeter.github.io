@@ -14,12 +14,12 @@
 
 <meta property="og:title" content="jquery基础学习 "/>
 <meta property="og:url" content="/jqueryji-chu-xue-xi.html" />
-<meta property="og:description" content="jquery 基础学习 基本选择器 console.log($(&#34;#content&#34;)); // ID选择器 console.log($(&#39;p&#39;)); // 标签选择器 console.log($(&#39;.left&#39;)); // 类选择器&lt;div class=&#39;left&#39;&gt;&lt;/div&gt; console.log($(&#39;*&#39;)); // 选择所有元素 console.log($(&#39;div,p,.content&#39;)); //组合选择器 console.log($(&#39;:empty&#39;)) 层次选择器 console.log($(&#39;div span&#39;)); //选择div中 span的后代元素 console.log($(&#39;div &gt; span&#39;)); //选择div中 span的子元素 console.log($(&#39;.one + div&#39;)); //选择one的下一个div元素 相当于 ..." />
+<meta property="og:description" content="jquery 基础学习 html中引入jquery: 通过htmlhead中script标签引入 &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;/static/js/jquery-3.1.1.min.js&#34;&gt; &lt;/script&gt; &lt;script type=&#34;text/javascript&#34; src=&#39;base.js&#39;&gt; &lt;/script&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; html中引入jquery &lt;/body&gt; &lt;/html&gt; 页面加载完后执行js： $().ready(function(){ console.log(&#39;简写&#39;) }); jQuery(document).ready(function(){ console ..." />
 <meta property="og:site_name" content="LearnDevOps" />
 <meta property="og:article:author" content="Chrysan" />
 <meta property="og:article:published_time" content="2016-04-22T00:00:00+08:00" />
 <meta name="twitter:title" content="jquery基础学习 ">
-<meta name="twitter:description" content="jquery 基础学习 基本选择器 console.log($(&#34;#content&#34;)); // ID选择器 console.log($(&#39;p&#39;)); // 标签选择器 console.log($(&#39;.left&#39;)); // 类选择器&lt;div class=&#39;left&#39;&gt;&lt;/div&gt; console.log($(&#39;*&#39;)); // 选择所有元素 console.log($(&#39;div,p,.content&#39;)); //组合选择器 console.log($(&#39;:empty&#39;)) 层次选择器 console.log($(&#39;div span&#39;)); //选择div中 span的后代元素 console.log($(&#39;div &gt; span&#39;)); //选择div中 span的子元素 console.log($(&#39;.one + div&#39;)); //选择one的下一个div元素 相当于 ...">
+<meta name="twitter:description" content="jquery 基础学习 html中引入jquery: 通过htmlhead中script标签引入 &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;/static/js/jquery-3.1.1.min.js&#34;&gt; &lt;/script&gt; &lt;script type=&#34;text/javascript&#34; src=&#39;base.js&#39;&gt; &lt;/script&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; html中引入jquery &lt;/body&gt; &lt;/html&gt; 页面加载完后执行js： $().ready(function(){ console.log(&#39;简写&#39;) }); jQuery(document).ready(function(){ console ...">
 
         <title>jquery基础学习  · LearnDevOps
 </title>
@@ -93,6 +93,34 @@
             
             <h1 id="jquery">jquery 基础学习</h1>
 
+<p>html中引入jquery:
+通过htmlhead中script标签引入</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color: #008000; font-weight: bold">html</span>&gt;
+  &lt;<span style="color: #008000; font-weight: bold">head</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">charset</span><span style="color: #666666">=</span><span style="color: #BB4444">"utf-8"</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">script</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">"text/javascript"</span> <span style="color: #BB4444">src</span><span style="color: #666666">=</span><span style="color: #BB4444">"/static/js/jquery-3.1.1.min.js"</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">script</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">script</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">"text/javascript"</span> <span style="color: #BB4444">src</span><span style="color: #666666">=</span><span style="color: #BB4444">'base.js'</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">script</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">title</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">title</span>&gt;
+  &lt;/<span style="color: #008000; font-weight: bold">head</span>&gt;
+  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
+    html中引入jquery
+  &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
+&lt;/<span style="color: #008000; font-weight: bold">html</span>&gt;
+</pre></div>
+<p>页面加载完后执行js：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$().ready(<span style="color: #AA22FF; font-weight: bold">function</span>(){
+  console.log(<span style="color: #BB4444">'简写'</span>)
+});
+
+jQuery(<span style="color: #AA22FF">document</span>).ready(<span style="color: #AA22FF; font-weight: bold">function</span>(){
+  console.log(<span style="color: #BB4444">'doucment'</span>)
+})
+
+<span style="color: #AA22FF">window</span>.onload<span style="color: #666666">=</span><span style="color: #AA22FF; font-weight: bold">function</span>(){
+  console.log(<span style="color: #BB4444">'onload'</span>)
+}
+</pre></div>
 <h2 id="_1">基本选择器</h2>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>console.log($("#content")); // ID选择器
 console.log($('p'));        // 标签选择器
