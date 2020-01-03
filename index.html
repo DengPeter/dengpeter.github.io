@@ -1,194 +1,320 @@
 <!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8"> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Rongfei" />
-        <meta name="copyright" content="Rongfei" />
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>snail_oniu</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta property="og:title" content="LearnDevOps"/>
-<meta name="twitter:title" content="LearnDevOps">
-<meta property="og:url" content="" />
-<meta property="og:site_name" content="LearnDevOps" />
-<meta property="og:article:author" content="Rongfei" />
-        <title>LearnDevOps
-</title>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
-    </head>
-    <body>
-        <div id="content-sans-footer">
-        <div class="navbar navbar-static-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="/"><span class=site-name>LearnDevOps</span></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav pull-right top-menu">
-                            <li  class="active"><a href="">Home</a></li>
-                            <li ><a href="/pages/about-me.html">About Me</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span1"></div>
-                <div class="span10">
-<div class="row-fluid">
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-    <div class="row-fluid">
 
-    </div>
+<meta name="author" content="snail_oniu" /><meta name="description" content="慢蜗牛的技术成长之路！." /><meta name="keywords" content="运维开发, 测试开发, linux, python, golang" />
 
-    <div class="row-fluid">
-        <div class="span8 offset2">
-            <header>
-            <h1 id="recent-posts">Recent Posts <a id="allposts" href="/archives.html">all posts</a></h1>
-            </header>
-        <div class="recent-posts">
-            <article>
-                <a href="/ubuntu-unityzhuo-mian-you-hua.html">ubuntu-unity桌面优化  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#tools-ref">tools</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-10-11T00:00:00+08:00">二 11 十月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/ubuntuping-mu-liang-du-diao-jie.html">ubuntu屏幕亮度调节  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#ops-ref">ops</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-10-11T00:00:00+08:00">二 11 十月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/csschu-shi-hua.html">css初始化  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#qian-duan-ref">前端</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-30T11:32:00+08:00">五 30 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/centos6bian-yi-an-zhuang-git21.html">centos6编译安装git2.1  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#ops-ref">ops</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-29T11:09:00+08:00">四 29 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/python3zhong-djangodui-mysqldbde-chu-li.html">python3中django对MySQLdb的处理  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#python-ref">python</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-20T00:00:00+08:00">二 20 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/django-orm-duo-dui-duo.html">django orm 多对多  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#python-ref">python</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-19T00:00:00+08:00">一 19 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/djangoadminshi-yong.html">djangoAdmin使用  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#python-ref">python</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-19T00:00:00+08:00">一 19 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/flaskmu-lu-jie-gou.html">flask目录结构  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#python-ref">python</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-18T00:00:00+08:00">日 18 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/powervim.html">PowerVim  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#tools-ref">tools</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-14T00:00:00+08:00">三 14 九月 2016</time>
-                </div>
-                </section>
-            </article>
-            <article>
-                <a href="/sqlachalemy-ormshi-yong.html">sqlAchalemy orm使用  </a>
-                <section>
-                    posted in
-                <a href="/categories.html#python-ref">python</a>
-                <div class="recent-posts-time">
-                <time pubdate="pubdate" datetime="2016-09-13T00:00:00+08:00">二 13 九月 2016</time>
-                </div>
-                </section>
-            </article>
-        </div>
-        </div>
-    </div>
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="https://blog.dengrongfei.cn/" />
+  <link href="https://blog.dengrongfei.cn/index.xml" rel="alternate" type="application/rss+xml" title="snail_oniu" />
+  <link href="https://blog.dengrongfei.cn/index.xml" rel="feed" type="application/rss+xml" title="snail_oniu" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="snail_oniu" />
+<meta property="og:description" content="慢蜗牛的技术成长之路！." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.dengrongfei.cn/" />
+<meta property="og:updated_time" content="2020-01-02T00:00:00+00:00" />
+<meta itemprop="name" content="snail_oniu">
+<meta itemprop="description" content="慢蜗牛的技术成长之路！."><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="snail_oniu"/>
+<meta name="twitter:description" content="慢蜗牛的技术成长之路！."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">慢蜗牛</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </div>
-                </div>
-                <div class="span1"></div>
-            </div>
-        </div>
-        <div id="push"></div>
-    </div>
-<footer>
-<div id="footer">
-    <ul class="footer-content">
-        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
-    </ul>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">慢蜗牛</a>
 </div>
-</footer>        <script src="http://code.jquery.com/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-        <script>
-            function validateForm(query)
-            {
-                return (query.length > 0);
-            }
-        </script>
-    </body>
-    <!-- Theme: Elegant built for Pelican
-    License : http://oncrashreboot.com/pelican-elegant -->
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/">find命令实例</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-01-02 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      find 命令非常的强大, 有特别多的使用场景,这里逐一记录 指定多个搜索路径 1 2 find /usr /home /var -iname &#34;*.jar&#34; find /usr /home /var -iname &#34;*.jar&#34; 2&gt; /dev/null # 把错误重定向, 得到干净的结果 按名称查找 1
+    </div>
+    <div class="read-more">
+      <a href="/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/">stat命令-文件修改详情查看</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-01-02 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      stat命令是用来显示文件或文件系统的状态。 stat命令实例 1 2 3 4 5 6 7 8 9 $stat cron-20191209 File: ‘cron-20191209’ Size: 5546151 Blocks: 10848 IO Block: 4096 regular file Device: 803h/2051d Inode: 526901
+    </div>
+    <div class="read-more">
+      <a href="/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/">centos6编译安装git2.1</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-09-26 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      依赖安装 1 2 3 4 5 6 7 8 9 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel gettext-devel libcurl-devel.x86_64 xmlto asciidoc expat-devel.x86_64 相关错误解
+    </div>
+    <div class="read-more">
+      <a href="/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/">gitlab折腾记</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-08-19 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统
+    </div>
+    <div class="read-more">
+      <a href="/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">mac使用记录</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-07-04 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      终端中打开窗口 1 open . 窗口中打开终端 在键盘快捷键中设置(勾选 加快捷键设置) 1 系统偏好设置&gt;键盘&gt;服务&gt;文件和文件夹&gt;新
+    </div>
+    <div class="read-more">
+      <a href="/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">vargrant统一开发环境</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-07-04 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在一个团队中常常出现开发自己程序跑通了，但放到测试环境， 或者其他开发者机器上就有各种bug出现，并且花好长时间才找到答案， 某个服务少了一个扩
+    </div>
+    <div class="read-more">
+      <a href="/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">linux网卡流量监控</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-12-24 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      /proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，
+    </div>
+    <div class="read-more">
+      <a href="/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    
+    
+  </nav>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="snail_oniu@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/snail-oniu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.dengrongfei.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">snail_oniu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
 </html>

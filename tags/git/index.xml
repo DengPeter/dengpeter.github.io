@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on snail_oniu</title>
+    <link>https://blog.dengrongfei.cn/tags/git/</link>
+    <description>Recent content in git on snail_oniu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.dengrongfei.cn/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>centos6编译安装git2.1</title>
+      <link>https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/</link>
+      <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/</guid>
+      <description>依赖安装 1 2 3 4 5 6 7 8 9 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel gettext-devel libcurl-devel.x86_64 xmlto asciidoc expat-devel.x86_64 相关错误解</description>
+    </item>
+    
+  </channel>
+</rss>

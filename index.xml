@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>snail_oniu</title>
+    <link>https://blog.dengrongfei.cn/</link>
+    <description>Recent content on snail_oniu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 02 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.dengrongfei.cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>find命令实例</title>
+      <link>https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/</guid>
+      <description>find 命令非常的强大, 有特别多的使用场景,这里逐一记录 指定多个搜索路径 1 2 find /usr /home /var -iname &amp;#34;*.jar&amp;#34; find /usr /home /var -iname &amp;#34;*.jar&amp;#34; 2&amp;gt; /dev/null # 把错误重定向, 得到干净的结果 按名称查找 1</description>
+    </item>
+    
+    <item>
+      <title>stat命令-文件修改详情查看</title>
+      <link>https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/</link>
+      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/</guid>
+      <description>stat命令是用来显示文件或文件系统的状态。 stat命令实例 1 2 3 4 5 6 7 8 9 $stat cron-20191209 File: ‘cron-20191209’ Size: 5546151 Blocks: 10848 IO Block: 4096 regular file Device: 803h/2051d Inode: 526901</description>
+    </item>
+    
+    <item>
+      <title>centos6编译安装git2.1</title>
+      <link>https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/</link>
+      <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/</guid>
+      <description>依赖安装 1 2 3 4 5 6 7 8 9 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel gettext-devel libcurl-devel.x86_64 xmlto asciidoc expat-devel.x86_64 相关错误解</description>
+    </item>
+    
+    <item>
+      <title>gitlab折腾记</title>
+      <link>https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/</link>
+      <pubDate>Fri, 19 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/</guid>
+      <description>终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统</description>
+    </item>
+    
+    <item>
+      <title>mac使用记录</title>
+      <link>https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</guid>
+      <description>终端中打开窗口 1 open . 窗口中打开终端 在键盘快捷键中设置(勾选 加快捷键设置) 1 系统偏好设置&amp;gt;键盘&amp;gt;服务&amp;gt;文件和文件夹&amp;gt;新</description>
+    </item>
+    
+    <item>
+      <title>vargrant统一开发环境</title>
+      <link>https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid>
+      <description>在一个团队中常常出现开发自己程序跑通了，但放到测试环境， 或者其他开发者机器上就有各种bug出现，并且花好长时间才找到答案， 某个服务少了一个扩</description>
+    </item>
+    
+    <item>
+      <title>linux网卡流量监控</title>
+      <link>https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Thu, 24 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/</guid>
+      <description>/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，</description>
+    </item>
+    
+  </channel>
+</rss>

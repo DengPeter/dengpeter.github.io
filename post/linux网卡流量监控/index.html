@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>linux网卡流量监控 - snail_oniu</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="snail_oniu" /><meta name="description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，" /><meta name="keywords" content="运维开发, 测试开发, linux, python, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="linux网卡流量监控" />
+<meta property="og:description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" />
+<meta property="article:published_time" content="2015-12-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-12-24T00:00:00+00:00" />
+<meta itemprop="name" content="linux网卡流量监控">
+<meta itemprop="description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，">
+<meta itemprop="datePublished" content="2015-12-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2015-12-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1525">
+
+
+
+<meta itemprop="keywords" content="linux,监控," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="linux网卡流量监控"/>
+<meta name="twitter:description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">慢蜗牛</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">慢蜗牛</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">linux网卡流量监控</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-12-24 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> linux </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#proc-">/proc 介绍</a></li>
+    <li><a href="#1-procnetdev">1. /proc/net/dev</a></li>
+    <li><a href="#heading">相关补充</a></li>
+    <li><a href="#heading-1">计算带宽量</a></li>
+    <li><a href="#heading-2">第一步获取实时流量</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="proc-">/proc 介绍</h2>
+<p>Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口。 用户和应用程序可以通过proc得到系统的信息，并可以改变内核的某些参数。由于系统的信息，如进程，是动态改变的，所以用户或应用程序读取proc文件时，proc文件系统是动态从系统内核读出所需信息并提交的。下面列出的这些文件或子文件夹，并不是都是在你的系统中存在，这取决于你的内核配置和装载的模块。另外，在/proc下还有三个很重要的目录：net，scsi和sys。 Sys目录是可写的，可以通过它来访问或修改内核的参数，而net和scsi则依赖于内核配置。例如，如果系统不支持scsi，则scsi 目录不存在。 除了以上介绍的这些，还有的是一些以数字命名的目录，它们是进程目录。系统中当前运行的每一个进程都有对应的一个目录在/proc下，以进程的 PID号为目录名，它们是读取进程信息的接口。而self目录则是读取进程本身的信息接口，是一个link。</p>
+<h2 id="1-procnetdev">1. /proc/net/dev</h2>
+<p>/proc/net/dev 文件列出了server中的所有网络接口,能看到每个接口的流量变化. 监控主机的总进出流量只需要采集单位时间的数据既可算出分／秒级的流量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[test@test ~]$ cat /proc/net/dev
+    Inter-    |Receive                                                        |Transmit
+    face      |bytes     packets   errs drop fifo frame compressed multicast  |bytes     packets  errs drop fifo colls carrier compressed
+    lo:     114006421  894579    0    0    0     0    0          0          114006421  894579    0   0    0     0       0          0
+    eth0:     3777821347 24177129  0    0    0     0    0          3499       5298851320 19285767  0   0    0     0       0          0
+    eth1:     0          0         0    0    0     0    0          0          0       0  0    0    0   0    0     0
+    sit0:     0          0         0    0    0     0    0          0          0       0  0    0    0   0    0     0
+</code></pre></td></tr></table>
+</div>
+</div><p>相关解释：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">bytes 发送或接受的总字节数
+packets 发送或接受的报文总数
+errs 被设备驱动监测到发送或接受的错误报文总数
+drop 由于系统资源限制，被设备驱动丢弃的报文总数
+fifo FIFO 缓存错误数
+frame 帧错误数
+compressed 发送或接受的压缩报数
+multicast 接受到的多播报数
+colls 接口检测到的冲突数
+carrier 连接介质出现故障次数 , 如 : 网线接触不良
+</code></pre></td></tr></table>
+</div>
+</div><p>第一行<br>
+第一列：<code>Inter</code> 网络接口<br>
+第二列：<code>Receive</code> 接收数据<br>
+第三列：<code>Transmit</code> 发送数据</p>
+<h2 id="heading">相关补充</h2>
+<p>ifconfig 命令中的TX和RX的理解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">eth1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.10.1.12  netmask 255.255.252.0  broadcast 15.8.1.255
+        ether 00:16:3e:00:36:4f  txqueuelen 1000  (Ethernet)
+        RX packets 440520631  bytes 20365517627 (18.9 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 950862  bytes 388232926 (370.2 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre></td></tr></table>
+</div>
+</div><p>网络流量上传下载是相对的，内网网卡和外网网卡的流入流量和流出流量也是相反的。
+例如一台web服务器:当客户端访问网站产生的流量是外网网卡的Transmit流出流量,
+在终端里执行wget 等命令时产生的是外网网卡的Receive流入流量。 RX 是Receive 接收 TX
+是Transmit 发送 ps:这是个人实际工作中体会到的,如有误解请指正。</p>
+<h2 id="heading-1">计算带宽量</h2>
+<p>小知识补充：
+byte是字节，bit是位； 1个字节由8位组成；<br>
+1bit值是0或1 1byte=8bit 1024byte(字节)=1kb
+bytes:网络流量统计 bits: 2进制位数</p>
+<p>带宽= 单位时间内流量/单位时间/1024/1024 （Mbps）</p>
+<h2 id="heading-2">第一步获取实时流量</h2>
+<p>核心：获取网卡接口的 recevie bytes 和transmit bytes, 服务器一般都有外网网卡和内网网卡，
+在简单的脚本中可以直接写死, 在运维平台中可以将网卡名写入到配置文件中, 也可以尝试自动获取.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># !/usr/bin/env python
+# coding: utf-8
+# description:实时流量
+# sytemOs: centos6.4
+
+import time
+import sys
+
+# device = &#39;eno16777736&#39;
+device = &#39;eth1&#39;
+
+def rx():
+    &#39;&#39;&#39; 流入流量 &#39;&#39;&#39;
+    istat = open(&#39;/proc/net/dev&#39;,&#39;r&#39;).readlines()
+    for interface in istat:
+        if device in interface:
+            stat = interface.split[&#39;:&#39;,1](1)
+            stat = int[stat.split(](0))
+            #print &#39;receive:&#39; ,stat
+    return stat
+
+def tx():
+    &#39;&#39;&#39; 流出流量 &#39;&#39;&#39;
+    istat = open(&#39;/proc/net/dev&#39;,&#39;r&#39;).readlines()
+    for interface in istat:
+        if device in interface:
+            stat = int[interface.split(](8))
+            #print &#39;transmit:&#39;, stat
+    return stat
+
+while True:
+    rx_flow = rx()
+    tx_flow = tx()
+    time.sleep(1)
+    current_rx = rx() - rx_flow
+    current_tx = tx() - tx_flow
+    current_time = time.strftime(&#39;%H:%M:%S&#39;)
+
+    #print &#39;rx:%s Kbps     tx:%s Kbps&#39;% (rx()/1024,tx()/1024,)
+    print &#39;time: %s  rx: %d Kbps  tx: %d Kbps&#39; %(current_time,current_rx/1024,current_tx/1024,)
+# vim: ai ts=4 sts=4 et sw=4
+</code></pre></td></tr></table>
+</div>
+</div><p>效果图：</p>
+<p>实时流量绘图展示<br>
+感谢百度开源了echarts，django＋echarts来完成</p>
+<p>按程序统计实时流量<br>
+按来访ip统计实时流量<br>
+2. 统计tcp链接</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">snail_oniu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-12-24
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          <a href="/tags/%E7%9B%91%E6%8E%A7/">监控</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">vargrant统一开发环境</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="snail-oniu/blog-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="snail_oniu@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/snail-oniu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.dengrongfei.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">snail_oniu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
