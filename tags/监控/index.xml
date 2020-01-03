@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>监控 on snail_oniu</title>
+    <title>监控 on 慢蜗牛</title>
     <link>https://blog.dengrongfei.cn/tags/%E7%9B%91%E6%8E%A7/</link>
-    <description>Recent content in 监控 on snail_oniu</description>
+    <description>Recent content in 监控 on 慢蜗牛</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <lastBuildDate>Thu, 24 Dec 2015 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.dengrongfei.cn/tags/%E7%9B%91%E6%8E%A7/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <pubDate>Thu, 24 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/</guid>
-      <description>/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，</description>
+      <description>/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口。 用户和应用程序可以通过proc得到系统的信息，并可以改变内核的某些参数</description>
     </item>
     
   </channel>

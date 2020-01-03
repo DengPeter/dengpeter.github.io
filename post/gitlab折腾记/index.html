@@ -1,141 +1,190 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>gitlab折腾记 - snail_oniu</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="snail_oniu" /><meta name="description" content="终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统" /><meta name="keywords" content="运维开发, 测试开发, linux, python, golang" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
-
-
-<link rel="canonical" href="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="gitlab折腾记" />
-<meta property="og:description" content="终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" />
-<meta property="article:published_time" content="2016-08-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-08-19T00:00:00+00:00" />
-<meta itemprop="name" content="gitlab折腾记">
-<meta itemprop="description" content="终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统">
-<meta itemprop="datePublished" content="2016-08-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2016-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="942">
-
-
-
-<meta itemprop="keywords" content="linux,gitlab," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="gitlab折腾记"/>
-<meta name="twitter:description" content="终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统"/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">慢蜗牛</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">首页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">归档</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">慢蜗牛</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">首页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">归档</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">gitlab折腾记</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2016-08-19 </span>
-        <div class="post-category">
-            <a href="/categories/linux/"> linux </a>
-            </div>
+    <title>gitlab折腾记 | 慢蜗牛</title>
+    <meta property="og:title" content="gitlab折腾记 - 慢蜗牛">
+    <meta property="og:type" content="article">
         
-      </div>
-    </header>
+    <meta property="article:published_time" content='2016-08-19T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2016-08-19T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="运维开发、测试开发、python、golang、linux、数据库">
+    <meta name="description" content="gitlab折腾记">
+        <meta name="author" content="snail_oniu">
+        
+    <meta property="og:url" content="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
-  </div>
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://blog.dengrongfei.cn">
+                        慢蜗牛
+                    </a>
+                
+                <p class="description">慢蜗牛的技术成长之路... 专注于运维开发、测试开发领域</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://blog.dengrongfei.cn">首页</a>
+                    
+                    <a  href="https://blog.dengrongfei.cn/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://blog.dengrongfei.cn/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
 </div>
-    <div class="post-content">
-      <p>终于用上了gitlab感觉代码管理如此亲切。</p>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">gitlab折腾记</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年8月19日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://blog.dengrongfei.cn/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>终于用上了gitlab感觉代码管理如此亲切。</p>
 <p>写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统一编译管理。 开始在centos上通过安装，安装成功后使用到git push的时候报错gitlab: git-http-push failed, return code 22官方issues 属于gitlab的bug官网上issues中并没有解决,尝试了各种解决方法决定放弃。由于官方推荐的是debin系，决定采用ubunt安装，结果还是同样的问题无解。 最后还是采用官方打包好的deb包run起来，尼玛可是数据库默认竟然是postgresql，换mysql结果又来一个无解的问题，还是乖乖的用postresql吧，这里记录的postgresql相关内容。 本篇记录下整个过程中遇到的坑。</p>
 <p>简要记录下对gitlab架构的梳理：</p>
 <p>gitlab: rails框架写成的web端</p>
@@ -175,107 +224,203 @@ deb安装完的相关工作路径在那里？
 这个问题也是困了好久,在/var/opt/gitlab/gitalb-rails/etc/发现database.yml文件，看到host居然是/var/opt/gitlab/postgresql 果然用127.0.0.1 无法登录换做：sudo -u gitlab psql -h /var/opt/gitlab/postgresql -d databasename竟然登录成功了，不知道这是什么思路。</p>
 <p>真搞不明白官方版本迭代如此快，为何跨平台遇到的问题，却迟迟不解决。 写完了发现有点乱，只记录了主要的东东。</p>
 
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">snail_oniu</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2016-08-19
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">linux</a>
-          <a href="/tags/gitlab/">gitlab</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">centos6编译安装git2.1</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">
-            <span class="next-text nav-default">mac使用记录</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://blog.dengrongfei.cn">snailoniu</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/">https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
         
 
-  
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">mac使用记录</a></li>
+        
+        <li><a href="/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">vargrant统一开发环境</a></li>
+        
+        <li><a href="/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">linux网卡流量监控</a></li>
+        
+        <li><a href="/about/">关于我</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+    </ul>
+</div>
 
-  
-    <script src="https://utteranc.es/client.js"
-            repo="snail-oniu/blog-comments"
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://blog.dengrongfei.cn/tags/linux'>linux</a></li>
+                
+                <li><a href='https://blog.dengrongfei.cn/tags/gitlab'>gitlab</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "snail-oniu/blog-comments"
             issue-term="pathname"
             theme="github-light"
             crossorigin="anonymous"
             async>
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="snail_oniu@163.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://github.com/snail-oniu" class="iconfont icon-github" title="github"></a>
-  <a href="https://blog.dengrongfei.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">snail_oniu</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+      </script>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://blog.dengrongfei.cn/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://blog.dengrongfei.cn">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/" title="find命令实例">find命令实例</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/" title="stat命令-文件修改详情查看">stat命令-文件修改详情查看</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/" title="centos6编译安装git2.1">centos6编译安装git2.1</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" title="gitlab折腾记">gitlab折腾记</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="mac使用记录">mac使用记录</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="vargrant统一开发环境">vargrant统一开发环境</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" title="linux网卡流量监控">linux网卡流量监控</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://blog.dengrongfei.cn/categories/linux/">linux (7)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://blog.dengrongfei.cn/tags/git/">git</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/gitlab/">gitlab</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/linux/">linux</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/shell/">shell</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/%E7%9B%91%E6%8E%A7/">监控</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://blog.dengrongfei.cn/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://blog.dengrongfei.cn">慢蜗牛 By snailoniu</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '219050609', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
-
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
 
 </body>
+
 </html>

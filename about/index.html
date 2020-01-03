@@ -6,21 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Tags | 慢蜗牛</title>
-    <meta property="og:title" content="Tags - 慢蜗牛">
+    <title>关于我 | 慢蜗牛</title>
+    <meta property="og:title" content="关于我 - 慢蜗牛">
     <meta property="og:type" content="article">
         
+    <meta property="article:published_time" content='2015-03-10T00:13:27&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2015-03-10T00:13:27&#43;08:00'>
         
     <meta name="Keywords" content="运维开发、测试开发、python、golang、linux、数据库">
-    <meta name="description" content="Tags">
+    <meta name="description" content="关于我">
         
     <meta name="author" content="snailoniu">
-    <meta property="og:url" content="https://blog.dengrongfei.cn/tags/">
+    <meta property="og:url" content="https://blog.dengrongfei.cn/about/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.dengrongfei.cn/tags/index.xml" title="慢蜗牛" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -49,7 +52,7 @@
                     
                     <a  href="https://blog.dengrongfei.cn/archives/" title="归档">归档</a>
                     
-                    <a  href="https://blog.dengrongfei.cn/about/" title="关于">关于</a>
+                    <a class="current" href="https://blog.dengrongfei.cn/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -63,129 +66,159 @@
 
                 <div class="col-8" id="main">
                     
-<header>
-    
-        <h1>共有7个标签</h1>
-    
-</header>
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">关于我</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年3月10日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>慢蜗牛的家，这里记录了慢蜗牛的成长之路.</p>
+
+        </div>
+
+        
+
+
+        
+
 <div class="post-archive">
-    
-    <h2><a href="https://blog.dengrongfei.cn/tags/linux">linux</a> (7)</h2>
+    <h2>See Also</h2>
     <ul class="listing">
         
-        <li>
-            <span class="date">2020/01/02</span>
-            <a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/" title="find命令实例">find命令实例</a>
-        </li>
+        <li><a href="/archives/">归档</a></li>
         
-        <li>
-            <span class="date">2020/01/02</span>
-            <a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/" title="stat命令-文件修改详情查看">stat命令-文件修改详情查看</a>
-        </li>
-        
-        <li>
-            <span class="date">2016/09/26</span>
-            <a href="https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/" title="centos6编译安装git2.1">centos6编译安装git2.1</a>
-        </li>
-        
-        <li>
-            <span class="date">2016/08/19</span>
-            <a href="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" title="gitlab折腾记">gitlab折腾记</a>
-        </li>
-        
-        <li>
-            <span class="date">2016/07/04</span>
-            <a href="https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="mac使用记录">mac使用记录</a>
-        </li>
-        
-        <li>
-            <span class="date">2016/07/04</span>
-            <a href="https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="vargrant统一开发环境">vargrant统一开发环境</a>
-        </li>
-        
-        <li>
-            <span class="date">2015/12/24</span>
-            <a href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" title="linux网卡流量监控">linux网卡流量监控</a>
-        </li>
+        <li><a href="/search/">搜索</a></li>
         
     </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
     
-    <h2><a href="https://blog.dengrongfei.cn/tags/shell">shell</a> (2)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2020/01/02</span>
-            <a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/" title="find命令实例">find命令实例</a>
-        </li>
-        
-        <li>
-            <span class="date">2020/01/02</span>
-            <a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/" title="stat命令-文件修改详情查看">stat命令-文件修改详情查看</a>
-        </li>
-        
-    </ul>
-    
-    <h2><a href="https://blog.dengrongfei.cn/tags/%E5%91%BD%E4%BB%A4">命令</a> (2)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2020/01/02</span>
-            <a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/" title="find命令实例">find命令实例</a>
-        </li>
-        
-        <li>
-            <span class="date">2020/01/02</span>
-            <a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/" title="stat命令-文件修改详情查看">stat命令-文件修改详情查看</a>
-        </li>
-        
-    </ul>
-    
-    <h2><a href="https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">开发环境</a> (2)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2016/07/04</span>
-            <a href="https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="mac使用记录">mac使用记录</a>
-        </li>
-        
-        <li>
-            <span class="date">2016/07/04</span>
-            <a href="https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="vargrant统一开发环境">vargrant统一开发环境</a>
-        </li>
-        
-    </ul>
-    
-    <h2><a href="https://blog.dengrongfei.cn/tags/git">git</a> (1)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2016/09/26</span>
-            <a href="https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/" title="centos6编译安装git2.1">centos6编译安装git2.1</a>
-        </li>
-        
-    </ul>
-    
-    <h2><a href="https://blog.dengrongfei.cn/tags/gitlab">gitlab</a> (1)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2016/08/19</span>
-            <a href="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" title="gitlab折腾记">gitlab折腾记</a>
-        </li>
-        
-    </ul>
-    
-    <h2><a href="https://blog.dengrongfei.cn/tags/%E7%9B%91%E6%8E%A7">监控</a> (1)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2015/12/24</span>
-            <a href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" title="linux网卡流量监控">linux网卡流量监控</a>
-        </li>
-        
-    </ul>
     
 
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "snail-oniu/blog-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
 </div>
 
                 </div>
@@ -288,6 +321,17 @@
     </div>
 </footer>
 
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 <a id="rocket" href="#top"></a>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on snail_oniu</title>
+    <title>Posts on 慢蜗牛</title>
     <link>https://blog.dengrongfei.cn/post/</link>
-    <description>Recent content in Posts on snail_oniu</description>
+    <description>Recent content in Posts on 慢蜗牛</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <lastBuildDate>Thu, 02 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.dengrongfei.cn/post/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/</guid>
-      <description>find 命令非常的强大, 有特别多的使用场景,这里逐一记录 指定多个搜索路径 1 2 find /usr /home /var -iname &amp;#34;*.jar&amp;#34; find /usr /home /var -iname &amp;#34;*.jar&amp;#34; 2&amp;gt; /dev/null # 把错误重定向, 得到干净的结果 按名称查找 1</description>
+      <description>find 命令非常的强大, 有特别多的使用场景,这里逐一记录 指定多个搜索路径 1 2 find /usr /home /var -iname &amp;#34;*.jar&amp;#34; find /usr /home /var -iname &amp;#34;*.jar&amp;#34; 2&amp;gt; /dev/null # 把错误重定向, 得到干净的结果 按名称查找 1 2 3 -name -iname find / -iname &amp;#34;*.log&amp;#34; # -iname 忽略大小写, 支持通配符 按类型查找文件/目录/链接 1 2 3 4 5 -type [d|f|l|b|c|p|s] find / -type d # 查找目录 find / -type f # 查找文件 find / -type l # 查找链接 find /</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/</guid>
-      <description>stat命令是用来显示文件或文件系统的状态。 stat命令实例 1 2 3 4 5 6 7 8 9 $stat cron-20191209 File: ‘cron-20191209’ Size: 5546151 Blocks: 10848 IO Block: 4096 regular file Device: 803h/2051d Inode: 526901</description>
+      <description>stat命令是用来显示文件或文件系统的状态。 stat命令实例 1 2 3 4 5 6 7 8 9 $stat cron-20191209 File: ‘cron-20191209’ Size: 5546151 Blocks: 10848 IO Block: 4096 regular file Device: 803h/2051d Inode: 526901 Links: 1 Access: (0640/-rw-r-----) Uid: ( 0/ root) Gid: ( 4/ adm) Access: 2019-12-01 03:38:01.747042271 +0800 Modify: 2019-12-09 03:36:01.043272358 +0800 Change: 2019-12-09 03:36:01.089272077 +0800 Birth: - 时间解析 access time：表示最后一次访问（仅仅是访问，没有改动）文件的时间 modify time：表示最</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/</guid>
-      <description>依赖安装 1 2 3 4 5 6 7 8 9 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel gettext-devel libcurl-devel.x86_64 xmlto asciidoc expat-devel.x86_64 相关错误解</description>
+      <description>依赖安装 1 2 3 4 5 6 7 8 9 sudo yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 sudo yum install xmlto sudo yum -y install asciidoc sudo yum -y install expat-devel.x86_64 sudo yum update curl libcurl sudo yum install zlib-devel openssl-devel perl cpio expat-devel gettext-devel libcurl-devel.x86_64 xmlto asciidoc expat-devel.x86_64 相关错误解决 perl.mak错误： 1 2 make[1]: *** [perl.mak] 错误 2 sudo yum -y install perl-devel http.c错误 1 2 sudo yum update curl libcurl sudo yum -y install libcurl-devel.x86_64 http-push错误: 1 2 3 make: *** [http-push.o] 错误 1 sudo yum -y install</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Fri, 19 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/</guid>
-      <description>终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统</description>
+      <description>终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统一编译管理。 开始在centos上通过安装，安装成功后使用到git push的时候报错gitlab: git-http-push failed, return code 22官方issues 属于gitlab</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</guid>
-      <description>终端中打开窗口 1 open . 窗口中打开终端 在键盘快捷键中设置(勾选 加快捷键设置) 1 系统偏好设置&amp;gt;键盘&amp;gt;服务&amp;gt;文件和文件夹&amp;gt;新</description>
+      <description>终端中打开窗口 1 open . 窗口中打开终端 在键盘快捷键中设置(勾选 加快捷键设置) 1 系统偏好设置&amp;gt;键盘&amp;gt;服务&amp;gt;文件和文件夹&amp;gt;新建于文件夹位置的中断标签 在finder中打开 1 然后在Finder右键一个文件夹，右键菜单里面 Services 选择 New Terminal Tab at Folder 就打开了当前位置的终端了。类似L</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid>
-      <description>在一个团队中常常出现开发自己程序跑通了，但放到测试环境， 或者其他开发者机器上就有各种bug出现，并且花好长时间才找到答案， 某个服务少了一个扩</description>
+      <description>在一个团队中常常出现开发自己程序跑通了，但放到测试环境， 或者其他开发者机器上就有各种bug出现，并且花好长时间才找到答案， 某个服务少了一个扩展[狂汗]。 统一开发环境有很多方案虚拟机，远程服务器，docker等。 这里采用启虚拟机，将开发环境打包一个镜像然后在开发人员机器上导入即可使</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Thu, 24 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/</guid>
-      <description>/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，</description>
+      <description>/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口。 用户和应用程序可以通过proc得到系统的信息，并可以改变内核的某些参数</description>
     </item>
     
   </channel>

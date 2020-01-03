@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gitlab on snail_oniu</title>
+    <title>gitlab on 慢蜗牛</title>
     <link>https://blog.dengrongfei.cn/tags/gitlab/</link>
-    <description>Recent content in gitlab on snail_oniu</description>
+    <description>Recent content in gitlab on 慢蜗牛</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <lastBuildDate>Fri, 19 Aug 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.dengrongfei.cn/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <pubDate>Fri, 19 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/</guid>
-      <description>终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统</description>
+      <description>终于用上了gitlab感觉代码管理如此亲切。 写在前面，看到别人使用gitlab神似github，于是决定研究一下。按照惯例所有的服务都采用统一编译管理。 开始在centos上通过安装，安装成功后使用到git push的时候报错gitlab: git-http-push failed, return code 22官方issues 属于gitlab</description>
     </item>
     
   </channel>

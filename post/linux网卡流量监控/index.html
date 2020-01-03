@@ -1,137 +1,137 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>linux网卡流量监控 - snail_oniu</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="snail_oniu" /><meta name="description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，" /><meta name="keywords" content="运维开发, 测试开发, linux, python, golang" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
-
-
-<link rel="canonical" href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="linux网卡流量监控" />
-<meta property="og:description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" />
-<meta property="article:published_time" content="2015-12-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2015-12-24T00:00:00+00:00" />
-<meta itemprop="name" content="linux网卡流量监控">
-<meta itemprop="description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，">
-<meta itemprop="datePublished" content="2015-12-24T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2015-12-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1525">
-
-
-
-<meta itemprop="keywords" content="linux,监控," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="linux网卡流量监控"/>
-<meta name="twitter:description" content="/proc 介绍 Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，"/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">慢蜗牛</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">首页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">归档</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">慢蜗牛</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">首页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">归档</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">linux网卡流量监控</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2015-12-24 </span>
-        <div class="post-category">
-            <a href="/categories/linux/"> linux </a>
-            </div>
+    <title>linux网卡流量监控 | 慢蜗牛</title>
+    <meta property="og:title" content="linux网卡流量监控 - 慢蜗牛">
+    <meta property="og:type" content="article">
         
-      </div>
-    </header>
+    <meta property="article:published_time" content='2015-12-24T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2015-12-24T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="运维开发、测试开发、python、golang、linux、数据库">
+    <meta name="description" content="linux网卡流量监控">
+        <meta name="author" content="snail_oniu">
+        
+    <meta property="og:url" content="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://blog.dengrongfei.cn">
+                        慢蜗牛
+                    </a>
+                
+                <p class="description">慢蜗牛的技术成长之路... 专注于运维开发、测试开发领域</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://blog.dengrongfei.cn">首页</a>
+                    
+                    <a  href="https://blog.dengrongfei.cn/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://blog.dengrongfei.cn/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
   <ul>
     <li><a href="#proc-">/proc 介绍</a></li>
     <li><a href="#1-procnetdev">1. /proc/net/dev</a></li>
@@ -140,49 +140,98 @@
     <li><a href="#heading-2">第一步获取实时流量</a></li>
   </ul>
 </nav>
-  </div>
+    </div>
 </div>
-    <div class="post-content">
-      <h2 id="proc-">/proc 介绍</h2>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">linux网卡流量监控</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年12月24日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://blog.dengrongfei.cn/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="proc-">/proc 介绍</h2>
 <p>Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口。 用户和应用程序可以通过proc得到系统的信息，并可以改变内核的某些参数。由于系统的信息，如进程，是动态改变的，所以用户或应用程序读取proc文件时，proc文件系统是动态从系统内核读出所需信息并提交的。下面列出的这些文件或子文件夹，并不是都是在你的系统中存在，这取决于你的内核配置和装载的模块。另外，在/proc下还有三个很重要的目录：net，scsi和sys。 Sys目录是可写的，可以通过它来访问或修改内核的参数，而net和scsi则依赖于内核配置。例如，如果系统不支持scsi，则scsi 目录不存在。 除了以上介绍的这些，还有的是一些以数字命名的目录，它们是进程目录。系统中当前运行的每一个进程都有对应的一个目录在/proc下，以进程的 PID号为目录名，它们是读取进程信息的接口。而self目录则是读取进程本身的信息接口，是一个link。</p>
 <h2 id="1-procnetdev">1. /proc/net/dev</h2>
 <p>/proc/net/dev 文件列出了server中的所有网络接口,能看到每个接口的流量变化. 监控主机的总进出流量只需要采集单位时间的数据既可算出分／秒级的流量。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[test@test ~]$ cat /proc/net/dev
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>test@test ~<span style="color:#000;font-weight:bold">]</span>$ cat /proc/net/dev
     Inter-    |Receive                                                        |Transmit
     face      |bytes     packets   errs drop fifo frame compressed multicast  |bytes     packets  errs drop fifo colls carrier compressed
-    lo:     114006421  894579    0    0    0     0    0          0          114006421  894579    0   0    0     0       0          0
-    eth0:     3777821347 24177129  0    0    0     0    0          3499       5298851320 19285767  0   0    0     0       0          0
-    eth1:     0          0         0    0    0     0    0          0          0       0  0    0    0   0    0     0
-    sit0:     0          0         0    0    0     0    0          0          0       0  0    0    0   0    0     0
+    lo:     <span style="color:#099">114006421</span>  <span style="color:#099">894579</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>    <span style="color:#099">0</span>          <span style="color:#099">0</span>          <span style="color:#099">114006421</span>  <span style="color:#099">894579</span>    <span style="color:#099">0</span>   <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>       <span style="color:#099">0</span>          <span style="color:#099">0</span>
+    eth0:     <span style="color:#099">3777821347</span> <span style="color:#099">24177129</span>  <span style="color:#099">0</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>    <span style="color:#099">0</span>          <span style="color:#099">3499</span>       <span style="color:#099">5298851320</span> <span style="color:#099">19285767</span>  <span style="color:#099">0</span>   <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>       <span style="color:#099">0</span>          <span style="color:#099">0</span>
+    eth1:     <span style="color:#099">0</span>          <span style="color:#099">0</span>         <span style="color:#099">0</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>    <span style="color:#099">0</span>          <span style="color:#099">0</span>          <span style="color:#099">0</span>       <span style="color:#099">0</span>  <span style="color:#099">0</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>   <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>
+    sit0:     <span style="color:#099">0</span>          <span style="color:#099">0</span>         <span style="color:#099">0</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>    <span style="color:#099">0</span>          <span style="color:#099">0</span>          <span style="color:#099">0</span>       <span style="color:#099">0</span>  <span style="color:#099">0</span>    <span style="color:#099">0</span>    <span style="color:#099">0</span>   <span style="color:#099">0</span>    <span style="color:#099">0</span>     <span style="color:#099">0</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>相关解释：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">bytes 发送或接受的总字节数
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bytes 发送或接受的总字节数
 packets 发送或接受的报文总数
 errs 被设备驱动监测到发送或接受的错误报文总数
 drop 由于系统资源限制，被设备驱动丢弃的报文总数
@@ -200,24 +249,24 @@ carrier 连接介质出现故障次数 , 如 : 网线接触不良
 第三列：<code>Transmit</code> 发送数据</p>
 <h2 id="heading">相关补充</h2>
 <p>ifconfig 命令中的TX和RX的理解</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">eth1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eth1: <span style="color:#008080">flags</span><span style="color:#000;font-weight:bold">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#099">1500</span>
         inet 10.10.1.12  netmask 255.255.252.0  broadcast 15.8.1.255
-        ether 00:16:3e:00:36:4f  txqueuelen 1000  (Ethernet)
-        RX packets 440520631  bytes 20365517627 (18.9 GiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 950862  bytes 388232926 (370.2 MiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        ether 00:16:3e:00:36:4f  txqueuelen <span style="color:#099">1000</span>  <span style="color:#000;font-weight:bold">(</span>Ethernet<span style="color:#000;font-weight:bold">)</span>
+        RX packets <span style="color:#099">440520631</span>  bytes <span style="color:#099">20365517627</span> <span style="color:#000;font-weight:bold">(</span>18.9 GiB<span style="color:#000;font-weight:bold">)</span>
+        RX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span>  overruns <span style="color:#099">0</span>  frame <span style="color:#099">0</span>
+        TX packets <span style="color:#099">950862</span>  bytes <span style="color:#099">388232926</span> <span style="color:#000;font-weight:bold">(</span>370.2 MiB<span style="color:#000;font-weight:bold">)</span>
+        TX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span> overruns <span style="color:#099">0</span>  carrier <span style="color:#099">0</span>  collisions <span style="color:#099">0</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>网络流量上传下载是相对的，内网网卡和外网网卡的流入流量和流出流量也是相反的。
@@ -233,92 +282,92 @@ bytes:网络流量统计 bits: 2进制位数</p>
 <h2 id="heading-2">第一步获取实时流量</h2>
 <p>核心：获取网卡接口的 recevie bytes 和transmit bytes, 服务器一般都有外网网卡和内网网卡，
 在简单的脚本中可以直接写死, 在运维平台中可以将网卡名写入到配置文件中, 也可以尝试自动获取.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># !/usr/bin/env python
-# coding: utf-8
-# description:实时流量
-# sytemOs: centos6.4
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># !/usr/bin/env python</span>
+<span style="color:#998;font-style:italic"># coding: utf-8</span>
+<span style="color:#998;font-style:italic"># description:实时流量</span>
+<span style="color:#998;font-style:italic"># sytemOs: centos6.4</span>
 
-import time
+import <span style="color:#0086b3">time</span>
 import sys
 
-# device = &#39;eno16777736&#39;
-device = &#39;eth1&#39;
+<span style="color:#998;font-style:italic"># device = &#39;eno16777736&#39;</span>
+<span style="color:#008080">device</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;eth1&#39;</span>
 
-def rx():
-    &#39;&#39;&#39; 流入流量 &#39;&#39;&#39;
-    istat = open(&#39;/proc/net/dev&#39;,&#39;r&#39;).readlines()
-    for interface in istat:
-        if device in interface:
-            stat = interface.split[&#39;:&#39;,1](1)
-            stat = int[stat.split(](0))
-            #print &#39;receive:&#39; ,stat
-    return stat
+def rx<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>:
+    <span style="color:#d14">&#39;&#39;</span><span style="color:#d14">&#39; 流入流量 &#39;</span><span style="color:#d14">&#39;&#39;</span>
+    <span style="color:#008080">istat</span> <span style="color:#000;font-weight:bold">=</span> open<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#39;/proc/net/dev&#39;</span>,<span style="color:#d14">&#39;r&#39;</span><span style="color:#000;font-weight:bold">)</span>.readlines<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">for</span> interface in istat:
+        <span style="color:#000;font-weight:bold">if</span> device in interface:
+            <span style="color:#008080">stat</span> <span style="color:#000;font-weight:bold">=</span> interface.split<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;:&#39;</span>,1<span style="color:#000;font-weight:bold">]</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">)</span>
+            <span style="color:#008080">stat</span> <span style="color:#000;font-weight:bold">=</span> int<span style="color:#000;font-weight:bold">[</span>stat.split<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">]</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+            <span style="color:#998;font-style:italic">#print &#39;receive:&#39; ,stat</span>
+    <span style="color:#000;font-weight:bold">return</span> stat
 
-def tx():
-    &#39;&#39;&#39; 流出流量 &#39;&#39;&#39;
-    istat = open(&#39;/proc/net/dev&#39;,&#39;r&#39;).readlines()
-    for interface in istat:
-        if device in interface:
-            stat = int[interface.split(](8))
-            #print &#39;transmit:&#39;, stat
-    return stat
+def tx<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>:
+    <span style="color:#d14">&#39;&#39;</span><span style="color:#d14">&#39; 流出流量 &#39;</span><span style="color:#d14">&#39;&#39;</span>
+    <span style="color:#008080">istat</span> <span style="color:#000;font-weight:bold">=</span> open<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#39;/proc/net/dev&#39;</span>,<span style="color:#d14">&#39;r&#39;</span><span style="color:#000;font-weight:bold">)</span>.readlines<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">for</span> interface in istat:
+        <span style="color:#000;font-weight:bold">if</span> device in interface:
+            <span style="color:#008080">stat</span> <span style="color:#000;font-weight:bold">=</span> int<span style="color:#000;font-weight:bold">[</span>interface.split<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">]</span><span style="color:#000;font-weight:bold">(</span>8<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+            <span style="color:#998;font-style:italic">#print &#39;transmit:&#39;, stat</span>
+    <span style="color:#000;font-weight:bold">return</span> stat
 
-while True:
-    rx_flow = rx()
-    tx_flow = tx()
-    time.sleep(1)
-    current_rx = rx() - rx_flow
-    current_tx = tx() - tx_flow
-    current_time = time.strftime(&#39;%H:%M:%S&#39;)
+<span style="color:#000;font-weight:bold">while</span> True:
+    <span style="color:#008080">rx_flow</span> <span style="color:#000;font-weight:bold">=</span> rx<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#008080">tx_flow</span> <span style="color:#000;font-weight:bold">=</span> tx<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+    time.sleep<span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#008080">current_rx</span> <span style="color:#000;font-weight:bold">=</span> rx<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span> - rx_flow
+    <span style="color:#008080">current_tx</span> <span style="color:#000;font-weight:bold">=</span> tx<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span> - tx_flow
+    <span style="color:#008080">current_time</span> <span style="color:#000;font-weight:bold">=</span> time.strftime<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#39;%H:%M:%S&#39;</span><span style="color:#000;font-weight:bold">)</span>
 
-    #print &#39;rx:%s Kbps     tx:%s Kbps&#39;% (rx()/1024,tx()/1024,)
-    print &#39;time: %s  rx: %d Kbps  tx: %d Kbps&#39; %(current_time,current_rx/1024,current_tx/1024,)
-# vim: ai ts=4 sts=4 et sw=4
+    <span style="color:#998;font-style:italic">#print &#39;rx:%s Kbps     tx:%s Kbps&#39;% (rx()/1024,tx()/1024,)</span>
+    print <span style="color:#d14">&#39;time: %s  rx: %d Kbps  tx: %d Kbps&#39;</span> %<span style="color:#000;font-weight:bold">(</span>current_time,current_rx/1024,current_tx/1024,<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#998;font-style:italic"># vim: ai ts=4 sts=4 et sw=4</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>效果图：</p>
@@ -328,103 +377,199 @@ while True:
 按来访ip统计实时流量<br>
 2. 统计tcp链接</p>
 
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">snail_oniu</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2015-12-24
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">linux</a>
-          <a href="/tags/%E7%9B%91%E6%8E%A7/">监控</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">vargrant统一开发环境</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        
-      </nav>
-    </footer>
-  </article>
         </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://blog.dengrongfei.cn">snailoniu</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
         
 
-  
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/about/">关于我</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
+        
+    </ul>
+</div>
 
-  
-    <script src="https://utteranc.es/client.js"
-            repo="snail-oniu/blog-comments"
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://blog.dengrongfei.cn/tags/linux'>linux</a></li>
+                
+                <li><a href='https://blog.dengrongfei.cn/tags/%E7%9B%91%E6%8E%A7'>监控</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "snail-oniu/blog-comments"
             issue-term="pathname"
             theme="github-light"
             crossorigin="anonymous"
             async>
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="snail_oniu@163.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://github.com/snail-oniu" class="iconfont icon-github" title="github"></a>
-  <a href="https://blog.dengrongfei.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">snail_oniu</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+      </script>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://blog.dengrongfei.cn/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://blog.dengrongfei.cn">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/" title="find命令实例">find命令实例</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/" title="stat命令-文件修改详情查看">stat命令-文件修改详情查看</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/centos6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85git2.1/" title="centos6编译安装git2.1">centos6编译安装git2.1</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/gitlab%E6%8A%98%E8%85%BE%E8%AE%B0/" title="gitlab折腾记">gitlab折腾记</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/mac%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="mac使用记录">mac使用记录</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/vargrant%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="vargrant统一开发环境">vargrant统一开发环境</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.dengrongfei.cn/post/linux%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/" title="linux网卡流量监控">linux网卡流量监控</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://blog.dengrongfei.cn/categories/linux/">linux (7)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://blog.dengrongfei.cn/tags/git/">git</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/gitlab/">gitlab</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/linux/">linux</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/shell/">shell</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a>
+    
+    <a href="https://blog.dengrongfei.cn/tags/%E7%9B%91%E6%8E%A7/">监控</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://blog.dengrongfei.cn/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://blog.dengrongfei.cn">慢蜗牛 By snailoniu</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '219050609', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
-
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
 
 </body>
+
 </html>
