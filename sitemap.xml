@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.dengrongfei.cn/about/</loc>
+    <lastmod>2020-01-03T09:30:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.dengrongfei.cn/</loc>
+    <lastmod>2020-01-03T09:30:23+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.dengrongfei.cn/categories/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
@@ -13,12 +23,12 @@
   </url>
   
   <url>
-    <loc>https://blog.dengrongfei.cn/categories/linux/</loc>
+    <loc>https://blog.dengrongfei.cn/tags/linux/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.dengrongfei.cn/tags/linux/</loc>
+    <loc>https://blog.dengrongfei.cn/categories/linux/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -44,11 +54,6 @@
   
   <url>
     <loc>https://blog.dengrongfei.cn/tags/%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.dengrongfei.cn/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
   
