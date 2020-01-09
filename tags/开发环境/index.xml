@@ -6,10 +6,19 @@
     <description>Recent content in 开发环境 on 慢蜗牛</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 04 Jul 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 22:04:19 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vue系列-vue开发环境搭建</title>
+      <link>https://blog.dengrongfei.cn/post/vue%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Tue, 07 Jan 2020 22:04:19 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/post/vue%E7%8E%AF%E5%A2%83/</guid>
+      <description>前端的技术发展飞速，封装了很多框架隐藏了很多细节，让功能实现越来越方便，但也越来越搞不明白底层隐藏的部分。用了一段时间的vue现在抽空来做一下整理和总结。期望可以比较系统和完整的梳理一遍，实际（纯属个人笔记完整和严谨性都有待提升）。 第一篇就先整理开发环境的部分，cnd引入的方式就</description>
+    </item>
     
     <item>
       <title>mac使用记录</title>

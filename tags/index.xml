@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 慢蜗牛</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 02 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 22:04:19 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.dengrongfei.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vue</title>
+      <link>https://blog.dengrongfei.cn/tags/vue/</link>
+      <pubDate>Tue, 07 Jan 2020 22:04:19 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/tags/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>开发环境</title>
+      <link>https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Tue, 07 Jan 2020 22:04:19 +0000</pubDate>
+      
+      <guid>https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>linux</title>
@@ -53,15 +71,6 @@
       <pubDate>Fri, 19 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://blog.dengrongfei.cn/tags/gitlab/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>开发环境</title>
-      <link>https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link>
-      <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.dengrongfei.cn/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid>
       <description></description>
     </item>
     

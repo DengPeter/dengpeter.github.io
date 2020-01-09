@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="msvalidate.01" content="40679788B8DCEA07D575CA00A5145114" />
-    <title>命令 | 慢蜗牛</title>
-    <meta property="og:title" content="命令 - 慢蜗牛">
+    <title>vue | 慢蜗牛</title>
+    <meta property="og:title" content="vue - 慢蜗牛">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="运维开发、测试开发、python、golang、linux、数据库">
-    <meta name="description" content="命令">
+    <meta name="description" content="vue">
         
     <meta name="author" content="snailoniu">
-    <meta property="og:url" content="https://blog.dengrongfei.cn/tags/%E5%91%BD%E4%BB%A4/">
+    <meta property="og:url" content="https://blog.dengrongfei.cn/tags/vue/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.dengrongfei.cn/tags/%E5%91%BD%E4%BB%A4/index.xml" title="慢蜗牛" />
+    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.dengrongfei.cn/tags/vue/index.xml" title="慢蜗牛" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -67,7 +67,7 @@
     
     <h3 class="archive-title">
         包含标签
-        <span class="keyword">命令</span>
+        <span class="keyword">vue</span>
         的文章
     </h3>
     
@@ -76,46 +76,23 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/">find命令实例</a>
+                <a href="https://blog.dengrongfei.cn/post/vue%E7%8E%AF%E5%A2%83/">vue系列-vue开发环境搭建</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年1月2日
+            2020年1月7日
         </date>
         
         <div class="post-meta meta-category">
             |
             
-            <a href='https://blog.dengrongfei.cn/categories/linux'>linux</a>
+            <a href='https://blog.dengrongfei.cn/categories/%E5%89%8D%E7%AB%AF'>前端</a>
             
         </div>
         
         <div class="post-content">
-            find 命令非常的强大, 有特别多的使用场景,这里逐一记录 指定多个搜索路径 1 2 find /usr /home /var -iname &#34;*.jar&#34; find /usr /home /var -iname &#34;*.jar&#34; 2&gt; /dev/null # 把错误重定向, 得到干净的结果 按名称查找 1 2 3 -name -iname find / -iname &#34;*.log&#34; # -iname 忽略大小写, 支持通配符 按类型查找文件/目录/链接 1 2 3 4 5 -type [d|f|l|b|c|p|s] find / -type d # 查找目录 find / -type f # 查找文件 find / -type l # 查找链接 find /……
-            <p class="readmore"><a href="https://blog.dengrongfei.cn/post/find%E5%91%BD%E4%BB%A4%E5%AE%9E%E4%BE%8B/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/">stat命令-文件修改详情查看</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年1月2日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://blog.dengrongfei.cn/categories/linux'>linux</a>
-            
-        </div>
-        
-        <div class="post-content">
-            stat命令是用来显示文件或文件系统的状态。 stat命令实例 1 2 3 4 5 6 7 8 9 $stat cron-20191209 File: ‘cron-20191209’ Size: 5546151 Blocks: 10848 IO Block: 4096 regular file Device: 803h/2051d Inode: 526901 Links: 1 Access: (0640/-rw-r-----) Uid: ( 0/ root) Gid: ( 4/ adm) Access: 2019-12-01 03:38:01.747042271 +0800 Modify: 2019-12-09 03:36:01.043272358 +0800 Change: 2019-12-09 03:36:01.089272077 +0800 Birth: - 时间解析 access time：表示最后一次访问（仅仅是访问，没有改动）文件的时间 modify time：表示最……
-            <p class="readmore"><a href="https://blog.dengrongfei.cn/post/stat%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E8%AF%A6%E6%83%85%E6%9F%A5%E7%9C%8B/">阅读全文</a></p>
+            前端的技术发展飞速，封装了很多框架隐藏了很多细节，让功能实现越来越方便，但也越来越搞不明白底层隐藏的部分。用了一段时间的vue现在抽空来做一下整理和总结。期望可以比较系统和完整的梳理一遍，实际（纯属个人笔记完整和严谨性都有待提升）。 第一篇就先整理开发环境的部分，cnd引入的方式就……
+            <p class="readmore"><a href="https://blog.dengrongfei.cn/post/vue%E7%8E%AF%E5%A2%83/">阅读全文</a></p>
         </div>
     </article>
     
